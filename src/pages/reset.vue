@@ -68,6 +68,10 @@ export default {
   beforeCreate () {
   },
   created () {
+  },
+  beforeMount () {
+  },
+  mounted () {
     if (this.$store.state.account.loggedIn) {
       this.$router.push('/')
     }
@@ -76,10 +80,6 @@ export default {
       this.hasToken = true
       this.$account.confirmReset(this.$route.params.token)
     }
-  },
-  beforeMount () {
-  },
-  mounted () {
   },
   computed: {
     passesMatch: function () {

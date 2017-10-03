@@ -1,13 +1,17 @@
-import Vue from 'vue';
-import App from '@/App.vue';
+import Vue from 'vue'
+import App from '@/App.vue'
+import modal from '@/components/modal'
+import account from '@/plugins/account'
 
-import { sync } from "vuex-router-sync"
-import { createStore } from "./store"
-import { createRouter } from "./router"
+import { sync } from 'vuex-router-sync'
+import { createStore } from '@/store'
+import { createRouter } from '@/router'
 
 Vue.config.productionTip = false
 Vue.config.debug = process.env.NODE_ENV === 'development'
 
+Vue.component('modal', modal)
+Vue.use(account)
 
 // Expose a factory function that creates a fresh set of store, router,
 // app instances on each call (which is called for each SSR request)

@@ -4,8 +4,7 @@ import Router from "vue-router"
 Vue.use(Router)
 
 /* Importing pages */
-const index = import('@/pages/index')
-
+const index = () =>import('@/pages/index')
 const contact = () => import('@/pages/contact')
 const account = () => import('@/pages/account')
 const about = () => import('@/pages/about')
@@ -63,7 +62,7 @@ let routes = [
   },
   { 
     path: '/reset/:token', 
-    name: 'reset',
+    name: 'resetToken',
     component: reset
   },
   { 

@@ -9,7 +9,7 @@ const favicon = require('serve-favicon')
 const resolve = (file) => path.resolve(__dirname, file)
 
 const config = require("./config/oracle")
-const isProduction = config.NODE_ENV === "'production'"
+const isProduction = config.NODE_ENV === "production"
 
 const template = fs.readFileSync(resolve("./src/index.template.html"), "utf-8")
 

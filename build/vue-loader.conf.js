@@ -11,9 +11,5 @@ module.exports = {
     img: 'src',
     image: 'xlink:href'
   },
-  preserveWhitespace: false,
-  postcss: [
-    require("autoprefixer")({browsers: ["last 3 versions"]}),
-    require("cssnano")
-  ]
+  preserveWhitespace: false
 }

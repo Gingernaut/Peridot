@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js,.vue src build config --fix"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "compression": "^1.7.1",
     "es6-promise": "^4.1.1",
     "express": "^4.16.1",
