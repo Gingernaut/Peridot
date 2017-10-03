@@ -1,0 +1,5 @@
+apps:
+  - script   : 'prodserver.js'
+    name     : 'frontend'
+    exec_mode: 'cluster'
+    instances: 4
