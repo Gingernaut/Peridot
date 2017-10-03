@@ -34,10 +34,6 @@ const moduleRules = [
         test: /\.vue$/,
         loader: "vue-loader",
         options: {
-            preLoaders: {
-                pug: doI18n,
-                html: doI18n
-            },
             preserveWhitespace: false,
             postcss: [
                 require("autoprefixer")({browsers: ["last 3 versions"]}),
@@ -62,19 +58,20 @@ const moduleRules = [
 
 module.exports = {
 
-    devtool: config.isProduction ? false : "inline-source-map",
+    devtool: isProd ? false : "inline-source-map",
 
-    extensions: ['.js', '.vue', '.scss'],
+    // extensions: ['.js', '.vue', '.scss'],
 
     entry: {
         app: "./src/main.client.js"
     },
 
     resolve: {
+        extensions: ['.js', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': '../src',
-            '@@': '../'
+            '@': path.resolve(__dirname, "../src"),
+            '@@': path.resolve(__dirname, "../")
         }
     },
 
@@ -92,6 +89,6 @@ module.exports = {
     
     performance: {
 		maxEntrypointSize: 250000,
-		hints: config.isProduction ? "warning" : false
+		hints: isProd ? "warning" : false
 	},
 }

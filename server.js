@@ -74,8 +74,8 @@ const render = (req, res, context) => {
 
 	renderer.renderToString(context, (err, html) => {
 		if (err) return errorHandler(err)
-
-		res.status(context.meta.httpStatusCode || 200)
+        console.log(context)
+		//res.status(context.meta.httpStatusCode || 200)
 		res.end(html)
 
 		console.log(`Whole request: ${Date.now() - s}ms`)
