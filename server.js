@@ -8,8 +8,8 @@ const favicon = require('serve-favicon')
 
 const resolve = (file) => path.resolve(__dirname, file)
 
-const baseConfig = require("./config/base")
-const isProduction = baseConfig.NODE_ENV === 'production'
+const config = require("./config/oracle")
+const isProduction = config.NODE_ENV === "'production'"
 
 const template = fs.readFileSync(resolve("./src/index.template.html"), "utf-8")
 
@@ -101,7 +101,7 @@ app.get("*", (req, res) => {
 		readyPromise.then(() => render(req, res, context))
 })
 
-const port = baseConfig.port
+const port = config.port
 let server = app.listen(port, () => {
 	console.log(`Server started at localhost:${port}`)
 })

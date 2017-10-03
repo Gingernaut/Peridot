@@ -1,6 +1,9 @@
 let merge = require('webpack-merge')
-let baseConfig = require('./base')
+let config = require('./base')
 
-module.exports = merge(baseConfig, {
-  NODE_ENV: 'production'
+module.exports = merge(config, {
+  NODE_ENV: 'production',
+  showComments: false,
+  warningsAndErrors: false,
+  productionSourceMap: true,
 })

@@ -1,9 +1,9 @@
 const path = require('path')
-const baseConfig = require('../config/base')
+const config = require('../config/oracle')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
-  let assetsSubDirectory = baseConfig.assetsSubDirectory
+  let assetsSubDirectory = config.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
 

@@ -1,9 +1,9 @@
 let utils = require('./utils')
-let baseConfig = require('../config/base')
+let config = require('../config/oracle')
 
 module.exports = {
   loaders: utils.cssLoaders({
-    sourceMap: baseConfig.productionSourceMap
+    sourceMap: config.productionSourceMap
   }),
   transformToRequire: {
     video: 'src',

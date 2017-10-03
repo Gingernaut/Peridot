@@ -1,48 +1,82 @@
 <template>
   <div id="app">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
+    <navbar></navbar>
+    <router-view id="appContent"></router-view>
+    <myFooter></myFooter>
   </div>
 </template>
 
 <script>
+
+import navbar from '@/components/navbar'
+
 export default {
   name: 'app',
+  components: {
+    navbar,
+    myFooter: () => import('@/components/footer')
+  },
+  // props: [],
+  mixins: [],
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+
     }
+  },
+  beforeCreate () {
+  },
+  created () {
+  },
+  beforeMount () {
+  },
+  mounted () {
+  },
+  computed: {
+  },
+  methods: {
+  },
+  beforeUpdate () {
+  },
+  updated () {
+  },
+  beforeDestroy () {
   }
 }
 </script>
 
+
 <style lang="scss">
 
 
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $red;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
+html,body {
+  margin: 0;
   padding: 0;
+  line-height: 1.5;
+  transform-style: preserve-3d;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  z-index:1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-a {
-  color: #42b983;
+#appContent {
+  flex-grow:1;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+a, a:visited, a:hover {
+    text-decoration: none;
 }
 </style>
