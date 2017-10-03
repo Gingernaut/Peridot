@@ -7,9 +7,6 @@ const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const base = require('./webpack.base.config')
 const config = require('../config/oracle')
 
-const nodeEnv = JSON.stringify(config.NODE_ENV)
-const isProd = JSON.stringify(config.NODE_ENV) === 'production'
-
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
 // minify options to be used in production mode
@@ -31,15 +28,15 @@ const clientConfig = merge(base, {
     // generate output HTML
     new HTMLPlugin({
       template: 'src/index.template.html',
-      minify: isProd ? minifyOptions : {}
+      minify: config.isProd ? minifyOptions : {}
     }),
     new VueSSRClientPlugin()
   ]
 })
 
-if (isProd) {
+if (config.isProd) {
   clientConfig.plugins.push(
-    // minify JS
+    
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: config.warningsAndErrors,
@@ -51,9 +48,10 @@ if (isProd) {
     }),
     // auto generate service worker
     new SWPrecachePlugin({
-      cacheId: 'vue-webpack-ssr-fully-featured',
+      cacheId: 'peridotSSR',
       filename: 'service-worker.js',
       minify: true,
+      stripPrefix: 'dist/',
 
       staticFileGlobs: [
         'dist/**.css',
@@ -72,7 +70,7 @@ if (isProd) {
   )
 }
 
-if (nodeEnv !== 'testing') {
+if (!config.isTesting) {
   clientConfig.plugins.push(
     // extract vendor chunks for better caching
     // https://github.com/Narkoleptika/webpack-everything/commit/b7902f60806cf40b9d1abf8d6bb2a094d924fff7
@@ -89,10 +87,9 @@ if (nodeEnv !== 'testing') {
   )
 }
 
-if (isProd) {
-  clientConfig.plugins.push(
-    new webpack.optimize.ModuleConcatenationPlugin()
-  )
+if (config.bundleAnalyzerReport) {
+  let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+  clientConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
 module.exports = clientConfig

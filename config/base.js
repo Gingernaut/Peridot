@@ -8,5 +8,6 @@ module.exports = {
   showComments: true,
   warningsAndErrors: true,
   productionSourceMap: false,
-  assetsSubDirectory: 'static'
+  assetsSubDirectory: 'static',
+  bundleAnalyzerReport: process.env.npm_config_report
 }

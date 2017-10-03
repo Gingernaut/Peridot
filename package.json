@@ -10,7 +10,8 @@
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules",
-    "lint": "eslint --ext .js,.vue src build config --fix"
+    "lint": "eslint --ext .js,.vue src build config --fix",
+    "clean": "rm -rf ./node_modules && rm -rf ./dist && yarn install"
   },
   "dependencies": {
     "axios": "^0.16.2",
@@ -18,6 +19,7 @@
     "es6-promise": "^4.1.1",
     "express": "^4.16.1",
     "fast-sort": "^1.2.2",
+    "helmet": "^3.8.2",
     "lru-cache": "^4.1.1",
     "serve-favicon": "^2.4.5",
     "vue": "^2.4.4",
@@ -68,6 +70,7 @@
     "vue-ssr-webpack-plugin": "^3.0.0",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-hot-middleware": "^2.19.1",

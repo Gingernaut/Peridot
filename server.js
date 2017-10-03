@@ -3,6 +3,8 @@ const path = require("path")
 const compression = require("compression")
 const express = require("express")
 const app = express()
+const helmet = require('helmet')
+
 
 const favicon = require('serve-favicon')
 
@@ -85,8 +87,9 @@ const render = (req, res, context) => {
 app.use(compression({
   threshold: 0
 }))
-app.use(favicon('./static/favicon.png'))
 
+app.use(helmet())
+app.use(favicon('./static/favicon.png'))
 app.use("/dist", serve("./dist", true))
 app.use("/static", serve("./static", true))
 app.use("/service-worker.js", serve("./dist/service-worker.js"))
