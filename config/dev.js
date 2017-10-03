@@ -1,6 +1,3 @@
-let merge = require('webpack-merge')
-let config = require('./base')
-
-module.exports = merge(config, {
+module.exports =  {
   NODE_ENV: 'development'
-})
+}

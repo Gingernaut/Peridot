@@ -1,5 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
+// import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -69,6 +70,7 @@ const uiModule = {
 export function createStore() {
   return new Vuex.Store({
     strict: process.env.NODE_ENV !== "production",
+    // plugins: [createPersistedState()],
     modules: {
       account: accountModule,
       ui: uiModule

@@ -24,6 +24,7 @@
     "vue-router": "^2.7.0",
     "vue-server-renderer": "^2.4.4",
     "vuex": "^2.4.1",
+    "vuex-persistedstate": "^2.0.0",
     "vuex-router-sync": "^4.3.2"
   },
   "devDependencies": {
