@@ -74,7 +74,7 @@ const render = (req, res, context) => {
 
 	renderer.renderToString(context, (err, html) => {
 		if (err) return errorHandler(err)
-        console.log(context)
+		console.log(context)
 		//res.status(context.meta.httpStatusCode || 200)
 		res.end(html)
 
@@ -82,12 +82,14 @@ const render = (req, res, context) => {
 	})
 }
 
-app.use(compression({ threshold: 0 }))
+app.use(compression({
+	threshold: 0
+}))
 app.use(favicon('./static/favicon.png'))
 
 app.use("/dist", serve("./dist", true))
 app.use("/static", serve("./static", true))
-// app.use("/service-worker.js", serve("./dist/service-worker.js"))
+app.use("/service-worker.js", serve("./dist/service-worker.js"))
 
 app.get("*", (req, res) => {
 	const context = {

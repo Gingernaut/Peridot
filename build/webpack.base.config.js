@@ -7,39 +7,54 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
+const vueLoaderConfig = require('./vue-loader.conf')
+const utils = require('./utils')
 
 const nodeEnv = JSON.stringify(baseConfig.NODE_ENV)
 const isProd = JSON.stringify(baseConfig.NODE_ENV) === 'production'
 
+
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
+}
+
 // Webpack plugins for both client and server
-const commonPlugins = [
-	new StringReplacePlugin(),
-	new webpack.DefinePlugin({
-		'process.env.NODE_ENV': nodeEnv,
-		'PRODUCTION': isProd
-	}),
-	new StyleLintPlugin({
-		files: ['src/**/*.vue', 'src/**/*.scss']
-	})
+let commonPlugins = [
+    new StringReplacePlugin(),
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': nodeEnv,
+        'PRODUCTION': isProd
+    }),
+    new StyleLintPlugin({
+        files: ['src/**/*.vue', 'src/**/*.scss']
+    }),
+    // keep module.id stable when vender modules does not change
+    new webpack.HashedModuleIdsPlugin(),
+
+    // https://webpack.js.org/plugins/module-concatenation-plugin/
+    new webpack.optimize.ModuleConcatenationPlugin(),
 ]
 
-const moduleRules = [
-    {
-        enforce: "pre",
+if (isProd) {
+    commonPlugins.push(
+        new FriendlyErrorsPlugin()
+    )
+}
+
+const moduleRules = [{
+        enforce: 'pre',
         test: /\.(vue|js)$/,
-        loader: "eslint-loader",
-        exclude: /node_modules/
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        include: [resolve('src')],
+        options: {
+            cache: true
+        }
     },
     {
         test: /\.vue$/,
-        loader: "vue-loader",
-        options: {
-            preserveWhitespace: false,
-            postcss: [
-                require("autoprefixer")({browsers: ["last 3 versions"]}),
-                require("cssnano")
-            ]
-        }
+        loader: 'vue-loader',
+        options: vueLoaderConfig
     },
     {
         test: /\.js$/,
@@ -48,47 +63,69 @@ const moduleRules = [
     },
     {
         test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
-        loader: "url-loader",
+        loader: 'url-loader',
         options: {
             limit: 10000,
-            name: "img/[name].[hash:16].[ext]"
+            name: utils.assetsPath('img/[name].[hash:16].[ext]')
+        }
+    },
+    {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+            limit: 10000,
+            name: utils.assetsPath('media/[name].[hash:7].[ext]')
+        }
+    },
+    {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+            limit: 10000,
+            name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
     }
 ]
 
 module.exports = {
 
-    devtool: isProd ? false : "inline-source-map",
+    devtool: isProd ? false : 'inline-source-map',
 
     // extensions: ['.js', '.vue', '.scss'],
 
     entry: {
-        app: "./src/main.client.js"
+        app: './src/main.client.js'
     },
 
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.vue', '.json', '.scss'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
-            '@': path.resolve(__dirname, "../src"),
-            '@@': path.resolve(__dirname, "../")
+            '@': resolve('src'),
+            '@@': resolve('../')
+        }
+    },
+
+    resolveLoader: {
+        alias: {
+            'scss-loader': 'sass-loader'
         }
     },
 
     output: {
-		path: path.resolve(__dirname, "../dist"),
-		publicPath: "/dist/",
-		filename: "js/[name].[chunkhash:16].js"
+        path: resolve('../dist'),
+        publicPath: '/dist/',
+        filename: utils.assetsPath('js/[name].[chunkhash:16].js')
     },
 
 
     module: {
-		noParse: /es6-promise\.js$/, // avoid webpack shimming process
-		rules: moduleRules
-	},
-    
+        noParse: /es6-promise\.js$/, // avoid webpack shimming process
+        rules: moduleRules
+    },
+
     performance: {
-		maxEntrypointSize: 250000,
-		hints: isProd ? "warning" : false
-	},
+        maxEntrypointSize: 250000,
+        hints: isProd ? 'warning' : false
+    },
 }

@@ -1,5 +1,5 @@
-
-const nodeEnv = 'production' // process.env.NODE_ENV || 'development'
+const path = require('path')
+const nodeEnv = process.env.NODE_ENV || 'development'
 
 
 module.exports = {
@@ -8,7 +8,11 @@ module.exports = {
     // isTesting: nodeEnv === 'testing',
     // isDev: nodeEnv === 'development',
     port: process.env.SERVER_PORT || 8080,
-    showComments: true,
+    showComments: false,
     warningsAndErrors: true,
-    productionSourceMap: false
+    productionSourceMap: false,
+
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/'
 }
