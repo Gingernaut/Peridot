@@ -1,19 +1,20 @@
 /* 
-    Oracle == source of truth for configuration. It determines which other config files to merge with. 
+    Oracle === source of truth for configuration. 
+    It determines which other config files to merge with. 
+    This is the config file you should import where configuration is needed.
 */
 
-let merge = require('webpack-merge')
-let config = require('./base')
-let devConfig = require('./dev')
-let prodConfig = require('./prod')
+const merge = require('webpack-merge')
+const baseConfig = require('./base')
+const devConfig = require('./dev')
+const prodConfig = require('./prod')
 
-let curConfig = process.env.NODE_ENV === 'production' ? prodConfig : devConfig
+const neededConfig = process.env.NODE_ENV === "production" ? prodConfig : devConfig
 
-let lastSettings = {
-  nodeEnv: process.env.NODE_ENV,
-  isProd: process.env.NODE_ENV === 'production',
-  isDev: process.env.NODE_ENV === 'development',
-  isTesting: process.env.NODE_ENV === 'testing'
+const lastSettings = {
+  isProd: neededConfig.NODE_ENV === "production",
+  isDev: neededConfig.NODE_ENV === "development",
+  isTesting: neededConfig.NODE_ENV === "testing"
 }
 
-module.exports = merge(config, curConfig, lastSettings)
+module.exports = merge(baseConfig, neededConfig, lastSettings)

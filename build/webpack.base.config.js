@@ -20,7 +20,7 @@ function resolve(dir) {
 let commonPlugins = [
   new StringReplacePlugin(),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': config.nodeEnv,
+    'process.env.NODE_ENV': config.NODE_ENV,
     'PRODUCTION': config.isProd
   }),
   new StyleLintPlugin({

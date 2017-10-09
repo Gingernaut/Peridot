@@ -22,7 +22,7 @@
       </p>
     </form>
 
-    <a class="is-info" v-on:click="goToReset">Forgot your password?</a>
+    <a class="is-info" @click="goToReset()">Forgot your password?</a>
 
   </div>
 </template>

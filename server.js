@@ -12,6 +12,7 @@ const resolve = (file) => path.resolve(__dirname, file)
 const template = fs.readFileSync(resolve("./src/index.template.html"), "utf-8")
 
 const createRenderer = (bundle, options) => {
+
   // https://github.com/vuejs/vue/blob/dev/packages/vue-server-renderer/README.md#why-use-bundlerenderer
   return require("vue-server-renderer").createBundleRenderer(bundle, Object.assign(options, {
     template,
@@ -72,23 +73,26 @@ const render = (req, res, context) => {
 
   renderer.renderToString(context, (err, html) => {
     if (err) return errorHandler(err)
-    console.log(context)
-    //res.status(context.meta.httpStatusCode || 200)
+    // console.log(context)
+    // res.status(context.meta.httpStatusCode || 200)
     res.end(html)
 
     console.log(`Whole request: ${Date.now() - s}ms`)
   })
 }
 
-app.use(compression({
-  threshold: 0
-}))
+if (config.isProd) {
+  app.use(compression({
+    threshold: 0
+  }))
+  
+  app.use(helmet())
+  app.use(favicon('./static/favicon.png'))
+  app.use("/dist", serve("./dist", true))
+  app.use("/service-worker.js", serve("./dist/service-worker.js"))
+}
 
-app.use(helmet())
-app.use(favicon('./static/favicon.png'))
-app.use("/dist", serve("./dist", true))
 app.use("/static", serve("./static", true))
-app.use("/service-worker.js", serve("./dist/service-worker.js"))
 
 app.get("*", (req, res) => {
   const context = {
@@ -97,7 +101,7 @@ app.get("*", (req, res) => {
 
   config.isProd ?
     render(req, res, context) :
-    readyPromise.then(() => render(req, res, context))
+    readyPromise.then(() => render(req, res, context)).catch( (err) => console.log(err))
 })
 
 const port = config.port

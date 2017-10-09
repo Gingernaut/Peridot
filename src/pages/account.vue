@@ -38,7 +38,7 @@
           Save Changes
         </button>
 
-        <button class="button is-danger is-outlined" v-on:click="deleteAcc">
+        <button class="button is-danger is-outlined" @click="deleteAcc()">
           Delete Account
         </button>
       </p>
