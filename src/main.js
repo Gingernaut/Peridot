@@ -3,9 +3,9 @@ import App from '@/App.vue'
 import modal from '@/components/modal'
 // import account from '@/plugins/account'
 
-import { sync } from 'vuex-router-sync'
-import { createStore } from '@/store'
 import { createRouter } from '@/router'
+import { createStore } from '@/store'
+import { sync } from 'vuex-router-sync'
 
 Vue.config.productionTip = false
 Vue.config.debug = process.env.NODE_ENV === 'development'

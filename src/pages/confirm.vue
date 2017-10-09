@@ -21,6 +21,9 @@ export default {
   beforeCreate () {
   },
   created () {
+  
+  },
+  beforeMount () {
     let token = this.$route.params.token
     this.$account.confirmToken(token).then(res => {
       this.isLoading = false
@@ -32,8 +35,6 @@ export default {
       })
       this.$router.push('/')
     })
-  },
-  beforeMount () {
   },
   mounted () {
   },

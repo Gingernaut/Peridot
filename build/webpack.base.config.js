@@ -33,7 +33,7 @@ let commonPlugins = [
   new webpack.optimize.ModuleConcatenationPlugin(),
 ]
 
-if (config.isProd) {
+if (config.isDev) {
   commonPlugins.push(
     new FriendlyErrorsPlugin()
   )

@@ -95,6 +95,7 @@ if (config.isProd) {
 app.use("/static", serve("./static", true))
 
 app.get("*", (req, res) => {
+  console.log('---------')
   const context = {
     url: req.url
   }
