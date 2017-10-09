@@ -1,6 +1,5 @@
-import { createApp } from "./main"
-
-const isDev = process.env.NODE_ENV !== "production"
+import { createApp } from '@/main'
+const config = require('@@/config/oracle')
 
 // This exported function will be called by `bundleRenderer`.
 // This is where we perform data-prefetching to determine the
@@ -9,14 +8,14 @@ const isDev = process.env.NODE_ENV !== "production"
 // return a Promise that resolves to the app instance.
 export default (context) => {
   return new Promise((resolve, reject) => {
-    const s = isDev && Date.now()
+    const s = config.isDev && Date.now()
     const { app, router, store } = createApp(context)
 
     router.push(context.url)
 
     // wait until router has resolved possible async hooks
     router.onReady(() => {
-      if (store.state.error) store.commit("CLEAR_ERROR")
+      if (store.state.error) console.log(store.state.error)
 
       const matchedComponents = router.getMatchedComponents()
       // Call fetchData hooks on components matched by the route.
@@ -29,7 +28,7 @@ export default (context) => {
           route: router.currentRoute
         })
       })).then(() => {
-        isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
+        config.isDev && console.log(`data pre-fetch: ${Date.now() - s}ms`)
         // After all preFetch hooks are resolved, our store is now
         // filled with the state needed to render the app.
         // Expose the state on the render context, and let the request handler

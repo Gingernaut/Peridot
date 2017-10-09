@@ -20,8 +20,8 @@
 export default {
   name: 'modal',
   components: {
-    loginform: () => import('./loginform'),
-    signupform: () => import('./signupform')
+    loginform: () => import('@/components/loginform'),
+    signupform: () => import('@/components/signupform')
   },
   props: ['show', 'modalcomponent'],
   mixins: [],

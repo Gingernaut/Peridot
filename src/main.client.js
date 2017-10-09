@@ -1,6 +1,6 @@
-import Vue from "vue"
-import "es6-promise/auto"
-import { createApp } from "@/main"
+import Vue from 'vue'
+import 'es6-promise/auto'
+import { createApp } from '@/main'
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
@@ -37,7 +37,7 @@ router.onReady(() => {
     const prevMatched = router.getMatchedComponents(from)
     let diffed = false
 
-    // if (store.state.error) store.commit("CLEAR_ERROR")
+    if (store.state.error) console.log(store.state.error)
 
     const activated = matched.filter((component, i) => {
       return diffed || (diffed = (prevMatched[i] !== component))
@@ -55,16 +55,16 @@ router.onReady(() => {
   })
 
   // actually mount to DOM
-  app.$mount("#app")
+  app.$mount('#app')
 })
 
 /*
 // service worker
-if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
-	navigator.serviceWorker.register("/service-worker.js")
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/service-worker.js')
 } else {
 	navigator.serviceWorker.getRegistrations().then(function(registrations) {
-		console.log("Unregistering service workers for development")
+		console.log('Unregistering service workers for development')
 		for (let registration of registrations) {
 			registration.unregister()
 		}

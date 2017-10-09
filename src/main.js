@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from '@/App.vue'
 import modal from '@/components/modal'
-import account from '@/plugins/account'
+// import account from '@/plugins/account'
 
 import { sync } from 'vuex-router-sync'
 import { createStore } from '@/store'
@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 Vue.config.debug = process.env.NODE_ENV === 'development'
 
 Vue.component('modal', modal)
-Vue.use(account)
+// Vue.use(account)
 
 // Creates a fresh set of store, router, app instances for each SSR request
 export function createApp(ssrContext) {

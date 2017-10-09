@@ -3,19 +3,19 @@
     <div class="container">
       <p> Number of accounts: {{ this.accounts.length }}</p>
       <br>
-      <b-table 
-        :data="accounts" 
-        :bordered="isBordered" 
-        :striped="isStriped" 
-        :narrowed="isNarrowed" 
-        :checkable="isCheckable" 
-        :loading="isLoading" 
-        :mobile-cards="hasMobileCards" 
-        :paginated="isPaginated" 
-        :per-page="perPage" 
-        :pagination-simple="isPaginationSimple" 
-        :selected.sync="selected" 
-        :detailed="isDetailed" 
+      <b-table
+        :data="accounts"
+        :bordered="isBordered"
+        :striped="isStriped"
+        :narrowed="isNarrowed"
+        :checkable="isCheckable"
+        :loading="isLoading"
+        :mobile-cards="hasMobileCards"
+        :paginated="isPaginated"
+        :per-page="perPage"
+        :pagination-simple="isPaginationSimple"
+        :selected.sync="selected"
+        :detailed="isDetailed"
         :checked-rows.sync="checkedRows">
 
         <template scope="props">
@@ -102,7 +102,6 @@
 </template>
 
 <script>
-import sort from 'fast-sort'
 
 export default {
   name: 'accounts',
@@ -134,7 +133,7 @@ export default {
     this.$account.getAccounts().then(res => {
       this.isLoading = false
       this.isEmpty = false
-      this.accounts = sort(res.data).asc((acc) => acc.id)
+      this.accounts =res.data.Users // sort by id
     })
   },
   beforeMount () {

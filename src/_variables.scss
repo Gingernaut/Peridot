@@ -1,7 +1,5 @@
 // Globally avialable SCSS
 
-/* Buefy variables */
-
 $black:         hsl(0, 0%, 4%);
 $black-bis:     hsl(0, 0%, 7%);
 $black-ter:     hsl(0, 0%, 14%);
@@ -29,7 +27,7 @@ $danger:   $red;
 $light:    $white-ter;
 $dark:     $grey-darker;
 
-/* Custom variables */
+// Custom variables
 
 $outline: $blue;
 $debug: false;

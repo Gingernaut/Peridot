@@ -14,7 +14,7 @@ module.exports = merge(base, {
   externals: Object.keys(require('../package.json').dependencies),
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.VUE_ENV': "server'"
+      'process.env.VUE_ENV': "'server'"
     }),
     new VueSSRServerPlugin()
   ]
