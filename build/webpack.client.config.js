@@ -51,7 +51,6 @@ if (config.isProd) {
       cacheId: 'peridotSSR',
       filename: 'service-worker.js',
       minify: true,
-      stripPrefix: 'dist/',
 
       staticFileGlobs: [
         'dist/**.css',
@@ -65,7 +64,8 @@ if (config.isProd) {
       }],
 
       dontCacheBustUrlsMatching: /./,
-      navigateFallback: '/'
+      navigateFallback: '/',
+      stripPrefix: 'dist/',
     })
   )
 }

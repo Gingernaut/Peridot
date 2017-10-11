@@ -6,10 +6,8 @@
 
 const merge = require('webpack-merge')
 const baseConfig = require('./base')
-const devConfig = require('./dev')
-const prodConfig = require('./prod')
 
-const neededConfig = process.env.NODE_ENV === "production" ? prodConfig : devConfig
+const neededConfig = process.env.NODE_ENV === "production" ? require('./prod') : require('./dev')
 
 const lastSettings = {
   isProd: neededConfig.NODE_ENV === "production",
