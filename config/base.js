@@ -4,11 +4,11 @@
 */
 
 module.exports = {
-  NODE_ENV: process.env.NODE_ENV || "development",
+  NODE_ENV: process.env.NODE_ENV || 'development',
   port: process.env.SERVER_PORT || 8080,
   showComments: true,
   warningsAndErrors: true,
   productionSourceMap: false,
-  assetsSubDirectory: "static",
+  assetsSubDirectory: 'static',
   bundleAnalyzerReport: process.env.npm_config_report || false
 }
