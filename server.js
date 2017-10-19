@@ -8,7 +8,6 @@ const config = require('./config/oracle')
 const favicon = require('serve-favicon')
 
 const resolve = (file) => path.resolve(__dirname, file)
-
 const template = fs.readFileSync(resolve('./src/index.template.html'), 'utf-8')
 
 const createRenderer = (bundle, options) => {

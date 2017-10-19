@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import modal from '@/components/modal'
 // import account from '@/plugins/account'
+import Buefy from 'buefy'
 
 import { createRouter } from '@/router'
 import { createStore } from '@/store'
@@ -12,6 +13,10 @@ Vue.config.debug = process.env.NODE_ENV === 'development'
 
 Vue.component('modal', modal)
 // Vue.use(account)
+
+Vue.use(Buefy, {
+  defaultIconPack: 'fa'
+})
 
 // Creates a fresh set of store, router, app instances for each SSR request
 export function createApp(ssrContext) {

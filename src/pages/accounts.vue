@@ -18,7 +18,7 @@
         :detailed="isDetailed"
         :checked-rows.sync="checkedRows">
 
-        <template scope="props">
+        <template>
           <b-table-column field="id" label="ID" width="40" sortable numeric>
             {{ props.row.id }}
           </b-table-column>
@@ -49,7 +49,7 @@
 
         </template>
 
-        <template slot="detail" scope="props">
+        <template slot="detail">
 
           <div class="content">
             <p>

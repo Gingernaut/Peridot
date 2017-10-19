@@ -47,6 +47,29 @@ export default {
 
 <style lang="scss">
 
+// setting Buefy variables from the _variables.scss file
+@import "~bulma/sass/utilities/_all";
+$primary: $outline;
+$primary-invert: findColorInvert($primary);
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $primary-invert),
+    "info": ($info, $info-invert),
+    "success": ($success, $success-invert),
+    "warning": ($warning, $warning-invert),
+    "danger": ($danger, $danger-invert)
+);
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+// end Buefy
+
 
 html,body {
   margin: 0;
