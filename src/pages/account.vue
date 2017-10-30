@@ -67,7 +67,7 @@ export default {
     }
   },
   beforeCreate () {
-    if (!this.$store.state.account.loggedIn) {
+    if (!this.$store.getters.isLoggedIn) {
       this.$router.push('/login')
     }
   },

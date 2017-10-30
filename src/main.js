@@ -18,17 +18,13 @@ Vue.use(Buefy, {
   defaultIconPack: 'fa'
 })
 
-// Creates a fresh set of store, router, app instances for each SSR request
 export function createApp(ssrContext) {
 
-  // create store and router instances
   const store = createStore()
   const router = createRouter()
 
-  // sync the router with the vuex store (registers `store.state.route`)
   sync(store, router)
 
-  // create the app instance.
   const app = new Vue({
     router,
     store,
@@ -36,6 +32,5 @@ export function createApp(ssrContext) {
     render: (h) => h(App)
   })
 
-  // expose the app, the router and the store.
   return { app, router, store }
 }

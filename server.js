@@ -101,7 +101,7 @@ app.get('*', (req, res) => {
 
   config.isProd ?
     render(req, res, context) :
-    readyPromise.then(() => render(req, res, context)).catch( (err) => console.log(err))
+    readyPromise.then(() => render(req, res, context)).catch((err) => console.log(err))
 })
 
 const port = config.port

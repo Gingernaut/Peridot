@@ -21,11 +21,11 @@
 
       <div class="navbar-end">
         <span class="navbar-item">
-          <a v-if="!this.$store.state.account.loggedIn" @click="openSignup()" class="button accNav is-info"> Sign Up</a>
-          <a v-if="!this.$store.state.account.loggedIn" @click="openLogin()"  class="button accNav">Log In</a>
+          <a v-if="!this.$store.getters.isLoggedIn" @click="openSignup()" class="button accNav is-info"> Sign Up</a>
+          <a v-if="!this.$store.getters.isLoggedIn" @click="openLogin()"  class="button accNav">Log In</a>
         </span>
 
-        <div v-if="this.$store.state.account.loggedIn" class="navbar-item has-dropdown is-hoverable">
+        <div v-if="this.$store.getters.isLoggedIn" class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-active">
             Account
           </a>

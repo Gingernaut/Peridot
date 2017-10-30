@@ -72,7 +72,7 @@ export default {
   beforeMount () {
   },
   mounted () {
-    if (this.$store.state.account.loggedIn) {
+    if (this.$store.getters.isLoggedIn) {
       this.$router.push('/')
     }
 

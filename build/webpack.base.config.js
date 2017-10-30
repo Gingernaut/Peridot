@@ -1,16 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
-const Vue = require('vue')
+
+const vueLoaderConfig = require('./vue-loader.conf')
+const utils = require('./utils')
 const config = require('../config/oracle')
 
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-
-const vueLoaderConfig = require('./vue-loader.conf')
-const utils = require('./utils')
-
-
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
