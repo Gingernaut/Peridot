@@ -135,7 +135,7 @@ export default {
     this.$account.getAccounts().then(res => {
       this.isLoading = false
       this.isEmpty = false
-      this.accounts =res.data.Users // sort by id
+      this.accounts = res.data.Users // sort by id
     })
   },
   mounted () {

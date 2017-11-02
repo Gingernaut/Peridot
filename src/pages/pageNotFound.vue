@@ -2,7 +2,7 @@
   <div class="hero-body">
     <div class="container">
       <h1>Page not Found</h1>
-      <p>Click <a href="/">here</a> to go to the homepage.</p>
+      <p>Click <router-link to="/">here</router-link> to go to the homepage.</p>
     </div>
   </div>
 </template>

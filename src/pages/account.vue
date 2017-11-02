@@ -67,9 +67,6 @@ export default {
     }
   },
   beforeCreate () {
-    if (!this.$store.getters.isLoggedIn) {
-      this.$router.push('/login')
-    }
   },
   created () {
     this.$account.getOwnData()

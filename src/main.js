@@ -21,7 +21,7 @@ Vue.use(Buefy, {
 export function createApp(ssrContext) {
 
   const store = createStore()
-  const router = createRouter()
+  const router = createRouter(store)
 
   sync(store, router)
 
