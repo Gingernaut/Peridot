@@ -12,3 +12,6 @@ test/e2e/reports
 *.njsproj
 *.sln
 .vscode
+
+# Keys and protected info
+.env
