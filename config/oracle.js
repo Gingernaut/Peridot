@@ -10,7 +10,7 @@ const baseConfig = require('./base')
 const neededConfig = process.env.NODE_ENV === 'production' ? require('./prod') : require('./dev')
 
 const lastSettings = {
-  isProd: true, // neededConfig.NODE_ENV === 'production',
+  isProd: neededConfig.NODE_ENV === 'production',
   isDev: neededConfig.NODE_ENV === 'development',
   isTesting: neededConfig.NODE_ENV === 'testing'
 }

@@ -1,7 +1,5 @@
 // http://eslint.org/docs/user-guide/configuring
 
-let allowDebug = process.env.NODE_ENV === 'production' ? 2 : 0
-
 module.exports = {
   root: true,
   parser: 'babel-eslint',
@@ -26,9 +24,9 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger
-    'no-debugger': allowDebug,
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // console log statements
-    'no-console': allowDebug,
+    'no-console': 0,
 
     'indent': [2, 2]
   }
