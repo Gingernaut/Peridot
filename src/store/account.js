@@ -32,7 +32,7 @@ module.exports = {
     }
   },
   actions: {
-    login(context, payload) {
+    login (context, payload) {
       context.commit('setLoginState', payload)
     }
   },

@@ -19,8 +19,7 @@ const store = createStore()
 const router = createRouter(store)
 const accFunctions = getAccFunctions(store)
 
-export function createApp(ssrContext) {
-
+export function createApp (ssrContext) {
   Vue.use(accFunctions)
   sync(store, router)
 

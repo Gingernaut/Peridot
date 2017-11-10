@@ -21,7 +21,6 @@ export default {
   beforeCreate () {
   },
   created () {
-  
   },
   beforeMount () {
     let token = this.$route.params.token

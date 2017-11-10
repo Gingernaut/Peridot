@@ -15,8 +15,7 @@ module.exports = {
   ],
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
-    'standard',
-    'eslint:recommended'
+    'standard'
   ],
   // add your custom rules here
   'rules': {

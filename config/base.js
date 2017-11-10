@@ -1,5 +1,5 @@
 /*
-  default configuration settings. May be overwritten in dev or prod configs. 
+  default configuration settings. May be overwritten in dev or prod configs.
   Import the 'oracle' file anywhere you need configuration options.
 */
 

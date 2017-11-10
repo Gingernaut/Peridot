@@ -1,4 +1,4 @@
-module.exports =  {
+module.exports = {
   NODE_ENV: 'production',
   showComments: false,
   warningsAndErrors: false,

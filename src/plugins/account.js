@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-function buildAccFunctions(store) {
-
+function buildAccFunctions (store) {
   const baseInstance = function () {
     return axios.create({
       baseURL: 'http://localhost:5000/',
@@ -146,7 +145,7 @@ function buildAccFunctions(store) {
   }
 }
 
-export function getAccFunctions(store) {
+export function getAccFunctions (store) {
   return function (Vue) {
     Object.defineProperty(Vue.prototype, '$account', {
       value: buildAccFunctions(store)

@@ -1,8 +1,8 @@
-import Vue from "vue"
-import Router from "vue-router"
+import Vue from 'vue'
+import Router from 'vue-router'
 Vue.use(Router)
 
-const index = () =>import('@/pages/index')
+const index = () => import('@/pages/index')
 const contact = () => import('@/pages/contact')
 const account = () => import('@/pages/account')
 const about = () => import('@/pages/about')
@@ -14,26 +14,26 @@ const confirm = () => import('@/pages/confirm')
 const reset = () => import('@/pages/reset')
 
 let routes = [
-  { 
+  {
     path: '/',
     name: 'index',
     component: index,
     meta: { requiresAuth: false }
   },
-  { 
+  {
     path: '/contact',
     name: 'contact',
     component: contact,
     meta: { requiresAuth: false }
   },
-  { 
+  {
     path: '/account',
     name: 'account',
     component: account,
     meta: { requiresAuth: true }
   },
-  { 
-    path: '/about', 
+  {
+    path: '/about',
     name: 'about',
     component: about,
     meta: { requiresAuth: false }
@@ -46,51 +46,50 @@ let routes = [
       redirectIfLoggedIn: true
     }
   },
-  { 
-    path: '/login', 
+  {
+    path: '/login',
     name: 'login',
     component: loginpage,
-    meta: { 
-      requiresAuth: false, 
-      redirectIfLoggedIn: true 
+    meta: {
+      requiresAuth: false,
+      redirectIfLoggedIn: true
     }
   },
-  { 
-    path: '/accounts', 
+  {
+    path: '/accounts',
     name: 'accounts',
     component: accounts,
     meta: { requiresAuth: true }
   },
-  { 
-    path: '/confirm/:token', 
+  {
+    path: '/confirm/:token',
     name: 'confirm',
     component: confirm,
     meta: { requiresAuth: false }
   },
-  { 
-    path: '/reset', 
+  {
+    path: '/reset',
     name: 'reset',
     component: reset,
     meta: { requiresAuth: false }
   },
-  { 
-    path: '/reset/:token', 
+  {
+    path: '/reset/:token',
     name: 'resetToken',
     component: reset,
     meta: { requiresAuth: false }
   },
-  { 
-    path: '*', 
+  {
+    path: '*',
     name: 'pageNotFound',
     component: pageNotFound,
     meta: { requiresAuth: false }
   }
 ]
 
-export function createRouter(store) {
-
+export function createRouter (store) {
   let router = new Router({
-    mode: "history",
+    mode: 'history',
     scrollBehavior: () => ({ y: 0 }),
     routes
   })
@@ -104,9 +103,7 @@ export function createRouter(store) {
       } else {
         next()
       }
-    }
-
-    else if (to.matched.some(record => record.meta.redirectIfLoggedIn)) {
+    } else if (to.matched.some(record => record.meta.redirectIfLoggedIn)) {
       if (store.getters.isLoggedIn) {
         next({
           path: '/'
@@ -114,12 +111,10 @@ export function createRouter(store) {
       } else {
         next()
       }
-    } 
-    
-    else {
+    } else {
       next()
     }
   })
 
-  return router 
+  return router
 }
