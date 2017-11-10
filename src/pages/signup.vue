@@ -8,7 +8,6 @@
   </div>
 </template>
 
-
 <script>
 
 export default {
@@ -20,7 +19,6 @@ export default {
   mixins: [],
   data () {
     return {
-
     }
   },
   beforeCreate () {
