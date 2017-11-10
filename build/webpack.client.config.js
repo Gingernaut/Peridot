@@ -36,7 +36,7 @@ const clientConfig = merge(base, {
 
 if (config.isProd) {
   clientConfig.plugins.push(
-    
+
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: config.warningsAndErrors,

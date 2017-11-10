@@ -1,13 +1,13 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const vueLoaderConfig = require('./vue-loader.conf')
 const utils = require('./utils')
 const config = require('../config/oracle')
 
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const StringReplacePlugin = require('string-replace-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -36,6 +36,20 @@ if (config.isDev) {
   )
 }
 
+const vueLoaderConfig = {
+  loaders: utils.cssLoaders({
+    sourceMap: config.productionSourceMap
+  }),
+  transformToRequire: {
+    video: 'src',
+    source: 'src',
+    img: 'src',
+    image: 'xlink:href'
+  },
+  preserveWhitespace: false
+}
+
+
 const moduleRules = [
   {
     enforce: 'pre',
@@ -44,7 +58,8 @@ const moduleRules = [
     exclude: /node_modules/,
     include: [resolve('src')],
     options: {
-      cache: true
+      cache: true,
+      formatter: require('eslint-friendly-formatter')
     }
   },
   {
