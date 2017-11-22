@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-function buildAccFunctions (store) {
+export function getAccFunctions (store) {
   const baseInstance = function () {
     return axios.create({
       baseURL: 'http://localhost:5000/',
@@ -16,14 +16,11 @@ function buildAccFunctions (store) {
       return HTTP.post('login', {
         emailAddress: payload.emailAddress,
         password: payload.password
+      }).then(res => {
+        if (res.status === 200) {
+          store.dispatch('login', res.data)
+        }
       })
-        .then(res => {
-          if (res.status === 200) {
-            store.dispatch('login', res.data)
-          } else {
-            console.log('invalid response code ', res.status)
-          }
-        })
     },
     logout: function () {
       store.commit('setLogoutState')
@@ -36,47 +33,35 @@ function buildAccFunctions (store) {
         password: payload.password,
         firstName: payload.firstName,
         lastName: payload.lastName
+      }).then(res => {
+        if (res.status === 201) {
+          store.dispatch('login', res.data)
+        }
       })
-        .then(res => {
-          if (res.status === 201) {
-            store.dispatch('login', res.data)
-          } else {
-            console.log('invalid response code ', res.status)
-          }
-        })
     },
     getOwnData: function () {
       let HTTP = baseInstance()
-      return HTTP.get('account')
-        .then(res => {
-          if (res.status === 200) {
-            store.dispatch('login', res.data)
-          } else {
-            console.log('invalid response code ', res.status)
-          }
-        })
+      return HTTP.get('account').then(res => {
+        if (res.status === 200) {
+          store.dispatch('login', res.data)
+        }
+      })
     },
     updateAcc: function (payload) {
       let HTTP = baseInstance()
-      return HTTP.put('account', payload)
-        .then(res => {
-          if (res.status === 200) {
-            store.dispatch('login', res.data)
-          } else {
-            console.log(' response code ', res.status)
-          }
-        })
+      return HTTP.put('account', payload).then(res => {
+        if (res.status === 200) {
+          store.dispatch('login', res.data)
+        }
+      })
     },
     deleteAcc: function () {
       let HTTP = baseInstance()
-      return HTTP.delete('account')
-        .then(res => {
-          if (res.status === 200) {
-            this.logout()
-          } else {
-            console.log('invalid response code ', res.status)
-          }
-        })
+      return HTTP.delete('account').then(res => {
+        if (res.status === 200) {
+          this.logout()
+        }
+      })
     },
     getAccounts: function (id = null) {
       if (store.getters.userRole === 'ADMIN') {
@@ -90,10 +75,9 @@ function buildAccFunctions (store) {
     },
     confirmToken: function (token) {
       let HTTP = baseInstance()
-      return HTTP.get('confirm/' + token)
-        .then(res => {
-          store.dispatch('login', res.data)
-        })
+      return HTTP.get('confirm/' + token).then(res => {
+        store.dispatch('login', res.data)
+      })
     },
     initReset: function (email) {
       let HTTP = baseInstance()
@@ -101,10 +85,9 @@ function buildAccFunctions (store) {
     },
     confirmReset: function (token) {
       let HTTP = baseInstance()
-      return HTTP.get('reset/' + token)
-        .then(res => {
-          store.dispatch('login', res.data)
-        })
+      return HTTP.get('reset/' + token).then(res => {
+        store.dispatch('login', res.data)
+      })
     },
     cleanData: function (payload) {
       payload.isClean = true
@@ -113,7 +96,9 @@ function buildAccFunctions (store) {
       let mailRgx = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
       if ('emailAddress' in payload && payload.emailAddress != null) {
-        payload.emailAddress = payload.emailAddress.replace(' ', '').trim()
+        payload.emailAddress = payload.emailAddress
+          .replace(' ', '')
+          .trim()
 
         if (!mailRgx.test(payload.emailAddress) || payload.emailAddress.length < 6) {
           payload.errors.push('Please use a valid Email')
@@ -142,13 +127,5 @@ function buildAccFunctions (store) {
 
       return payload
     }
-  }
-}
-
-export function getAccFunctions (store) {
-  return function (Vue) {
-    Object.defineProperty(Vue.prototype, '$account', {
-      value: buildAccFunctions(store)
-    })
   }
 }

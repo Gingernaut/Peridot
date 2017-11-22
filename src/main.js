@@ -19,6 +19,15 @@ const store = createStore()
 const router = createRouter(store)
 const accFunctions = getAccFunctions(store)
 
+const emailFunctions = import('@/plugins/account')
+Vue.use(emailFunctions)
+
+// return function(Vue) {
+//   Object.defineProperty(Vue.prototype, "$account", {
+//     value: buildAccFunctions(store)
+//   });
+// };
+
 export function createApp (ssrContext) {
   Vue.use(accFunctions)
   sync(store, router)

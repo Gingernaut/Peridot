@@ -85,7 +85,7 @@ if (config.isProd) {
   app.use(compression({
     threshold: 0
   }))
-  
+
   app.use(helmet())
   app.use(favicon('./static/favicon.png'))
   app.use('/dist', serve('./dist', true))

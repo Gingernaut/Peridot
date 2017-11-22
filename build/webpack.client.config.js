@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 
 const HTMLPlugin = require('html-webpack-plugin')
 const SWPrecachePlugin = require('sw-precache-webpack-plugin')
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 const base = require('./webpack.base.config')
 const config = require('../config/oracle')
@@ -37,7 +38,7 @@ const clientConfig = merge(base, {
 if (config.isProd) {
   clientConfig.plugins.push(
 
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJSPlugin({
       compress: {
         warnings: config.warningsAndErrors,
         drop_console: config.warningsAndErrors === false

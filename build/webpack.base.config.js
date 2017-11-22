@@ -136,4 +136,9 @@ module.exports = {
     maxEntrypointSize: 250000,
     hints: config.isProd ? 'warning' : false
   },
+  
+  // https://github.com/webpack-contrib/css-loader/issues/447
+  node: {
+    fs: 'empty'
+  }
 }
