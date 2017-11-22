@@ -50,5 +50,4 @@ module.exports = {
       return state.userRole === 'ADMIN'
     }
   }
-
 }
