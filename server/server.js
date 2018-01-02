@@ -80,7 +80,7 @@ const render = (req, res) => {
   }
 
   const context = {
-    title: 'Omega',
+    title: 'Peridot',
     url: req.url
   }
 

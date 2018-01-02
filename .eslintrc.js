@@ -30,12 +30,12 @@ module.exports = {
     // console log statements
     'no-console': 1,
     // indentation
-    indent: [2, 2],
+    'indent': [2, 2],
     // triple equality
-    eqeqeq: 1,
+    'eqeqeq': 1,
     // var instead of let
     'no-var': 2,
     // string quotes
-    quotes: ['error', 'single', {'allowTemplateLiterals': true}]
+    'quotes': ['error', 'single', {'allowTemplateLiterals': true}]
   }
 };

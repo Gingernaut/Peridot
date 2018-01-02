@@ -26,7 +26,7 @@ if (config.isProd) {
   clientConfig.plugins.push(
     // auto generate service worker
     new SWPrecachePlugin({
-      cacheId: 'omegaSite',
+      cacheId: 'PeridotCache',
       filename: 'service-worker.js',
       minify: true,
       stripPrefix: 'dist/',
