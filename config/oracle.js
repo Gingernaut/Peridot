@@ -6,13 +6,6 @@
 
 const merge = require('webpack-merge')
 const baseConfig = require('./base')
+const neededConfig = baseConfig.NODE_ENV === 'production' ? require('./prod') : require('./dev')
 
-const neededConfig = process.env.NODE_ENV === 'production' ? require('./prod') : require('./dev')
-
-const lastSettings = {
-  isProd: neededConfig.NODE_ENV === 'production',
-  isDev: neededConfig.NODE_ENV === 'development',
-  isTesting: neededConfig.NODE_ENV === 'testing'
-}
-
-module.exports = merge(baseConfig, neededConfig, lastSettings)
+module.exports = merge(baseConfig, neededConfig)

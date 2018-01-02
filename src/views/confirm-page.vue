@@ -12,6 +12,12 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Confirm',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {

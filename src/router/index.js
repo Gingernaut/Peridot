@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-Vue.use(Router)
+import Meta from 'vue-meta'
 
-const index = () => import('@/pages/index')
-const contact = () => import('@/pages/contact')
-const account = () => import('@/pages/account')
-const about = () => import('@/pages/about')
-const pageNotFound = () => import('@/pages/pageNotFound')
-const loginpage = () => import('@/pages/login')
-const signuppage = () => import('@/pages/signup')
-const accounts = () => import('@/pages/accounts')
-const confirm = () => import('@/pages/confirm')
-const reset = () => import('@/pages/reset')
+Vue.use(Router)
+Vue.use(Meta)
+
+const index = () => import('@/views/index-page')
+const about = () => import('@/views/about-page')
+const contact = () => import('@/views/contact-page')
+const account = () => import('@/views/account-page')
+const loginpage = () => import('@/views/login-page')
+const signuppage = () => import('@/views/signup-page')
+const accounts = () => import('@/views/accounts-page')
+const confirm = () => import('@/views/confirm-page')
+const reset = () => import('@/views/reset-page')
+const pageNotFound = () => import('@/views/not-found-page')
 
 let routes = [
   {
@@ -90,6 +93,7 @@ let routes = [
 export function createRouter (store) {
   let router = new Router({
     mode: 'history',
+    fallback: false,
     scrollBehavior: () => ({ y: 0 }),
     routes
   })

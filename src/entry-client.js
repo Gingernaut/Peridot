@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import 'es6-promise/auto'
-import { createApp } from '@/main'
+import { createApp } from '@/app'
+import ProgressBar from '@/components/ProgressBar'
+
+// global progress bar
+const bar = (Vue.prototype.$bar = new Vue(ProgressBar).$mount())
+document.body.appendChild(bar.$el)
 
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
@@ -10,7 +15,9 @@ Vue.mixin({
       asyncData({
         store: this.$store,
         route: to
-      }).then(next).catch(next)
+      })
+        .then(next)
+        .catch(next)
     } else {
       next()
     }
@@ -35,23 +42,24 @@ router.onReady(() => {
   router.beforeResolve((to, from, next) => {
     const matched = router.getMatchedComponents(to)
     const prevMatched = router.getMatchedComponents(from)
+
     let diffed = false
-
-    if (store.state.error) console.log(store.state.error)
-
-    const activated = matched.filter((component, i) => {
-      return diffed || (diffed = (prevMatched[i] !== component))
+    const activated = matched.filter((c, i) => {
+      return diffed || (diffed = prevMatched[i] !== c)
     })
-    if (!activated.length) {
+
+    const asyncDataHooks = activated.map(c => c.asyncData).filter(_ => _)
+    if (!asyncDataHooks.length) {
       return next()
     }
-    Promise.all(activated.map((c) => {
-      if (c.asyncData) {
-        return c.asyncData({ store, route: to })
-      }
-    })).then(() => {
-      next()
-    }).catch(next)
+
+    bar.start()
+    Promise.all(asyncDataHooks.map(hook => hook({ store, route: to })))
+      .then(() => {
+        bar.finish()
+        next()
+      })
+      .catch(next)
   })
 
   // actually mount to DOM
@@ -59,15 +67,6 @@ router.onReady(() => {
 })
 
 // service worker
-/*
-if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+if (location.protocol === 'https:' && navigator.serviceWorker) {
   navigator.serviceWorker.register('/service-worker.js')
-} else {
-  navigator.serviceWorker.getRegistrations().then(function (registrations) {
-    console.log('Unregistering service workers for development')
-    for (let registration of registrations) {
-      registration.unregister()
-    }
-  })
 }
-*/

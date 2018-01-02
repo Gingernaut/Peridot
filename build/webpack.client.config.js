@@ -1,57 +1,37 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-
-const HTMLPlugin = require('html-webpack-plugin')
-const SWPrecachePlugin = require('sw-precache-webpack-plugin')
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-
 const base = require('./webpack.base.config')
 const config = require('../config/oracle')
 
+const SWPrecachePlugin = require('sw-precache-webpack-plugin')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
-// minify options to be used in production mode
-// https://github.com/kangax/html-minifier#options-quick-reference
-const minifyOptions = {
-  collapseWhitespace: true,
-  removeComments: config.showComments,
-  ignoreCustomComments: [/vue-ssr-outlet/],
-  removeAttributeQuotes: true,
-  removeEmptyAttributes: true
-}
-
-const clientConfig = merge(base, {
+let clientConfig = merge(base, {
+  entry: {
+    app: './src/entry-client.js'
+  },
+  resolve: {
+  },
   plugins: [
     // strip dev-only code in Vue source
     new webpack.DefinePlugin({
-      'process.env.VUE_ENV': "'client'"
+      'process.env.VUE_ENV': 'client'
     }),
-    // generate output HTML
-    new HTMLPlugin({
-      template: 'src/index.template.html',
-      minify: config.isProd ? minifyOptions : {}
-    }),
+
     new VueSSRClientPlugin()
   ]
 })
 
 if (config.isProd) {
   clientConfig.plugins.push(
-
-    new UglifyJSPlugin({
-      compress: {
-        warnings: config.warningsAndErrors,
-        drop_console: config.warningsAndErrors === false
-      },
-      comments: config.showComments,
-      sourceMap: config.productionSourceMap,
-      parallel: true
-    }),
     // auto generate service worker
     new SWPrecachePlugin({
-      cacheId: 'peridotSSR',
+      cacheId: 'omegaSite',
       filename: 'service-worker.js',
       minify: true,
+      stripPrefix: 'dist/',
+      dontCacheBustUrlsMatching: /./,
+      staticFileGlobsIgnorePatterns: [/\.map$/, /\.json$/],
 
       staticFileGlobs: [
         'dist/**.css',
@@ -62,11 +42,7 @@ if (config.isProd) {
       runtimeCaching: [{
         urlPattern: /\/.*/,
         handler: 'networkFirst'
-      }],
-
-      dontCacheBustUrlsMatching: /./,
-      navigateFallback: '/',
-      stripPrefix: 'dist/',
+      }]
     })
   )
 }
@@ -78,10 +54,17 @@ if (!config.isTesting) {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module) {
-        return module.context && module.context.indexOf('node_modules') !== -1
+        // a module is extracted into the vendor chunk if...
+        return (
+          // it's inside node_modules
+          /node_modules/.test(module.context) &&
+          // and not a CSS file (due to extract-text-webpack-plugin limitation)
+          !/\.css$/.test(module.request)
+        )
       }
     }),
-    // any other js goes here
+    // extract webpack runtime & manifest to avoid vendor chunk hash changing
+    // on every build.
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest'
     })

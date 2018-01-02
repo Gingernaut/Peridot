@@ -1,19 +1,20 @@
 <template>
   <div>
-    <div class="modal-mask" v-if="showMod" @click="close()" transition="modal">
-      <div class="modal-container" @click.stop>
-        <span @click="close()" class="close-button"></span>
-        <div class="modalbody">
+    <transition name="fade" mode="out-in">
+        <div class="modal-mask" v-if="showMod" @click="close()" transition="modal">
+        <div class="modal-container" @click.stop>
+            <span @click="close()" class="close-button"></span>
+            <div class="modalbody">
 
-          <loginform v-if="modalType === 'login'" @exitModal="close"></loginform>
-          <signupform v-else-if="modalType === 'signup'" @exitModal="close"></signupform>
+            <loginform v-if="modalType === 'login'" @exitModal="close"></loginform>
+            <signupform v-else-if="modalType === 'signup'" @exitModal="close"></signupform>
 
+            </div>
         </div>
-      </div>
-    </div>
+        </div>
+    </transition>
   </div>
 </template>
-
 
 <script>
 
@@ -113,7 +114,6 @@ export default {
 }
 
 .close-button {
-
   $size: 35px;
   height: $size;
   width: $size;
@@ -134,7 +134,7 @@ export default {
     $width: 22px;
     $height: 3px;
     transform: rotate(-45deg);
-    content: '';
+    content: "";
     position: absolute;
     top: 45%;
     left: 25%;

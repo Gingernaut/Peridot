@@ -30,13 +30,18 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Contact',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {
       emailAddress: null,
       subject: null,
       body: null
-
     }
   },
   beforeCreate () {

@@ -2,7 +2,7 @@
   <footer class="footer" v-if="this.$store.state.ui.footer">
     <router-link to="/about" class="navbar-item">About</router-link>
     <router-link to="/contact" class="navbar-item">Contact</router-link>
-    <!-- <p> &copy; {{ year }} Tyler Peterson</p> -->
+    <!-- <p> &copy; {{ year }} Omega </p> -->
   </footer>
 </template>
 

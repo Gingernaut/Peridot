@@ -108,6 +108,12 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Accounts',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {

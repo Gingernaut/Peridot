@@ -1,22 +1,24 @@
 <template>
-  <div class="hero-body">
-    <div class="container">
-      <h1>Page not Found</h1>
-      <p>Click <router-link to="/">here</router-link> to go to the homepage.</p>
-    </div>
+  <div>
+    <p>This is a blank template for new pages and components.</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'error',
+  name: 'template',
   components: {
   },
   // props: [],
+  // metaInfo: {
+  //   title: 'template',
+  //   htmlAttrs: {
+  //     lang: 'en'
+  //   }
+  // },
   mixins: [],
   data () {
     return {
-
     }
   },
   beforeCreate () {
@@ -31,6 +33,8 @@ export default {
   },
   methods: {
   },
+  filters: {
+  },
   beforeUpdate () {
   },
   updated () {
@@ -43,4 +47,3 @@ export default {
 <style lang="scss" scoped>
 
 </style>
-

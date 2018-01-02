@@ -55,6 +55,12 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Reset',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {

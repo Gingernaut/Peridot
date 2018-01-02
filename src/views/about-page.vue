@@ -14,10 +14,15 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'About',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {
-
     }
   },
   beforeCreate () {
@@ -27,10 +32,17 @@ export default {
   beforeMount () {
   },
   mounted () {
+    // this.$bar.start()
+    // setTimeout(function(){
+    //   this.$bar.finish()
+    //  }, 1000);
+
   },
   computed: {
   },
   methods: {
+  },
+  filters: {
   },
   beforeUpdate () {
   },

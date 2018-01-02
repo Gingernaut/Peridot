@@ -54,6 +54,12 @@ export default {
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Account',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {

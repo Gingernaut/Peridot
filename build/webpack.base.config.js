@@ -5,41 +5,38 @@ const utils = require('./utils')
 const config = require('../config/oracle')
 
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const StringReplacePlugin = require('string-replace-webpack-plugin')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HTMLPlugin = require('html-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const PurifyCSSPlugin = require('purifycss-webpack')
+const glob = require('glob-all')
 
-
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-// Webpack plugins for both client and server
-let commonPlugins = [
-  new StringReplacePlugin(),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': config.NODE_ENV,
-    'PRODUCTION': config.isProd
-  }),
-  new StyleLintPlugin({
-    files: ['src/**/*.vue', 'src/**/*.scss']
-  }),
-  // keep module.id stable when vender modules does not change
-  new webpack.HashedModuleIdsPlugin(),
-
-  // https://webpack.js.org/plugins/module-concatenation-plugin/
-  new webpack.optimize.ModuleConcatenationPlugin(),
-]
-
-if (config.isDev) {
-  commonPlugins.push(
-    new FriendlyErrorsPlugin()
-  )
+// https://github.com/kangax/html-minifier#options-quick-reference
+const minifyOptions = {
+  collapseWhitespace: true,
+  removeComments: config.showComments === false,
+  ignoreCustomComments: [/vue-ssr-outlet/],
+  removeAttributeQuotes: true,
+  removeEmptyAttributes: true
 }
 
 const vueLoaderConfig = {
+  extractCSS: true, // config.isProd,
   loaders: utils.cssLoaders({
-    sourceMap: config.productionSourceMap
+    sourceMap: config.productionSourceMap,
+    extract: config.isProd
   }),
+  postcss: [
+    require('autoprefixer')({
+      browsers: ['last 3 versions']
+    })
+  ],
   transformToRequire: {
     video: 'src',
     source: 'src',
@@ -49,6 +46,92 @@ const vueLoaderConfig = {
   preserveWhitespace: false
 }
 
+// Webpack plugins used in both prod and dev environments
+let commonPlugins = [
+  // lint CSS/SCSS on build
+  new StyleLintPlugin({
+    files: ['src/**/*.scss'], // add vue files once stylelint works correctly only for style tags
+    syntax: 'scss'
+  }),
+
+  // keep module.id stable when vender modules does not change
+  new webpack.HashedModuleIdsPlugin()
+]
+
+let devPlugins = [new FriendlyErrorsPlugin()]
+
+let prodPlugins = [
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: config.warningsAndErrors,
+      drop_console: config.warningsAndErrors === false
+    },
+    comments: config.showComments,
+    sourceMap: config.productionSourceMap,
+    parallel: true
+  }),
+
+  new webpack.optimize.ModuleConcatenationPlugin(),
+
+  // extract css into its own file
+  new ExtractTextPlugin({
+    filename: utils.assetsPath('css/[name].[contenthash].css')
+  }),
+
+  // https://github.com/webpack-contrib/purifycss-webpack
+  /*
+      Need to fix to include only what's used, and whitelist JS usage
+      rather than just html (snackbar, etc.)
+  */
+  new PurifyCSSPlugin({
+    paths: glob.sync([
+      resolve('src/*.vue'),
+      resolve('src/components/*.vue'),
+      resolve('src/views/*.vue')
+    ])
+  }),
+
+  // Compress extracted CSS.
+  new OptimizeCSSPlugin({
+    cssProcessorOptions: {
+      safe: true,
+      discardComments: { removeAll: config.showComments }
+    }
+  }),
+
+  new HTMLPlugin({
+    filename: resolve('dist/index.html'),
+    template: resolve('src/index.template.html'),
+    inject: true,
+    minify: minifyOptions,
+    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
+    chunksSortMode: 'dependency'
+  }),
+  // copy custom static assets
+  new CopyWebpackPlugin([
+    {
+      from: resolve('static'),
+      to: config.assetsSubDirectory,
+      ignore: ['.*']
+    }
+  ])
+]
+
+if (config.productionGzip) {
+  const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
+  prodPlugins.push(
+    new CompressionWebpackPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: new RegExp(
+        '\\.(' + config.productionGzipExtensions.join('|') + ')$'
+      ),
+      threshold: 10240,
+      minRatio: 0.8
+    })
+  )
+}
 
 const moduleRules = [
   {
@@ -89,6 +172,15 @@ const moduleRules = [
     }
   },
   {
+    test: /\.css$/,
+    use: config.isProd
+      ? ExtractTextPlugin.extract({
+        use: 'css-loader?minimize',
+        fallback: 'vue-style-loader'
+      })
+      : ['vue-style-loader', 'css-loader']
+  },
+  {
     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
     loader: 'url-loader',
     options: {
@@ -99,20 +191,12 @@ const moduleRules = [
 ]
 
 module.exports = {
+  devtool: config.isProd ? false : '#cheap-module-source-map',
 
-  devtool: config.isProd ? false : 'inline-source-map',
-
-  entry: {
-    app: './src/main.client.js'
-  },
-
-  resolve: {
-    extensions: ['.js', '.vue', '.json', '.scss'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
-      '@@': path.join(__dirname, '../')
-    }
+  output: {
+    path: resolve('dist'),
+    publicPath: '/dist/',
+    filename: utils.assetsPath('js/[name].[chunkhash:16].js')
   },
 
   resolveLoader: {
@@ -121,10 +205,13 @@ module.exports = {
     }
   },
 
-  output: {
-    path: resolve('dist'),
-    publicPath: '/dist/',
-    filename: utils.assetsPath('js/[name].[chunkhash:16].js')
+  resolve: {
+    extensions: ['.js', '.vue', '.json', '.scss'],
+    alias: {
+      public: resolve('public'),
+      '@': resolve('src'),
+      '@@': path.join(__dirname, '../')
+    }
   },
 
   module: {
@@ -133,12 +220,11 @@ module.exports = {
   },
 
   performance: {
-    maxEntrypointSize: 250000,
+    maxEntrypointSize: 300000,
     hints: config.isProd ? 'warning' : false
   },
-  
-  // https://github.com/webpack-contrib/css-loader/issues/447
-  node: {
-    fs: 'empty'
-  }
+
+  plugins: config.isProd
+    ? commonPlugins.concat(prodPlugins)
+    : commonPlugins.concat(devPlugins)
 }

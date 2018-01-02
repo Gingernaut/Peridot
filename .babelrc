@@ -1,8 +1,8 @@
 {
   "presets": [
     ["stage-3"],
-    ["es2015"],
-    ["env", { "modules": false }]
+    ["env", { "modules": false }],
+    ["vue-app"]
   ],
   "plugins": [
     "syntax-dynamic-import"

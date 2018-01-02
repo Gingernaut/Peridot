@@ -2,24 +2,31 @@
   <div>
     <section class="section">
       <div class="container">
-        <loginform></loginform>
+        <h1 class="title">Section</h1>
+        <h2 class="subtitle">
+          A simple container to divide your page into
+          <strong>sections</strong>, like the one you're currently reading
+        </h2>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'loginpage',
+  name: 'index',
   components: {
-    loginform: () => import('@/components/loginform')
   },
   // props: [],
+  metaInfo: {
+    title: 'Home',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {
-
     }
   },
   beforeCreate () {
@@ -34,6 +41,8 @@ export default {
   },
   methods: {
   },
+  filters: {
+  },
   beforeUpdate () {
   },
   updated () {
@@ -44,5 +53,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

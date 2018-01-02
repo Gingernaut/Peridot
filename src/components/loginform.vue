@@ -22,7 +22,7 @@
       </p>
     </form>
 
-    <a class="is-info" @click="goToReset()">Forgot your password?</a>
+    <router-link to="/reset" @click.native="closeModal()">Forget your password?</router-link>
 
   </div>
 </template>
@@ -87,9 +87,8 @@ export default {
       this.passErr = null
       this.errors = []
     },
-    goToReset () {
+    closeModal () {
       this.$emit('exitModal')
-      this.$router.push('/reset')
     }
   },
   beforeUpdate () {

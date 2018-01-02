@@ -1,22 +1,23 @@
 // http://eslint.org/docs/user-guide/configuring
-
+const config = require('./config/oracle')
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module'
+    parser: 'babel-eslint',
+    sourceType: 'module',
+    ecmaVersion: 2017
   },
   env: {
-    browser: true,
+    browser: true
   },
-  // required to lint *.vue files
+
   plugins: [
     'html'
   ],
-
   extends: [
-    'eslint:recommended',
-    'standard'
+    'eslint:recommended', 
+    'standard', 
+    'plugin:vue/strongly-recommended'
   ],
 
   rules: {
@@ -25,13 +26,16 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 1,
+    'no-debugger': config.NODE_ENV === 'production' ? 2 : 1,
     // console log statements
     'no-console': 1,
-
-    'indent': [2, 2],
+    // indentation
+    indent: [2, 2],
     // triple equality
-    'eqeqeq': 1,
-    'no-var': 2
+    eqeqeq: 1,
+    // var instead of let
+    'no-var': 2,
+    // string quotes
+    quotes: ['error', 'single', {'allowTemplateLiterals': true}]
   }
-}
+};

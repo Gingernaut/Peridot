@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <router-view id="appContent"></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view id="appContent"></router-view>
+    </transition>
     <myFooter></myFooter>
   </div>
 </template>
 
 <script>
-
 import navbar from '@/components/navbar'
 
 export default {
@@ -16,11 +17,9 @@ export default {
     navbar,
     myFooter: () => import('@/components/footer')
   },
-  // props: [],
   mixins: [],
   data () {
     return {
-
     }
   },
   beforeCreate () {
@@ -35,6 +34,8 @@ export default {
   },
   methods: {
   },
+  filters: {
+  },
   beforeUpdate () {
   },
   updated () {
@@ -43,7 +44,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss">
 
@@ -70,7 +70,6 @@ $link-focus-border: $primary;
 
 // end Buefy
 
-
 html,body {
   margin: 0;
   padding: 0;
@@ -85,14 +84,24 @@ html,body {
   padding: 0;
   height: 100%;
   width: 100%;
-  z-index:1;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+.fade-enter-active,
+.fade-leave-active {
+	transition: all 0.15s ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+	opacity: 0;
+}
 }
 
 #appContent {
-  flex-grow:1;
+  flex-grow: 1;
 }
 
 *, *:before, *:after {
@@ -100,6 +109,6 @@ html,body {
 }
 
 a, a:visited, a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 </style>

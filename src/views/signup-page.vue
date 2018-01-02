@@ -17,6 +17,12 @@ export default {
   },
   // props: [],
   mixins: [],
+  metaInfo: {
+    title: 'Signup',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   data () {
     return {
     }

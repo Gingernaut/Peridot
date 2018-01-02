@@ -5,10 +5,16 @@
 
 <script>
 export default {
-  name: 'template',
+  name: 'notFound',
   components: {
   },
   // props: [],
+  metaInfo: {
+    title: 'Page Not Found',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {
