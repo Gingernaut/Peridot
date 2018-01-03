@@ -2,7 +2,7 @@ const path = require('path')
 const express = require('express')
 const config = require('../config/oracle')
 const createServer = require('./server')
-// const favicon = require('serve-favicon')
+const favicon = require('serve-favicon')
 const compression = require('compression')
 const helmet = require('helmet')
 
@@ -16,7 +16,7 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && config.isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
-// app.use(favicon('../static/logo-48.png'))
+app.use(favicon('../static/faviconLogo.png'))
 app.use('/dist', serve('../dist', true))
 
 if (config.isProd) {

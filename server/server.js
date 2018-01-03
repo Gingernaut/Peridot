@@ -62,7 +62,6 @@ const render = (req, res) => {
     default:
       res.setHeader('Content-Type', 'text/plain')
     }
-
     return res.sendFile(resolve('..' + req.url))
   }
 

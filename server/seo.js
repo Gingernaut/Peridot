@@ -32,7 +32,6 @@ function injectBody (template, context) {
 
 function injectToTemplate (template, context) {
   if (!context.meta || !context.meta.inject) return template
-
   context.meta.inject()
 
   const processors = [

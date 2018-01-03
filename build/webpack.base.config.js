@@ -27,7 +27,7 @@ const minifyOptions = {
 }
 
 const vueLoaderConfig = {
-  extractCSS: true, // config.isProd,
+  extractCSS: true,
   loaders: utils.cssLoaders({
     sourceMap: config.productionSourceMap,
     extract: config.isProd

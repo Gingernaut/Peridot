@@ -2,8 +2,8 @@
   <nav class="navbar" v-if="this.$store.state.ui.navbar">
     <div class="navbar-brand">
       <router-link class="navbar-item" to="/">
-        <h1 id="logo">Home</h1>
-        <!-- <img src="/static/" alt="Logo image" width="112" height="28"> -->
+        <h1 id="logo">Peridot</h1>
+        <!-- <img src="/static/yourLogo.png" alt="Your Logo" width="112" height="28"> -->
       </router-link>
 
       <div class="navbar-burger burger" :class="{ 'is-active': showMobileNav }" @click="toggleMobileNav">

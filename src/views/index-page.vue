@@ -2,10 +2,9 @@
   <div>
     <section class="section">
       <div class="container">
-        <h1 class="title">Section</h1>
+        <h1 class="title">Hello</h1>
         <h2 class="subtitle">
-          A simple container to divide your page into
-          <strong>sections</strong>, like the one you're currently reading
+          Welcome to your new Vue.js application!
         </h2>
       </div>
     </section>

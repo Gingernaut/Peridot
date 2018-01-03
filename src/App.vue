@@ -17,6 +17,13 @@ export default {
     navbar,
     myFooter: () => import('@/components/footer')
   },
+  metaInfo: {
+    title: 'Home',
+    titleTemplate: '%s | Peridot',
+    htmlAttrs: {
+      lang: 'en'
+    }
+  },
   mixins: [],
   data () {
     return {
