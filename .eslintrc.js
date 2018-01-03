@@ -28,7 +28,7 @@ module.exports = {
     // allow debugger
     'no-debugger': config.NODE_ENV === 'production' ? 2 : 1,
     // console log statements
-    'no-console': 1,
+    'no-console': config.NODE_ENV === 'production' ? 1 : 0,
     // indentation
     'indent': [2, 2],
     // triple equality

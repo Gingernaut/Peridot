@@ -57,7 +57,11 @@ export default {
   },
   methods: {
     submitForm: function () {
-
+      this.$email.sendEmail(this.emailAddress, this.subject, this.body).then((res)=> {
+        console.log('sent email')
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   },
   beforeUpdate () {

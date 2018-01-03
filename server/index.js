@@ -16,7 +16,7 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && config.isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
-app.use(favicon('../static/faviconLogo.png'))
+app.use(favicon(resolve('../static/faviconLogo.png')))
 app.use('/dist', serve('../dist', true))
 
 if (config.isProd) {

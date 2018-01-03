@@ -5,28 +5,25 @@ A powerful Vue.js boilerplate with Vue-Router and Vuex
 
 ### Features:
 * Server Side Rendering (SSR)
-* Progressive Web App (PWA) with service worker
-* Hot-reload in development
+* Progressive Web App (PWA) with Service Worker
 * Code splitting and async component/route loading
-* Dockerized production setup with pm2 load balancing
+* Automatic hot-reload in development
+* Dockerized production setup with [pm2 load balancing](https://github.com/Unitech/pm2)
 * Automatic removal of unused CSS/SCSS
+* Contact email form with Sendgrid
 * Global SCSS variables and easy theme customization
 * Linting and formatting with [eslint](https://github.com/eslint/eslint) and [stylelint](https://github.com/stylelint/stylelint)
-* Made with [Buefy](https://buefy.github.io/#/) for styling
-
-
+* Uses [Buefy](https://buefy.github.io/#/) for styling
 
 ## Configuration
 
-Rename `config/.env.default` to `config/.env` and fill it out with your API keys.
+Rename `config/.env.default` to `config/.env` and fill it out with your SendGrid API key and contact email address.
 
+## [Contributing Guide](./docs/contributing.md)
 
-## Todo
-
-* fix `bar` component globally
-* Further Webpack optimizations
-* Stylelint for css/scss in `.vue` files
-
-The following projects were extremely helpful resources for configuring webpack and SSR:
+## credits
+The following resources were extremely helpful for configuring webpack and SSR:
+* https://ssr.vuejs.org/
 * https://github.com/vuejs/vue-hackernews-2.0
 * https://github.com/crisbal/vue-webpack-ssr-fully-featured
+* https://github.com/wemake-services/wemake-vue-template

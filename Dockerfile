@@ -1,7 +1,5 @@
 FROM node:9.2.0-alpine
 
-LABEL maintainer="Tyler Peterson"
-
 WORKDIR /app
 COPY . /app
 

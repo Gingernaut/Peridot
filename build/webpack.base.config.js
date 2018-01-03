@@ -1,6 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
-
+const glob = require('glob-all')
 const utils = require('./utils')
 const config = require('../config/oracle')
 
@@ -10,8 +10,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HTMLPlugin = require('html-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
-const glob = require('glob-all')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -61,14 +61,18 @@ let commonPlugins = [
 let devPlugins = [new FriendlyErrorsPlugin()]
 
 let prodPlugins = [
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: config.warningsAndErrors,
-      drop_console: config.warningsAndErrors === false
+  new UglifyJsPlugin({
+    uglifyOptions: {
+      ie8: false,
+      ecma: 6,
+      output: {
+        comments: config.showComments,
+        beautify: false
+      },
+      warnings: false
     },
-    comments: config.showComments,
-    sourceMap: config.productionSourceMap,
-    parallel: true
+    parallel: true,
+    cache: true
   }),
 
   new webpack.optimize.ModuleConcatenationPlugin(),
@@ -95,7 +99,7 @@ let prodPlugins = [
   new OptimizeCSSPlugin({
     cssProcessorOptions: {
       safe: true,
-      discardComments: { removeAll: config.showComments }
+      discardComments: { removeAll: config.showComments === false }
     }
   }),
 
@@ -197,6 +201,14 @@ module.exports = {
     path: resolve('dist'),
     publicPath: '/dist/',
     filename: utils.assetsPath('js/[name].[chunkhash:16].js')
+  },
+
+  target: 'node',
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
   },
 
   resolveLoader: {
