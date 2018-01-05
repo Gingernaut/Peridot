@@ -3,7 +3,7 @@
 A powerful Vue.js boilerplate with Vue-Router and Vuex
 ![Screenshot](./docs/readme_resources/homepage.png)
 
-### Features:
+## Features:
 * Server Side Rendering (SSR)
 * Progressive Web App (PWA) with Service Worker
 * Code splitting and async component/route loading
@@ -21,7 +21,7 @@ Rename `config/.env.default` to `config/.env` and fill it out with your SendGrid
 
 ## [Contributing Guide](./docs/contributing.md)
 
-## credits
+## Credits
 The following resources were extremely helpful for configuring webpack and SSR:
 * https://ssr.vuejs.org/
 * https://github.com/vuejs/vue-hackernews-2.0
