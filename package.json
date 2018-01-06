@@ -17,7 +17,6 @@
   "author": "Tyler Peterson",
   "license": "MIT",
   "dependencies": {
-    "@sendgrid/mail": "^6.1.4",
     "buefy": "^0.6.2",
     "compression": "^1.7.1",
     "cross-env": "^5.1.3",

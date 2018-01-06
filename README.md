@@ -10,7 +10,6 @@ A powerful Vue.js boilerplate with Vue-Router and Vuex
 * Automatic hot-reload in development
 * Dockerized production setup with [pm2 load balancing](https://github.com/Unitech/pm2)
 * Automatic removal of unused CSS/SCSS
-* Contact email form with Sendgrid
 * Global SCSS variables and easy theme customization
 * Linting and formatting with [eslint](https://github.com/eslint/eslint) and [stylelint](https://github.com/stylelint/stylelint)
 * Uses [Buefy](https://buefy.github.io/#/) for styling

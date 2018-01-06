@@ -2,14 +2,12 @@ import Vue from 'vue'
 import App from '@/App.vue'
 import Buefy from 'buefy'
 import modal from '@/components/modal'
-import email from '@/plugins/email'
 
 import { createStore } from '@/store'
 import { createRouter } from '@/router'
 import { sync } from 'vuex-router-sync'
 
 Vue.use(Buefy)
-Vue.use(email)
 Vue.component('modal', modal)
 
 Vue.config.productionTip = false
