@@ -30,7 +30,7 @@ const vueLoaderConfig = {
   extractCSS: true,
   loaders: utils.cssLoaders({
     sourceMap: config.productionSourceMap,
-    extract: config.isProd
+    extract: true
   }),
   postcss: [
     require('autoprefixer')({
@@ -69,7 +69,7 @@ let prodPlugins = [
         comments: config.showComments,
         beautify: false
       },
-      warnings: false
+      warnings: config.warningsAndErrors
     },
     parallel: true,
     cache: true
@@ -84,8 +84,8 @@ let prodPlugins = [
 
   // https://github.com/webpack-contrib/purifycss-webpack
   /*
-      Need to fix to include only what's used, and whitelist JS usage
-      rather than just html (snackbar, etc.)
+      Need to whitelist JS usage
+      rather than just html (snackbar, etc.). It's not detected and preserved by this plugin
   */
   new PurifyCSSPlugin({
     paths: glob.sync([
