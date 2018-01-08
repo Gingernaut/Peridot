@@ -79,7 +79,8 @@ let prodPlugins = [
 
   // extract css into its own file
   new ExtractTextPlugin({
-    filename: utils.assetsPath('css/[name].[contenthash].css')
+    filename: utils.assetsPath('css/[name].[contenthash].css'),
+    allChunks: true
   }),
 
   // https://github.com/webpack-contrib/purifycss-webpack

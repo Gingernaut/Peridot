@@ -17,6 +17,9 @@ A powerful Vue.js boilerplate with Vue-Router and Vuex
 #### Bonus
 * Add user authentication easily with my [user authentication microservice](https://github.com/Gingernaut/microAuth).
 
+#### Coming Soon
+* Email contact form with Sendgrid.
+
 ## Running
 ```bash
 # Run in development
