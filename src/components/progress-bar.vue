@@ -11,19 +11,24 @@
 
 <script>
 export default {
+  name: 'progress-bar',
   data () {
     return {
       percent: 0,
       show: false,
       canSuccess: true,
-      duration: 3000,
-      height: '2px',
+      duration: 5000,
+      height: '5px',
       color: '#ffca2b',
       failedColor: '#ff0000',
     }
   },
+  mounted () {
+    console.log('bar mounted')
+  },
   methods: {
     start () {
+      console.log('starting bar')
       this.show = true
       this.canSuccess = true
       if (this._timer) {
@@ -57,6 +62,7 @@ export default {
       return this
     },
     finish () {
+      console.log('finishing bar')
       this.percent = 100
       this.hide()
       return this
@@ -92,10 +98,10 @@ export default {
   top: 0px;
   left: 0px;
   right: 0px;
-  height: 2px;
-  width: 0%;
+  height: 5px;
+  width: 100%;
   transition: width 0.2s, opacity 0.4s;
-  opacity: 1;
+  opacity: 0;
   background-color: #efc14e;
   z-index: 999999;
 }

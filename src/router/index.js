@@ -97,7 +97,6 @@ export function createRouter (store) {
     scrollBehavior: () => ({ y: 0 }),
     routes
   })
-
   router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
       if (!store.getters.isLoggedIn) {

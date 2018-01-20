@@ -10,8 +10,7 @@
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.config.js --progress --hide-modules",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .js,.vue,.json build config server src --fix",
-    "lint:css": "stylelint '**/*.{scss}' --syntax scss --fix",
-    "refresh": "rimraf yarn.lock && rimraf node_modules && yarn install"
+    "lint:css": "stylelint '**/*.{scss}' --syntax scss --fix"
   },
   "keywords": [],
   "author": "Tyler Peterson",

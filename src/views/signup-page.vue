@@ -13,7 +13,7 @@
 export default {
   name: 'signuppage',
   components: {
-    signupform: () => import('@/components/signupform')
+    signupform: () => import('@/components/signup-form')
   },
   // props: [],
   mixins: [],

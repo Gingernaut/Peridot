@@ -13,7 +13,7 @@
 export default {
   name: 'loginpage',
   components: {
-    loginform: () => import('@/components/loginform')
+    loginform: () => import('@/components/login-form')
   },
   // props: [],
   metaInfo: {

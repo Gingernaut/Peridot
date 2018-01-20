@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <navbar></navbar>
+    <my_navbar></my_navbar>
     <transition name="fade" mode="out-in">
       <router-view id="appContent"></router-view>
     </transition>
-    <myFooter></myFooter>
+    <my_footer></my_footer>
   </div>
 </template>
 
 <script>
-import navbar from '@/components/navbar'
+import my_navbar from '@/components/navbar-comp'
 
 export default {
   name: 'app',
   components: {
-    navbar,
-    myFooter: () => import('@/components/footer')
+    my_navbar,
+    my_footer: () => import('@/components/footer-comp')
   },
   metaInfo: {
     title: 'Home',

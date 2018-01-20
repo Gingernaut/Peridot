@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from '@/App.vue'
 import Buefy from 'buefy'
-import modal from '@/components/modal'
+import modal from '@/components/modal-comp'
 
 import { createStore } from '@/store'
 import { createRouter } from '@/router'

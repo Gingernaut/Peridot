@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" v-if="this.$store.state.ui.footer">
+  <footer v-if="this.$store.state.ui.footer">
     <router-link to="/about" class="navbar-item">About</router-link>
     <router-link to="/contact" class="navbar-item">Contact</router-link>
     <p> &copy; {{ year }} Peridot </p>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'footer',
+  name: 'my-footer',
   components: {
   },
   // props: [],

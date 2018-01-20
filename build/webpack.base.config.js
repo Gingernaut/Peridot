@@ -48,7 +48,6 @@ const vueLoaderConfig = {
 
 // Webpack plugins used in both prod and dev environments
 let commonPlugins = [
-  // lint CSS/SCSS on build
   new StyleLintPlugin({
     files: ['src/**/*.scss'], // add vue files once stylelint works correctly only for style tags
     syntax: 'scss'
@@ -56,7 +55,6 @@ let commonPlugins = [
 
   new webpack.optimize.ModuleConcatenationPlugin(),
 
-  // keep module.id stable when vender modules does not change
   new webpack.HashedModuleIdsPlugin()
 ]
 
@@ -84,10 +82,6 @@ let prodPlugins = [
   }),
 
   // https://github.com/webpack-contrib/purifycss-webpack
-  /*
-      Need to whitelist JS usage
-      rather than just html (snackbar, modal, etc.). It's not detected and preserved by this plugin
-  */
   new PurifyCSSPlugin({
     paths: glob.sync([
       resolve('src/*.vue'),
@@ -95,8 +89,15 @@ let prodPlugins = [
       resolve('src/views/*.vue')
     ]),
     purifyOptions: {
+      // whitelist css that is activated by js and not on initial page load
       whitelist: [
-        '*modal*'
+        'snackbar',
+        'toast',
+        'is-top',
+        'is-info',
+        'is-success',
+        'is-danger',
+        'is-dark'
       ]
     }
   }),
@@ -181,7 +182,8 @@ const moduleRules = [
     }
   },
 
-  {test: /\.css$/,
+  {
+    test: /\.css$/,
     use: config.isProd
       ? ExtractTextPlugin.extract({
         use: 'css-loader?minimize',
@@ -208,6 +210,7 @@ module.exports = {
     filename: utils.assetsPath('js/[name].[chunkhash:16].js')
   },
 
+  /*
   target: 'node',
   node: {
     console: true,
@@ -215,6 +218,7 @@ module.exports = {
     net: 'empty',
     tls: 'empty'
   },
+  */
 
   resolveLoader: {
     alias: {
