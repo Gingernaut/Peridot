@@ -27,10 +27,10 @@ const minifyOptions = {
 }
 
 const vueLoaderConfig = {
-  extractCSS: true,
+  extractCSS: config.isProd,
   loaders: utils.cssLoaders({
     sourceMap: config.productionSourceMap,
-    extract: true
+    extract: config.isProd
   }),
   postcss: [
     require('autoprefixer')({
@@ -54,6 +54,8 @@ let commonPlugins = [
     syntax: 'scss'
   }),
 
+  new webpack.optimize.ModuleConcatenationPlugin(),
+
   // keep module.id stable when vender modules does not change
   new webpack.HashedModuleIdsPlugin()
 ]
@@ -75,8 +77,6 @@ let prodPlugins = [
     cache: true
   }),
 
-  new webpack.optimize.ModuleConcatenationPlugin(),
-
   // extract css into its own file
   new ExtractTextPlugin({
     filename: utils.assetsPath('css/[name].[contenthash].css'),
@@ -86,14 +86,19 @@ let prodPlugins = [
   // https://github.com/webpack-contrib/purifycss-webpack
   /*
       Need to whitelist JS usage
-      rather than just html (snackbar, etc.). It's not detected and preserved by this plugin
+      rather than just html (snackbar, modal, etc.). It's not detected and preserved by this plugin
   */
   new PurifyCSSPlugin({
     paths: glob.sync([
       resolve('src/*.vue'),
       resolve('src/components/*.vue'),
       resolve('src/views/*.vue')
-    ])
+    ]),
+    purifyOptions: {
+      whitelist: [
+        '*modal*'
+      ]
+    }
   }),
 
   // Compress extracted CSS.
@@ -109,7 +114,6 @@ let prodPlugins = [
     template: resolve('src/index.template.html'),
     inject: true,
     minify: minifyOptions,
-    // necessary to consistently work with multiple chunks via CommonsChunkPlugin
     chunksSortMode: 'dependency'
   }),
   // copy custom static assets
@@ -176,8 +180,8 @@ const moduleRules = [
       name: utils.assetsPath('media/[name].[hash:7].[ext]')
     }
   },
-  {
-    test: /\.css$/,
+
+  {test: /\.css$/,
     use: config.isProd
       ? ExtractTextPlugin.extract({
         use: 'css-loader?minimize',

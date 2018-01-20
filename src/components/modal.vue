@@ -1,17 +1,17 @@
 <template>
   <div>
     <transition name="fade" mode="out-in">
-        <div class="modal-mask" v-if="showMod" @click="close()" transition="modal">
+      <div class="modal-mask" v-if="showMod" @click="close()" transition="modal">
         <div class="modal-container" @click.stop>
             <span @click="close()" class="close-button"></span>
             <div class="modalbody">
 
-            <loginform v-if="modalType === 'login'" @exitModal="close"></loginform>
-            <signupform v-else-if="modalType === 'signup'" @exitModal="close"></signupform>
+              <loginform v-if="modalType === 'login'" @exitModal="close"></loginform>
+              <signupform v-else-if="modalType === 'signup'" @exitModal="close"></signupform>
 
             </div>
         </div>
-        </div>
+      </div>
     </transition>
   </div>
 </template>
