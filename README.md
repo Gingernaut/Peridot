@@ -14,8 +14,6 @@ A powerful Vue.js boilerplate with Vue-Router and Vuex
 * Linting and formatting with [eslint](https://github.com/eslint/eslint) and [stylelint](https://github.com/stylelint/stylelint)
 * Uses [Buefy](https://buefy.github.io/#/) for styling
 
-#### Bonus
-* Add user authentication easily with my [user authentication microservice](https://github.com/Gingernaut/microAuth).
 
 #### Coming Soon
 * Email contact form with Sendgrid.
