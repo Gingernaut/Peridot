@@ -24,11 +24,9 @@ export default {
     }
   },
   mounted () {
-    console.log('bar mounted')
   },
   methods: {
     start () {
-      console.log('starting bar')
       this.show = true
       this.canSuccess = true
       if (this._timer) {
@@ -62,7 +60,6 @@ export default {
       return this
     },
     finish () {
-      console.log('finishing bar')
       this.percent = 100
       this.hide()
       return this
