@@ -24,7 +24,8 @@ module.exports = merge(base, {
   ],
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.VUE_ENV': 'server'
+      // eslint-disable-next-line quotes
+      'process.env.VUE_ENV': "'server'"
     }),
     new VueSSRServerPlugin()
   ]

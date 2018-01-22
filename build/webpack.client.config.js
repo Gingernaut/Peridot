@@ -15,7 +15,8 @@ let clientConfig = merge(base, {
   plugins: [
     // strip dev-only code in Vue source
     new webpack.DefinePlugin({
-      'process.env.VUE_ENV': 'client'
+      // eslint-disable-next-line quotes
+      'process.env.VUE_ENV': "'client'"
     }),
 
     new VueSSRClientPlugin()

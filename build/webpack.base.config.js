@@ -52,9 +52,11 @@ let sharedPlugins = [
     syntax: 'scss'
   }),
 
+  // enable scope hoisting
   new webpack.optimize.ModuleConcatenationPlugin(),
 
-  new webpack.HashedModuleIdsPlugin()
+  // keep module.id stable when vender modules does not change
+  new webpack.HashedModuleIdsPlugin(),
 ]
 
 let devPlugins = [

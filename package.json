@@ -37,6 +37,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-stage-3": "^6.24.1",
     "babel-preset-vue-app": "^2.0.0",
     "chokidar": "^2.0.0",
