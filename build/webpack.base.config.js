@@ -46,8 +46,7 @@ const vueLoaderConfig = {
   preserveWhitespace: false
 }
 
-// Webpack plugins used in both prod and dev environments
-let commonPlugins = [
+let sharedPlugins = [
   new StyleLintPlugin({
     files: ['src/**/*.scss'], // add vue files once stylelint works correctly only for style tags
     syntax: 'scss'
@@ -58,7 +57,9 @@ let commonPlugins = [
   new webpack.HashedModuleIdsPlugin()
 ]
 
-let devPlugins = [new FriendlyErrorsPlugin()]
+let devPlugins = [
+  new FriendlyErrorsPlugin()
+]
 
 let prodPlugins = [
   new UglifyJsPlugin({
@@ -183,7 +184,7 @@ const moduleRules = [
   },
 
   {
-    test: /\.css$/,
+    test: /\.(css|scss)$/,
     use: config.isProd
       ? ExtractTextPlugin.extract({
         use: 'css-loader?minimize',
@@ -246,6 +247,6 @@ module.exports = {
   },
 
   plugins: config.isProd
-    ? commonPlugins.concat(prodPlugins)
-    : commonPlugins.concat(devPlugins)
+    ? sharedPlugins.concat(prodPlugins)
+    : sharedPlugins.concat(devPlugins)
 }
