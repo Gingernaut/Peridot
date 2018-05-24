@@ -1,7 +1,7 @@
 import Vue from "vue"
 import Router from "vue-router"
 
-const index = () => import("@/views/Home")
+const index = () => import("@/views/Index")
 const about = () => import("@/views/About")
 // const contact = () => import("@/views/contact-page")
 // const account = () => import("@/views/account-page")
@@ -14,11 +14,27 @@ const about = () => import("@/views/About")
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
+export default function createRouter(store) {
+  const notAuthenticated = (to, from, next) => {
+    if (!store.getters.isAuthenticated) {
+      next()
+      return
+    }
+    next("/")
+  }
+
+  const isAuthenticated = (to, from, next) => {
+    if (store.getters.isAuthenticated) {
+      next()
+      return
+    }
+    next("/login")
+  }
+
+  const routes = [
     {
       path: "/",
-      name: "home",
+      name: "index",
       component: index,
     },
     {
@@ -26,5 +42,26 @@ export default new Router({
       name: "about",
       component: about,
     },
-  ],
-})
+    {
+      path: "/account",
+      name: "Account",
+      component: index,
+      beforeEnter: isAuthenticated,
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: index,
+      beforeEnter: notAuthenticated,
+    },
+  ]
+
+  return new Router({
+    mode: "history",
+    fallback: false,
+    scrollBehavior: () => ({
+      y: 0,
+    }),
+    routes,
+  })
+}
