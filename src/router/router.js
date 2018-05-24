@@ -14,17 +14,26 @@ const about = () => import("@/views/About")
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: index,
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: about,
-    },
-  ],
-})
+const routes = [
+  {
+    path: "/",
+    name: "home",
+    component: index,
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: about,
+  },
+]
+
+export default function createRouter() {
+  return new Router({
+    mode: "history",
+    fallback: false,
+    scrollBehavior: () => ({
+      y: 0,
+    }),
+    routes,
+  })
+}

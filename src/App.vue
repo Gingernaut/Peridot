@@ -4,6 +4,27 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "app",
+  components: {},
+  mixins: [],
+  data() {
+    return {}
+  },
+  beforeCreate() {},
+  created() {},
+  beforeMount() {},
+  mounted() {},
+  computed: {},
+  methods: {},
+  filters: {},
+  beforeUpdate() {},
+  updated() {},
+  beforeDestroy() {},
+}
+</script>
+
 <style lang="scss">
 html,
 body {
