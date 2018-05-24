@@ -39,7 +39,10 @@ npm run build --report
 You can tweak settings in `config/`. `base.js` contains all settings, which you can choose to override for specific environments in `dev.js` and `prod.js`. Import `oracle.js` anywhere you need configuration options.
 
 
-## [Contributing Guide](./docs/contributing.md)
+## [Contributing
+
+Pull requests are welcome and appreciated!
+Check the `issues` tab to see some of the features and improvements I have in mind.
 
 ## Credits
 The following resources were extremely helpful for configuring webpack and SSR:
