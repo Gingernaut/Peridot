@@ -1,0 +1,7 @@
+apps:
+  - script:     '/app/server/index.js'
+    name:       'frontend'
+    exec_mode:  'cluster'
+    instances:  4
+    env:
+      NODE_ENV: production
