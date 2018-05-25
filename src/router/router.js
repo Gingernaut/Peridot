@@ -1,5 +1,8 @@
 import Vue from "vue"
 import Router from "vue-router"
+import store from "@/store/index"
+
+Vue.use(Router)
 
 const index = () => import("@/views/Index")
 const about = () => import("@/views/About")
@@ -12,56 +15,53 @@ const about = () => import("@/views/About")
 // const reset = () => import("@/views/reset-page")
 // const pageNotFound = () => import("@/views/not-found-page")
 
-Vue.use(Router)
-
-export default function createRouter(store) {
-  const notAuthenticated = (to, from, next) => {
-    if (!store.getters.isAuthenticated) {
-      next()
-      return
-    }
-    next("/")
+const notAuthenticated = (to, from, next) => {
+  if (!store.get("isAuthenticated")) {
+    next()
+    return
   }
-
-  const isAuthenticated = (to, from, next) => {
-    if (store.getters.isAuthenticated) {
-      next()
-      return
-    }
-    next("/login")
-  }
-
-  const routes = [
-    {
-      path: "/",
-      name: "index",
-      component: index,
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: about,
-    },
-    {
-      path: "/account",
-      name: "Account",
-      component: index,
-      beforeEnter: isAuthenticated,
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: index,
-      beforeEnter: notAuthenticated,
-    },
-  ]
-
-  return new Router({
-    mode: "history",
-    fallback: false,
-    scrollBehavior: () => ({
-      y: 0,
-    }),
-    routes,
-  })
+  next("/")
 }
+
+const isAuthenticated = (to, from, next) => {
+  if (store.get("isAuthenticated")) {
+    next()
+    return
+  }
+  next("/login")
+}
+
+const routes = [
+  {
+    path: "/",
+    name: "index",
+    component: index,
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: about,
+    beforeEnter: isAuthenticated,
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: index,
+    beforeEnter: isAuthenticated,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: index,
+    beforeEnter: notAuthenticated,
+  },
+]
+
+export default new Router({
+  mode: "history",
+  fallback: false,
+  scrollBehavior: () => ({
+    y: 0,
+  }),
+  routes,
+})

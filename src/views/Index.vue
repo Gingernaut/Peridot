@@ -1,29 +1,30 @@
 <template>
   <div class="home">
-    Hello {{ name }}
-    <button @click="setName()">Click Me</button>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-import HelloWorld from "@/components/HelloWorld.vue"
+import { get } from "vuex-pathify"
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
-  },
+  components: {},
   mixins: [],
   data() {
-    return {}
+    return {
+      allData: null,
+    }
   },
   beforeCreate() {},
   created() {},
   beforeMount() {},
   mounted() {},
-  computed: {},
+  computed: {
+    name: get("name"),
+  },
   methods: {},
   filters: {},
   beforeUpdate() {},
@@ -31,3 +32,10 @@ export default {
   beforeDestroy() {},
 }
 </script>
+
+<style>
+.home {
+  font-size: 30px;
+  color: $blue;
+}
+</style>
