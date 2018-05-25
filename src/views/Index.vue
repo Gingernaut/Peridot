@@ -17,9 +17,7 @@ export default {
   },
   mixins: [],
   data() {
-    return {
-      name: "bob",
-    }
+    return {}
   },
   beforeCreate() {},
   created() {},
