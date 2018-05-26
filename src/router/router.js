@@ -16,7 +16,7 @@ const reset = () => import("@/views/reset-page")
 const pageNotFound = () => import("@/views/not-found-page")
 
 const notAuthenticated = (to, from, next) => {
-  if (!store.get("isAuthenticated")) {
+  if (!store.get("account.isAuthenticated")) {
     next()
     return
   }
@@ -24,7 +24,7 @@ const notAuthenticated = (to, from, next) => {
 }
 
 const isAuthenticated = (to, from, next) => {
-  if (store.get("isAuthenticated")) {
+  if (store.get("account.isAuthenticated")) {
     next()
     return
   }
@@ -80,6 +80,7 @@ const routes = [
     path: "/reset",
     name: "reset",
     component: reset,
+    beforeEnter: notAuthenticated,
   },
   {
     path: "/reset/:token",

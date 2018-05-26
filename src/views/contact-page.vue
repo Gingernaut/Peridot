@@ -38,9 +38,7 @@ export default {
   },
   beforeCreate() {},
   created() {
-    this.emailAddress = this.$store.state.account.emailAddress
-      ? this.$store.state.account.emailAddress
-      : null
+    this.emailAddress = this.$store.get("account.emailAddress")
   },
   beforeMount() {},
   mounted() {},

@@ -1,24 +1,23 @@
 <template>
-  <div>
-    <div v-if="modalcomponent" @click="close()" class="modal-mask" transition="modal">
+  <transition name="fade">
+    <div v-if="component" @click="close()" class="modal-mask">
       <div @click.stop class="modal-container">
           <span @click="close()" class="close-button"></span>
           <div class="modalbody">
-            <component v-bind:is="modalcomponent" @exitModal="close"></component>
+            <transition name="fade">
+              <component :is="component" @exitModal="close"></component>
+            </transition>
           </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
 export default {
-  name: "global-navbar",
-  components: {
-    login: () => import("@/components/login-form"),
-    signup: () => import("@/components/signup-form"),
-  },
-  props: ["modalcomponent"],
+  name: "global-modal",
+  components: {},
+  props: ["component"],
   mixins: [],
   data() {
     return {}
@@ -40,11 +39,7 @@ export default {
       }
     )
   },
-  computed: {
-    modalType() {
-      return this.modalcomponent
-    },
-  },
+  computed: {},
   methods: {
     close() {
       this.$emit("exitModal")
@@ -75,12 +70,12 @@ export default {
 
 .modal-container {
   height: auto;
-  width: auto;
-  min-height: 340px;
-  width: 400px;
+  min-height: 380px;
+  min-width: 440px;
   background-color: $white;
   border-radius: 5px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+  padding: 10px;
   display: flex;
   flex-direction: column;
 
@@ -121,7 +116,7 @@ export default {
     display: inline-block;
     height: $height;
     width: $width;
-    background-color: $outline;
+    background-color: $primary;
     transition: all 0.25s ease-out;
   }
 
@@ -137,11 +132,19 @@ export default {
   }
 }
 
-@media (max-width: 600px) {
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
   .modal-container {
     width: 80vw;
-    height: auto;
-    min-height: 50vh;
+    min-width: 0;
   }
 }
 </style>

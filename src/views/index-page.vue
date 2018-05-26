@@ -17,7 +17,9 @@ export default {
   components: {},
   mixins: [],
   data() {
-    return {}
+    return {
+      show: true,
+    }
   },
   beforeCreate() {},
   created() {},

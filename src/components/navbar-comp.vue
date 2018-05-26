@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar" v-if="showNavbar">
-    <modal @exitModal="closeModal" v-bind:modalcomponent="modalType"></modal>
+    <modal :component="modalComp" @exitModal="closeModal"></modal>
 
     <div class="navbar-brand">
       <router-link class="navbar-item" to="/">
@@ -21,8 +21,8 @@
         <router-link v-if="isAdmin" to="/accounts" class="navbar-item">Accounts</router-link>
       </div>
 
-      <div class="navbar-end">
-        <span v-if="!isLoggedIn" class="navbar-item">
+      <div v-if="!isLoggedIn" class="navbar-end">
+        <span class="navbar-item">
           <a @click="openSignup()" class="navbar-item button accNav is-info"> Sign Up</a>
           <a @click="openLogin()"  class="navbar-item button accNav">Log In</a>
         </span>
@@ -31,12 +31,10 @@
           <a class="navbar-link is-active">
             Account
           </a>
-
           <div class="navbar-dropdown ">
             <router-link to="/account" class="navbar-item">
               Overview
             </router-link>
-
             <hr class="navbar-divider">
             <div class="navbar-item">
               <div>
@@ -49,6 +47,7 @@
         </div>
       </div>
     </div>
+
   </nav>
 </template>
 
@@ -61,7 +60,7 @@ export default {
   mixins: [],
   data() {
     return {
-      modalType: null,
+      modalComp: null,
       showMobileNav: false,
     }
   },
@@ -70,22 +69,22 @@ export default {
   beforeMount() {},
   mounted() {},
   computed: {
-    showNavbar: get("ui.showNavbar"),
-    isLoggedIn: get("account.isAuthenticated"),
-    userRole: get("account.userRole"),
+    showNavbar: get("ui/showNavbar"),
+    isLoggedIn: get("account/isAuthenticated"),
+    userRole: get("account/userRole"),
     isAdmin: function() {
       return this.userRole === "ADMIN"
     },
   },
   methods: {
     closeModal() {
-      this.modalType = null
+      this.modalComp = null
     },
     openSignup() {
-      this.modalType = "signup"
+      this.modalComp = () => import("@/components/signup-form")
     },
     openLogin() {
-      this.modalType = "login"
+      this.modalComp = () => import("@/components/login-form")
     },
     logout() {
       this.$account.logout()
@@ -109,13 +108,13 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-  border-bottom: 1px solid $outline;
+  border-bottom: 1px solid $primary;
 }
 
 #logo {
   font-weight: 700;
   font-size: 1.5em;
-  color: $outline;
+  color: $primary;
 }
 
 .is-active {

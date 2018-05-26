@@ -68,10 +68,6 @@ export default {
   created() {},
   beforeMount() {},
   mounted() {
-    if (this.$store.getters.isLoggedIn) {
-      this.$router.push("/")
-    }
-
     if (this.$route.params.token) {
       this.hasToken = true
       this.$account.confirmReset(this.$route.params.token)

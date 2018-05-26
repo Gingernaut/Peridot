@@ -3,8 +3,8 @@ import Vuex from "vuex"
 import pathify from "@/store/pathify"
 import createPersistedState from "vuex-persistedstate"
 
-import ui from "@/store/ui"
 import account from "@/store/account"
+import ui from "@/store/ui"
 
 Vue.use(Vuex)
 pathify.debug()
@@ -12,7 +12,6 @@ pathify.debug()
 const persistData = false
 
 const store = {
-  namespaced: true,
   modules: {
     account: { ...account },
     ui: { ...ui },

@@ -21,6 +21,8 @@
         </button>
       </p>
     </form>
+    <router-link to="/signup">Create new account</router-link>
+    <br/>
     <router-link to="/reset" @click.native="closeModal()">Forget your password?</router-link>
   </div>
 </template>

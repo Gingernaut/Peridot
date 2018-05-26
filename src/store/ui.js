@@ -7,11 +7,11 @@ const state = {
 
 // automatically generate operations
 const getters = { ...make.getters(state) }
-const mutations = { ...make.mutations(state) }
+const mutations = make.mutations(state)
 const actions = { ...make.actions(state) }
 
-// export store
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,

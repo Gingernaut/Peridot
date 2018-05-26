@@ -1,6 +1,5 @@
 import { make } from "vuex-pathify"
 
-// base state
 const state = {
   isAuthenticated: false,
   firstName: null,
@@ -18,6 +17,7 @@ const mutations = { ...make.mutations(state) }
 const actions = { ...make.actions(state) }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,

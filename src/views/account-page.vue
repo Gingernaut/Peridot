@@ -78,10 +78,10 @@ export default {
   },
   methods: {
     setLocalData: function() {
-      this.localLName = this.$store.state.account.lastName
-      this.localFName = this.$store.state.account.firstName
-      this.localEmail = this.$store.state.account.emailAddress
-      this.localPhoneNumber = this.$store.state.account.phoneNumber
+      this.localFName = this.$store.get("account.firstName")
+      this.localLName = this.$store.get("account.lastName")
+      this.localEmail = this.$store.get("account.emailAddress")
+      this.localPhoneNumber = this.$store.get("account.phoneNumber")
     },
     updateAcc: function() {
       if (this.localPass1 !== this.localPass2) {

@@ -23,7 +23,7 @@ export default {
   beforeMount() {},
   mounted() {},
   computed: {
-    showFooter: get("ui.showFooter"),
+    showFooter: get("ui/showFooter"),
   },
   methods: {},
   beforeUpdate() {},
@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  border-top: 1px solid $outline;
+  border-top: 1px solid $primary;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
