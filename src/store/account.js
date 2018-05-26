@@ -2,8 +2,14 @@ import { make } from "vuex-pathify"
 
 // base state
 const state = {
-  isAuthenticated: true,
-  name: "Tyler",
+  isAuthenticated: false,
+  firstName: null,
+  lastName: null,
+  emailAddress: null,
+  token: null,
+  phoneNumber: null,
+  userRole: null,
+  UUID: null,
 }
 
 // automatically generate operations

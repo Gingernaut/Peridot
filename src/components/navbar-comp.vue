@@ -1,9 +1,11 @@
 <template>
-  <nav class="navbar"> <!-- v-if="this.$store.state.ui.navbar" -->
+  <nav class="navbar" v-if="showNavbar">
+    <modal @exitModal="closeModal" v-bind:modalcomponent="modalType"></modal>
+
     <div class="navbar-brand">
       <router-link class="navbar-item" to="/">
-        <h1 id="logo">Peridot</h1>
         <!-- <img src="/static/yourLogo.png" alt="Your Logo" width="112" height="28"> -->
+        <h1 id="logo">Peridot</h1>
       </router-link>
 
       <div class="navbar-burger burger" :class="{ 'is-active': showMobileNav }" @click="toggleMobileNav">
@@ -16,16 +18,16 @@
     <div id="navMenu" class="navbar-menu" :class="{ 'is-active': showMobileNav }">
 
       <div class="navbar-start">
-        <router-link to="/accounts" class="navbar-item" v-if="this.$store.state.account.userRole ==='ADMIN'">Accounts</router-link>
+        <router-link v-if="isAdmin" to="/accounts" class="navbar-item">Accounts</router-link>
       </div>
 
       <div class="navbar-end">
-        <span class="navbar-item">
-          <a v-if="!this.$store.getters.isLoggedIn" @click="openSignup()" class="button accNav is-info"> Sign Up</a>
-          <a v-if="!this.$store.getters.isLoggedIn" @click="openLogin()"  class="button accNav">Log In</a>
+        <span v-if="!isLoggedIn" class="navbar-item">
+          <a @click="openSignup()" class="navbar-item button accNav is-info"> Sign Up</a>
+          <a @click="openLogin()"  class="navbar-item button accNav">Log In</a>
         </span>
 
-        <div v-if="this.$store.getters.isLoggedIn" class="navbar-item has-dropdown is-hoverable">
+        <div v-if="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-active">
             Account
           </a>
@@ -35,43 +37,31 @@
               Overview
             </router-link>
 
-            <!--  <a class="navbar-item is-active" href="http://bulma.io/documentation/components/breadcrumb/">
-                    Components
-                  </a> -->
-
             <hr class="navbar-divider">
             <div class="navbar-item">
               <div>
                 <small>
                   <a @click="logout()">Sign Out</a>
                 </small>
-
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </div>
-
-    <modal @exitModal="closeModal" v-bind:show="showLogin" v-bind:modalcomponent="'login'"></modal>
-    <modal @exitModal="closeModal" v-bind:show="showSignup" v-bind:modalcomponent="'signup'"></modal>
-
   </nav>
 </template>
 
-
 <script>
+import { get } from "vuex-pathify"
+
 export default {
   name: "navbar",
   components: {},
-  // props: [],
   mixins: [],
   data() {
     return {
-      showLogin: false,
-      showSignup: false,
+      modalType: null,
       showMobileNav: false,
     }
   },
@@ -79,17 +69,23 @@ export default {
   created() {},
   beforeMount() {},
   mounted() {},
-  computed: {},
+  computed: {
+    showNavbar: get("ui.showNavbar"),
+    isLoggedIn: get("account.isAuthenticated"),
+    userRole: get("account.userRole"),
+    isAdmin: function() {
+      return this.userRole === "ADMIN"
+    },
+  },
   methods: {
     closeModal() {
-      this.showLogin = false
-      this.showSignup = false
+      this.modalType = null
     },
     openSignup() {
-      this.showSignup = true
+      this.modalType = "signup"
     },
     openLogin() {
-      this.showLogin = true
+      this.modalType = "login"
     },
     logout() {
       this.$account.logout()
@@ -120,6 +116,12 @@ nav {
   font-weight: 700;
   font-size: 1.5em;
   color: $outline;
+}
+
+.is-active {
+  .accNav {
+    margin: 5px;
+  }
 }
 
 .accNav {

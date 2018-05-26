@@ -1,28 +1,22 @@
 <template>
-  <div class="home">
-    <h1>Hello there</h1>
+  <div>
   </div>
 </template>
 
 <script>
-import { get } from "vuex-pathify"
-
 export default {
-  name: "Home",
+  name: "notFound",
   components: {},
+  // props: [],
   mixins: [],
   data() {
-    return {
-      allData: null,
-    }
+    return {}
   },
   beforeCreate() {},
   created() {},
   beforeMount() {},
   mounted() {},
-  computed: {
-    name: get("name"),
-  },
+  computed: {},
   methods: {},
   filters: {},
   beforeUpdate() {},
@@ -31,5 +25,5 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>

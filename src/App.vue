@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <my_navbar></my_navbar>
+    <GlobalNavbar/>
     <router-view id="appContent"/>
-    <my_footer></my_footer>
+    <GlobalFooter/>
   </div>
 </template>
 
 <script>
-import my_navbar from "@/components/navbar-comp"
+import GlobalNavbar from "@/components/navbar-comp"
 
 export default {
   name: "app",
   components: {
-    my_navbar,
-    my_footer: () => import("@/components/footer-comp"),
+    GlobalNavbar,
+    GlobalFooter: () => import("@/components/footer-comp"),
   },
   mixins: [],
   data() {

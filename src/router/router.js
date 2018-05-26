@@ -4,16 +4,16 @@ import store from "@/store/index"
 
 Vue.use(Router)
 
-const index = () => import("@/views/Index")
-const about = () => import("@/views/About")
-// const contact = () => import("@/views/contact-page")
-// const account = () => import("@/views/account-page")
-// const loginpage = () => import("@/views/login-page")
-// const signuppage = () => import("@/views/signup-page")
-// const accounts = () => import("@/views/accounts-page")
-// const confirm = () => import("@/views/confirm-page")
-// const reset = () => import("@/views/reset-page")
-// const pageNotFound = () => import("@/views/not-found-page")
+const index = () => import("@/views/index-page")
+const about = () => import("@/views/about-page")
+const contact = () => import("@/views/contact-page")
+const account = () => import("@/views/account-page")
+const loginpage = () => import("@/views/login-page")
+const signuppage = () => import("@/views/signup-page")
+const accounts = () => import("@/views/accounts-page")
+const confirm = () => import("@/views/confirm-page")
+const reset = () => import("@/views/reset-page")
+const pageNotFound = () => import("@/views/not-found-page")
 
 const notAuthenticated = (to, from, next) => {
   if (!store.get("isAuthenticated")) {
@@ -38,22 +38,58 @@ const routes = [
     component: index,
   },
   {
-    path: "/about",
-    name: "about",
-    component: about,
-    beforeEnter: isAuthenticated,
+    path: "/contact",
+    name: "contact",
+    component: contact,
   },
   {
     path: "/account",
-    name: "Account",
-    component: index,
+    name: "account",
+    component: account,
     beforeEnter: isAuthenticated,
   },
   {
-    path: "/login",
-    name: "Login",
-    component: index,
+    path: "/about",
+    name: "about",
+    component: about,
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: signuppage,
     beforeEnter: notAuthenticated,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: loginpage,
+    beforeEnter: notAuthenticated,
+  },
+  {
+    path: "/accounts",
+    name: "accounts",
+    component: accounts,
+    beforeEnter: isAuthenticated,
+  },
+  {
+    path: "/confirm/:token",
+    name: "confirm",
+    component: confirm,
+  },
+  {
+    path: "/reset",
+    name: "reset",
+    component: reset,
+  },
+  {
+    path: "/reset/:token",
+    name: "resetToken",
+    component: reset,
+  },
+  {
+    path: "*",
+    name: "pageNotFound",
+    component: pageNotFound,
   },
 ]
 

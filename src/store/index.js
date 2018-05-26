@@ -25,5 +25,6 @@ const storePlugins = persistData
 
 export default new Vuex.Store({
   plugins: storePlugins,
+  strict: true,
   ...store,
 })

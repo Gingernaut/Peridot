@@ -2,7 +2,7 @@
   <footer v-if="showFooter">
     <router-link to="/about" class="navbar-item">About</router-link>
     <router-link to="/contact" class="navbar-item">Contact</router-link>
-    <p> &copy; {{ year }} Peridot </p>
+    <p> &copy; {{ year }}</p>
   </footer>
 </template>
 
@@ -10,9 +10,8 @@
 import { get } from "vuex-pathify"
 
 export default {
-  name: "my-footer",
+  name: "global-footer",
   components: {},
-  // props: [],
   mixins: [],
   data() {
     return {
@@ -42,7 +41,8 @@ footer {
   padding-bottom: 2vh;
 
   p {
-    padding: 8px;
+    margin: 8px;
+    margin-right: 16px;
   }
 }
 </style>

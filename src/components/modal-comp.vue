@@ -1,29 +1,24 @@
 <template>
   <div>
-    <transition name="fade" mode="out-in">
-      <div class="modal-mask" v-if="showMod" @click="close()" transition="modal">
-        <div class="modal-container" @click.stop>
-            <span @click="close()" class="close-button"></span>
-            <div class="modalbody">
-
-              <loginform v-if="modalType === 'login'" @exitModal="close"></loginform>
-              <signupform v-else-if="modalType === 'signup'" @exitModal="close"></signupform>
-
-            </div>
-        </div>
+    <div v-if="modalcomponent" @click="close()" class="modal-mask" transition="modal">
+      <div @click.stop class="modal-container">
+          <span @click="close()" class="close-button"></span>
+          <div class="modalbody">
+            <component v-bind:is="modalcomponent" @exitModal="close"></component>
+          </div>
       </div>
-    </transition>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "modal",
+  name: "global-navbar",
   components: {
-    loginform: () => import("@/components/login-form"),
-    signupform: () => import("@/components/signup-form"),
+    login: () => import("@/components/login-form"),
+    signup: () => import("@/components/signup-form"),
   },
-  props: ["show", "modalcomponent"],
+  props: ["modalcomponent"],
   mixins: [],
   data() {
     return {}
@@ -35,7 +30,7 @@ export default {
     document.addEventListener(
       "keydown",
       (e) => {
-        if (this.show && e.keyCode === 27) {
+        if (e.keyCode === 27) {
           this.close()
         }
       },
@@ -46,9 +41,6 @@ export default {
     )
   },
   computed: {
-    showMod() {
-      return this.show
-    },
     modalType() {
       return this.modalcomponent
     },
@@ -103,10 +95,6 @@ export default {
   height: 100%;
   display: block;
   margin-top: 50px;
-
-  @if ($debug) {
-    border: 1px solid red;
-  }
 }
 
 .close-button {
@@ -121,10 +109,6 @@ export default {
   cursor: hand;
   align-self: flex-end;
 
-  @if ($debug) {
-    border: 1px solid red;
-  }
-
   &:before,
   &:after {
     $width: 22px;
@@ -137,7 +121,7 @@ export default {
     display: inline-block;
     height: $height;
     width: $width;
-    background-color: $blue;
+    background-color: $outline;
     transition: all 0.25s ease-out;
   }
 

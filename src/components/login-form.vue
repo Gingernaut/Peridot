@@ -21,9 +21,7 @@
         </button>
       </p>
     </form>
-
     <router-link to="/reset" @click.native="closeModal()">Forget your password?</router-link>
-
   </div>
 </template>
 

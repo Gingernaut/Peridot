@@ -39,7 +39,6 @@
 export default {
   name: "signupform",
   components: {},
-  // props: [],
   mixins: [],
   data() {
     return {
