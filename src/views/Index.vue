@@ -1,12 +1,10 @@
 <template>
   <div class="home">
-
+    <h1>Hello there</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 import { get } from "vuex-pathify"
 
 export default {
@@ -34,8 +32,4 @@ export default {
 </script>
 
 <style>
-.home {
-  font-size: 30px;
-  color: $blue;
-}
 </style>

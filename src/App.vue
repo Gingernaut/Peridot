@@ -1,13 +1,20 @@
 <template>
   <div id="app">
+    <my_navbar></my_navbar>
     <router-view id="appContent"/>
+    <my_footer></my_footer>
   </div>
 </template>
 
 <script>
+import my_navbar from "@/components/navbar-comp"
+
 export default {
   name: "app",
-  components: {},
+  components: {
+    my_navbar,
+    my_footer: () => import("@/components/footer-comp"),
+  },
   mixins: [],
   data() {
     return {}

@@ -4,6 +4,11 @@ import store from "@/store/index"
 import router from "@/router/router"
 import "@/registerServiceWorker"
 
+import Buefy from "buefy"
+import "buefy/lib/buefy.css"
+
+Vue.use(Buefy)
+
 Vue.config.productionTip = false
 Vue.config.debug = true
 
