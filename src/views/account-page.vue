@@ -66,11 +66,14 @@ export default {
   },
   beforeCreate() {},
   created() {
-    this.$account.getOwnData()
     this.setLocalData()
   },
   beforeMount() {},
-  mounted() {},
+  mounted() {
+    this.$accountAPI.getAccount().then(() => {
+      this.setLocalData()
+    })
+  },
   computed: {
     passesMatch: function() {
       return this.localPass1 === this.localPass2
@@ -78,10 +81,10 @@ export default {
   },
   methods: {
     setLocalData: function() {
-      this.localFName = this.$store.get("account.firstName")
-      this.localLName = this.$store.get("account.lastName")
-      this.localEmail = this.$store.get("account.emailAddress")
-      this.localPhoneNumber = this.$store.get("account.phoneNumber")
+      this.localFName = this.$store.get("account/firstName")
+      this.localLName = this.$store.get("account/lastName")
+      this.localEmail = this.$store.get("account/emailAddress")
+      this.localPhoneNumber = this.$store.get("account/phoneNumber")
     },
     updateAcc: function() {
       if (this.localPass1 !== this.localPass2) {
@@ -90,16 +93,17 @@ export default {
       }
 
       let changedFields = this.changedFields()
-      let cleanData = this.$account.cleanData(changedFields)
+      let cleanData = this.$accountAPI.cleanData(changedFields)
 
       if (!cleanData.isClean) {
         this.errors = cleanData.errors
         return
       }
 
-      this.$account
+      this.$accountAPI
         .updateAcc(cleanData)
         .then(() => {
+          this.setLocalData()
           this.$toast.open({
             duration: 2000,
             message: "Changes Saved",
@@ -151,7 +155,7 @@ export default {
         type: "is-danger",
         hasIcon: true,
         onConfirm: () => {
-          this.$account.deleteAcc()
+          this.$accountAPI.deleteAcc()
           this.logout()
           this.$toast.open("Account deleted.")
         },
@@ -167,7 +171,7 @@ export default {
       this.errors = []
     },
     logout: function() {
-      this.$account.logout()
+      this.$accountAPI.logout()
       this.$router.push("/")
     },
   },

@@ -9,7 +9,7 @@ import ui from "@/store/ui"
 Vue.use(Vuex)
 pathify.debug()
 
-const persistData = false
+const persistData = true
 
 const store = {
   modules: {

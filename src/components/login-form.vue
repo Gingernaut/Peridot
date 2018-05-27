@@ -47,18 +47,18 @@ export default {
   computed: {},
   methods: {
     login() {
-      let cleanData = this.$account.cleanData({
-        emailAddress: this.emailAddress ? this.emailAddress : "",
-        password: this.password ? this.password : "",
+      const cleanData = this.$accountAPI.cleanData({
+        emailAddress: this.emailAddress,
+        password: this.password,
       })
 
-      if (!cleanData.isClean) {
+      if (cleanData.errors.length >= 1) {
         this.errors = cleanData.errors
         return
       }
-
+      console.log(cleanData)
       this.errors = []
-      this.$account
+      this.$accountAPI
         .login(cleanData)
         .then(() => {
           this.$toast.open({
@@ -73,8 +73,8 @@ export default {
             this.$router.push("/")
           }
         })
-        .catch((err) => {
-          console.log(err)
+        .catch((error) => {
+          console.log(error)
           this.errors = ["Incorrect email or password"]
         })
     },

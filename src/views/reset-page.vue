@@ -70,7 +70,7 @@ export default {
   mounted() {
     if (this.$route.params.token) {
       this.hasToken = true
-      this.$account.confirmReset(this.$route.params.token)
+      this.$accountAPI.confirmReset(this.$route.params.token)
     }
   },
   computed: {
@@ -80,14 +80,16 @@ export default {
   },
   methods: {
     initReset: function() {
-      let cleanData = this.$account.cleanData({ emailAddress: this.emailAddr })
+      let cleanData = this.$accountAPI.cleanData({
+        emailAddress: this.emailAddr,
+      })
 
       if (!cleanData.isClean) {
         this.errors = cleanData.errors
         return
       }
 
-      this.$account.initReset(this.emailAddr)
+      this.$accountAPI.initReset(this.emailAddr)
       this.$snackbar.open({
         message: "An email has been sent to that address.",
         type: "is-info",

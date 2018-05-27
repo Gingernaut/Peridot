@@ -56,46 +56,48 @@ export default {
   computed: {},
   methods: {
     signup() {
-      // clean data
+      const cleanData = this.$accountAPI.cleanData({
+        emailAddress: this.emailAddress ? this.emailAddress : "",
+        password: this.password ? this.password : "",
+        firstName: this.firstName ? this.firstName : "",
+        lastName: this.lastName ? this.lastName : "",
+      })
 
-      // if (!cleanData.isClean) {
-      //   this.errors = cleanData.errors
-      //   return
-      // }
+      if (cleanData.errors) {
+        this.errors = cleanData.errors
+        return
+      }
 
-      this.clearErrs()
-
-      // this.$account
-      //   .signup(cleanData)
-      //   .then(() => {
-      //     this.$toast.open({
-      //       duration: 2000,
-      //       message: "Signup Successful",
-      //       position: "is-top",
-      //       type: "is-success",
-      //     })
-
-      //     this.$emit("exitModal")
-
-      //     if (this.$router.currentRoute.path === "/signup") {
-      //       this.$router.push("/wallets")
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err)
-      //     this.errors = [
-      //       "An error occured. An email may aready exist with that address",
-      //     ]
-      //   })
-    },
-    clearErrs() {
       this.errors = []
+
+      this.$accountAPI
+        .signup(cleanData)
+        .then(() => {
+          this.$toast.open({
+            duration: 2000,
+            message: "Signup Successful",
+            position: "is-top",
+            type: "is-success",
+          })
+
+          this.$emit("exitModal")
+
+          if (this.$router.currentRoute.path === "/signup") {
+            this.$router.push("/")
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+          this.errors = [
+            "An error occured. An email may aready exist with that address",
+          ]
+        })
     },
   },
   beforeUpdate() {},
   updated() {},
   beforeDestroy() {
-    this.clearErrs()
+    this.errors = []
   },
 }
 </script>

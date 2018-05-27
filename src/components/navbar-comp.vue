@@ -21,8 +21,8 @@
         <router-link v-if="isAdmin" to="/accounts" class="navbar-item">Accounts</router-link>
       </div>
 
-      <div v-if="!isLoggedIn" class="navbar-end">
-        <span class="navbar-item">
+      <div class="navbar-end">
+        <span v-if="!isLoggedIn" class="navbar-item">
           <a @click="openSignup()" class="navbar-item button accNav is-info"> Sign Up</a>
           <a @click="openLogin()"  class="navbar-item button accNav">Log In</a>
         </span>
@@ -87,7 +87,7 @@ export default {
       this.modalComp = () => import("@/components/login-form")
     },
     logout() {
-      this.$account.logout()
+      this.$accountAPI.logout()
       this.$toast.open({
         duration: 1000,
         message: "Signed Out",

@@ -2,6 +2,7 @@ import { make } from "vuex-pathify"
 
 const state = {
   isAuthenticated: false,
+  id: null,
   firstName: null,
   lastName: null,
   emailAddress: null,
@@ -9,6 +10,9 @@ const state = {
   phoneNumber: null,
   userRole: null,
   UUID: null,
+  isValidated: null,
+  createdTime: null,
+  modifiedTime: null,
 }
 
 // automatically generate operations
