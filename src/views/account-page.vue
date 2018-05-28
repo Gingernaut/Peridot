@@ -116,14 +116,13 @@ export default {
             type: "is-success",
           })
         })
-        .catch((err) => {
+        .catch(() => {
           this.$toast.open({
             duration: 2000,
             message: "An error occured, changes not saved",
             position: "is-top",
             type: "is-danger",
           })
-          console.log(err)
         })
     },
     changedFields: function() {

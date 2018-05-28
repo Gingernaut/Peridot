@@ -100,12 +100,12 @@ export default {
       this.selectedUser = userData
       this.modalComp = () => import("@/components/admin-edit-user")
     },
-    closeModal(madeChanges = true) {
+    closeModal() {
       this.selectedUser = {}
       this.modalComp = null
-      if (madeChanges) {
-        this.updateLocalData()
-      }
+
+      // to save changes made in modal
+      this.updateLocalData()
     },
     updateLocalData() {
       this.$accountAPI
@@ -116,8 +116,7 @@ export default {
           this.accounts = users
           this.isPaginated = users.length > this.perPage ? true : false
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
           this.isLoading = false
           this.$snackbar.open({
             duration: 2000,
@@ -136,7 +135,8 @@ export default {
   beforeUpdate() {},
   updated() {},
   beforeDestroy() {
-    this.closeModal(false)
+    this.selectedUser = {}
+    this.modalComp = null
   },
 }
 </script>

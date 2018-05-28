@@ -112,7 +112,13 @@ nav {
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 10;
+  z-index: 9;
+  height: $stickyNavHeight;
+}
+
+.navbar-brand,
+.navbar-tabs {
+  min-height: 0;
   height: $stickyNavHeight;
 }
 

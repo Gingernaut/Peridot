@@ -30,6 +30,7 @@
           Signup
         </button>
       </p>
+      <router-link to="/login">Have an account? Login here</router-link>
     </form>
   </div>
 </template>
@@ -86,8 +87,7 @@ export default {
             this.$router.push("/")
           }
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
           this.errors = [
             "An error occured. An email may aready exist with that address",
           ]

@@ -2,6 +2,7 @@
   <div class="hero-body">
     <div class="container">
 
+      <!-- updating password -->
       <form v-if="hasToken" id="resetPassForm" @submit.prevent="saveNewPass">
         <b-field label="New Password">
           <b-input type="password" min="6" v-model="localPass1">
@@ -21,15 +22,16 @@
         </p>
       </form>
 
+      <!-- Creating new reset -->
       <form v-if="!hasToken" id="initResetForm" @submit.prevent="initReset">
 
-        <h1 class="title">Please enter your email.</h1>
+        <h1 class="title">Reset your password</h1>
           
         <p>If there is an account with your email, you will get a link to reset your password.</p>
 
         <br>
         <b-field label="Email Address">
-          <b-input type="email" v-model="emailAddr">
+          <b-input type="email" v-model="emailAddress">
           </b-input>
         </b-field>
 
@@ -60,7 +62,7 @@ export default {
       hasToken: false,
       localPass1: null,
       localPass2: null,
-      emailAddr: null,
+      emailAddress: null,
       errors: [],
     }
   },
@@ -81,17 +83,17 @@ export default {
   methods: {
     initReset: function() {
       let cleanData = this.$accountAPI.cleanData({
-        emailAddress: this.emailAddr,
+        emailAddress: this.emailAddress,
       })
 
-      if (!cleanData.isClean) {
+      if (!cleanData.errors.length > 1) {
         this.errors = cleanData.errors
         return
       }
 
-      this.$accountAPI.initReset(this.emailAddr)
+      this.$accountAPI.initReset(this.emailAddress)
       this.$snackbar.open({
-        message: "An email has been sent to that address.",
+        message: "Email Address Submitted",
         type: "is-info",
         position: "is-top",
         actionText: "Ok",

@@ -53,19 +53,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .modal-mask {
   position: fixed;
-  z-index: 100;
+  z-index: 30; // over navbar, under delete dialog
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .modal-container {
@@ -75,9 +74,10 @@ export default {
   background-color: $white;
   border-radius: 5px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
-  margin-top: $stickyNavHeight;
+  margin-top: $stickyNavHeight * 2;
   padding: 10px;
   display: flex;
+  align-self: flex-start;
   flex-direction: column;
 
   h1 {
@@ -146,6 +146,7 @@ export default {
   .modal-container {
     width: 80vw;
     min-width: 0;
+    margin-top: $stickyNavHeight * 1.3;
   }
 }
 </style>

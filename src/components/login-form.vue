@@ -21,7 +21,7 @@
         </button>
       </p>
     </form>
-    <router-link to="/signup">Create new account</router-link>
+    <router-link to="/signup" @click.native="closeModal()">Create new account</router-link>
     <br/>
     <router-link to="/reset" @click.native="closeModal()">Forget your password?</router-link>
   </div>
@@ -72,8 +72,7 @@ export default {
             this.$router.push("/")
           }
         })
-        .catch((error) => {
-          console.log(error)
+        .catch(() => {
           this.errors = ["Incorrect email or password"]
         })
     },

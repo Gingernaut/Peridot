@@ -14,17 +14,6 @@
                 <strong>Modified:</strong> {{ modifiedTime | fullDate }}
             </p>
 
-            <b-field label="Verified">
-                <div class="block">
-                    <b-radio v-model="isVerified" native-value="true">
-                        True
-                    </b-radio>
-                    <b-radio v-model="isVerified" native-value="false">
-                        False
-                    </b-radio>
-                </div>
-            </b-field>
-
             <b-field label="First Name">
                 <b-input type="text" v-model="firstName">
                 </b-input>
@@ -49,10 +38,22 @@
                 <b-input type="text" v-model="userRole">
                 </b-input>
             </b-field>
-            
-            <br/>
-            <button class="button is-primary">Save Changes</button>
-            <button @click.prevent="closeModal()" class="button is-danger is-outlined">Discard Changes</button>
+
+            <b-field label="Verified">
+                <div class="block">
+                    <b-radio v-model="isVerified" native-value="true">
+                        True
+                    </b-radio>
+                    <b-radio v-model="isVerified" native-value="false">
+                        False
+                    </b-radio>
+                </div>
+            </b-field>
+            <div id="controlButtons">
+                <button class="button is-primary">Save Changes</button>
+                <button @click.prevent="closeModal()" class="button is-danger is-outlined">Discard Changes</button>
+                <button @click.prevent="deleteAccount()" class="button is-danger is-pulled-right">Delete Account</button>
+            </div>
         </form>
       </div>
     <div v-else>
@@ -118,7 +119,6 @@ export default {
       }
 
       let cleanData = this.$accountAPI.cleanData(changedData)
-      console.log("clean data", cleanData)
       this.$accountAPI
         .updateAccount(cleanData, this.id)
         .then(() => {
@@ -130,9 +130,13 @@ export default {
           })
           this.closeModal()
         })
-        .catch((err) => {
-          console.log("update error")
-          console.log(err)
+        .catch(() => {
+          this.$snackbar.open({
+            duration: 2000,
+            message: "An error occured. Please try again",
+            position: "is-top",
+            type: "is-warning",
+          })
         })
     },
     changedFields: function() {
@@ -164,6 +168,41 @@ export default {
 
       return fields
     },
+    deleteAccount: function() {
+      this.$dialog.confirm({
+        title: "Deleting account",
+        message:
+          "Are you sure you want to <strong>delete</strong> this account? This cannot be undone.",
+        confirmText: "Delete Account",
+        type: "is-danger",
+        hasIcon: true,
+        onConfirm: () => {
+          this.$accountAPI
+            .deleteAccount(this.id)
+            .then(() => {
+              if (this.id === this.$store.get("account/id")) {
+                this.$accountAPI.logout()
+                this.$router.push("/")
+              }
+              this.$toast.open({
+                duration: 2000,
+                message: "Account deleted",
+                position: "is-top",
+                type: "is-info",
+              })
+              this.closeModal()
+            })
+            .catch(() => {
+              this.$snackbar.open({
+                duration: 2000,
+                message: "An error occured. Please try again",
+                position: "is-top",
+                type: "is-warning",
+              })
+            })
+        },
+      })
+    },
     closeModal() {
       this.$emit("exitModal")
     },
@@ -178,7 +217,7 @@ export default {
         hour: "numeric",
         minute: "numeric",
       }
-      return new Date(date).toLocaleDateString("en-US", options)
+      return new Date(date).toLocaleDateString(undefined, options)
     },
   },
   beforeUpdate() {},
@@ -196,5 +235,9 @@ export default {
     margin-left: 5px;
     margin-right: 5px;
   }
+}
+
+#controlButtons {
+  margin-top: 40px;
 }
 </style>

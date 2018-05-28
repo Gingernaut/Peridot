@@ -126,6 +126,23 @@ const accFunctions = {
         return res.data.users
       })
   },
+  initReset: function(emailAddress) {
+    return HTTP().post(`/reset-password/${emailAddress}`)
+  },
+  confirmResets: function(token) {
+    return HTTP()
+      .post(`/confirm-reset/${token}`)
+      .then((res) => {
+        updateStoreData(res.data)
+      })
+  },
+  validateAccount: function(token) {
+    return HTTP()
+      .post(`/validate-account/${token}`)
+      .then((res) => {
+        updateStoreData(res.data)
+      })
+  },
   logout: function() {
     emptyStore()
   },
@@ -141,7 +158,7 @@ const accFunctions = {
       cleanedData.lastName = payload.lastName
     }
     if (payload.emailAddress) {
-      cleanedData.emailAddress = payload.emailAddress.toLowerCase()
+      cleanedData.emailAddress = payload.emailAddress
     }
 
     if (payload.isVerified) {
@@ -153,7 +170,7 @@ const accFunctions = {
     }
 
     if (payload.userRole) {
-      cleanedData.userRole = payload.userRole.toUpperCase()
+      cleanedData.userRole = payload.userRole
     }
 
     if (payload.password) {

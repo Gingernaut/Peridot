@@ -35,10 +35,5 @@ export default {
 <style lang="scss" scoped>
 .container {
   height: 150vh;
-  background-color: goldenrod;
-}
-
-.section {
-  background-color: red;
 }
 </style>
