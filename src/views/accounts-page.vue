@@ -1,5 +1,7 @@
 <template>
   <div class="hero-body">
+    <modal :component="modalComp" :payload="selectedUser" @exitModal="closeModal"></modal>
+
     <div class="container">
       <p> Number of accounts: {{ this.accounts.length }}</p>
       <br>
@@ -14,11 +16,10 @@
         :paginated="isPaginated"
         :per-page="perPage"
         :pagination-simple="isPaginationSimple"
-        :selected.sync="selected"
         :detailed="isDetailed"
         :checked-rows.sync="checkedRows">
 
-        <template>
+        <template slot-scope="props">
           <b-table-column field="id" label="ID" width="40" sortable numeric>
             {{ props.row.id }}
           </b-table-column>
@@ -35,61 +36,23 @@
             {{ props.row.userRole }}
           </b-table-column>
 
-          <b-table-column field="modifiedDate" label="Modified Date" sortable centered>
+          <b-table-column field="modifiedTime" label="Modified Date" sortable centered>
             <span class="tag is-info">
-              {{ new Date(props.row.modifiedDate).toLocaleDateString() }}
+              {{ new Date(props.row.modifiedTime).toLocaleDateString() }}
             </span>
           </b-table-column>
 
-          <b-table-column field="createdDate" label="Created Date" sortable centered>
+          <b-table-column field="createdTime" label="Created Date" sortable centered>
             <span class="tag is-info">
-              {{ new Date(props.row.createdDate).toLocaleDateString() }}
+              {{ new Date(props.row.createdTime).toLocaleDateString() }}
             </span>
           </b-table-column>
 
-        </template>
-
-        <template slot="detail">
-
-          <div class="content">
-            <p>
-              UUID: {{ props.row.UUID }}
-            </p>
-
-            <p>
-              Validated: {{ props.row.isValidated }}
-            </p>
-
-            <!-- <form @submit.prevent="editAcc(props.row)" id="editAccForm">
-                
-                <b-field label="First Name">
-                  <b-input type="text" v-model="props.row.firstName">
-                  </b-input>
-                </b-field>
-                
-                <b-field label="Last Name">
-                  <b-input type="text" v-model="props.row.lastName">
-                  </b-input>
-                </b-field>
-
-                <b-field label="Email">
-                  <b-input type="text" v-model="props.row.emailAddress">
-                  </b-input>
-                </b-field>
-
-                <b-field label="Phone">
-                  <b-input type="text" v-model="props.row.phoneNumber">
-                  </b-input>
-                </b-field>
-
-                <b-field label="Role">
-                  <b-input type="text" v-model="props.row.userRole">
-                  </b-input>
-                </b-field>
-
-               
-              </form> -->
-          </div>
+          <b-table-column>
+            <button 
+            @click="openEditModal(props.row)" 
+            class="button is-small is-info is-outlined">Edit</button>
+          </b-table-column>
         </template>
 
         <div slot="empty" class="has-text-centered">
@@ -110,39 +73,66 @@ export default {
     return {
       accounts: [],
       checkedRows: [],
-      selected: {},
       isBordered: false,
       isStriped: false,
       isNarrowed: false,
       isCheckable: false,
       isEmpty: true,
       isLoading: true,
-      isDetailed: true,
-      hasMobileCards: true,
-      isPaginated: true,
+      isDetailed: false,
+      hasMobileCards: false,
+      isPaginated: false,
       isPaginationSimple: false,
       perPage: 20,
+      modalComp: null,
+      selectedUser: {},
     }
   },
   beforeCreate() {},
   created() {},
   beforeMount() {
-    this.$accountAPI.getAccounts().then((res) => {
-      this.isLoading = false
-      this.isEmpty = false
-      this.accounts = res.data.Users // sort by id
-    })
+    this.updateLocalData()
   },
   mounted() {},
   computed: {},
   methods: {
-    clearSelected() {
-      this.selected = {}
+    openEditModal(userData) {
+      this.selectedUser = userData
+      this.modalComp = () => import("@/components/admin-edit-user")
+    },
+    closeModal(madeChanges = true) {
+      this.selectedUser = {}
+      this.modalComp = null
+      if (madeChanges) {
+        this.updateLocalData()
+      }
+    },
+    updateLocalData() {
+      this.$accountAPI
+        .getAccounts()
+        .then((users) => {
+          this.isLoading = false
+          this.isEmpty = false
+          this.accounts = users
+          this.isPaginated = users.length > this.perPage ? true : false
+        })
+        .catch((err) => {
+          console.log(err)
+          this.isLoading = false
+          this.$snackbar.open({
+            duration: 2000,
+            message: "An error occured. Please try again",
+            position: "is-top",
+            type: "is-warning",
+          })
+        })
     },
   },
   beforeUpdate() {},
   updated() {},
-  beforeDestroy() {},
+  beforeDestroy() {
+    this.closeModal(false)
+  },
 }
 </script>
 

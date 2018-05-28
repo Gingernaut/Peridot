@@ -56,7 +56,6 @@ export default {
         this.errors = cleanData.errors
         return
       }
-      console.log(cleanData)
       this.errors = []
       this.$accountAPI
         .login(cleanData)

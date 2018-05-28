@@ -59,11 +59,11 @@ export default {
       const cleanData = this.$accountAPI.cleanData({
         emailAddress: this.emailAddress ? this.emailAddress : "",
         password: this.password ? this.password : "",
-        firstName: this.firstName ? this.firstName : "",
-        lastName: this.lastName ? this.lastName : "",
+        firstName: this.firstName,
+        lastName: this.lastName,
       })
 
-      if (cleanData.errors) {
+      if (cleanData.errors.length >= 1) {
         this.errors = cleanData.errors
         return
       }

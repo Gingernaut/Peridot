@@ -70,9 +70,14 @@ export default {
   },
   beforeMount() {},
   mounted() {
-    this.$accountAPI.getAccount().then(() => {
-      this.setLocalData()
-    })
+    this.$accountAPI
+      .getAccount()
+      .then(() => {
+        this.setLocalData()
+      })
+      .catch(() => {
+        console.log("failed to retrieve latest account info")
+      })
   },
   computed: {
     passesMatch: function() {
@@ -95,13 +100,13 @@ export default {
       let changedFields = this.changedFields()
       let cleanData = this.$accountAPI.cleanData(changedFields)
 
-      if (!cleanData.isClean) {
+      if (cleanData.errors.length >= 1) {
         this.errors = cleanData.errors
         return
       }
 
       this.$accountAPI
-        .updateAcc(cleanData)
+        .updateAccount(cleanData)
         .then(() => {
           this.setLocalData()
           this.$toast.open({
@@ -172,6 +177,7 @@ export default {
     },
     logout: function() {
       this.$accountAPI.logout()
+      this.clearLocal()
       this.$router.push("/")
     },
   },

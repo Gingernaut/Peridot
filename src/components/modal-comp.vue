@@ -5,7 +5,7 @@
           <span @click="close()" class="close-button"></span>
           <div class="modalbody">
             <transition name="fade">
-              <component :is="component" @exitModal="close"></component>
+              <component :is="component" :payload="payload" @exitModal="close"></component>
             </transition>
           </div>
       </div>
@@ -17,7 +17,7 @@
 export default {
   name: "global-modal",
   components: {},
-  props: ["component"],
+  props: ["component", "payload"],
   mixins: [],
   data() {
     return {}

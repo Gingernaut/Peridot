@@ -46,6 +46,21 @@ function updateStoreData(accInfo) {
   }
 }
 
+function emptyStore() {
+  store.set("account/isAuthenticated", false)
+  store.set("account/token", null)
+  store.set("account/id", null)
+  store.set("account/firstName", null)
+  store.set("account/lastName", null)
+  store.set("account/emailAddress", null)
+  store.set("account/createdTime", null)
+  store.set("account/modifiedTime", null)
+  store.set("account/UUID", null)
+  store.set("account/phoneNumber", null)
+  store.set("account/isValidated", null)
+  store.set("account/userRole", null)
+}
+
 const accFunctions = {
   login: function(payload) {
     return HTTP()
@@ -54,15 +69,7 @@ const accFunctions = {
         password: payload.password,
       })
       .then((res) => {
-        console.log("logging in")
         store.set("account/isAuthenticated", true)
-        updateStoreData(res.data)
-      })
-  },
-  getAccount: function() {
-    return HTTP()
-      .get("/account")
-      .then((res) => {
         updateStoreData(res.data)
       })
   },
@@ -79,6 +86,49 @@ const accFunctions = {
         updateStoreData(res.data)
       })
   },
+  getAccount: function(id = null) {
+    if (id) {
+      return HTTP().get(`/accounts/${id}`)
+    } else {
+      return HTTP()
+        .get("/account")
+        .then((res) => {
+          updateStoreData(res.data)
+        })
+    }
+  },
+  updateAccount: function(payload, id = null) {
+    if (id) {
+      return HTTP().put(`/accounts/${id}`, payload)
+    } else {
+      return HTTP()
+        .put("/account", payload)
+        .then((res) => {
+          updateStoreData(res.data)
+        })
+    }
+  },
+  deleteAccount: function(id = null) {
+    if (id) {
+      return HTTP().delete(`/accounts/${id}`)
+    } else {
+      return HTTP()
+        .delete("/account")
+        .then(() => {
+          emptyStore()
+        })
+    }
+  },
+  getAccounts: function() {
+    return HTTP()
+      .get("/accounts")
+      .then((res) => {
+        return res.data.users
+      })
+  },
+  logout: function() {
+    emptyStore()
+  },
   cleanData: function(payload) {
     let cleanedData = {
       errors: [],
@@ -91,7 +141,15 @@ const accFunctions = {
       cleanedData.lastName = payload.lastName
     }
     if (payload.emailAddress) {
-      cleanedData.emailAddress = payload.emailAddress
+      cleanedData.emailAddress = payload.emailAddress.toLowerCase()
+    }
+
+    if (payload.isValidated) {
+      cleanedData.isValidated = payload.isValidated
+    }
+
+    if (payload.userRole) {
+      cleanedData.userRole = payload.userRole.toUpperCase()
     }
 
     if (payload.password) {
