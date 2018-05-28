@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" v-if="showNavbar">
+  <nav v-if="showNavbar" class="navbar is-fixed-top" role="navigation">
     <modal :component="modalComp" @exitModal="closeModal"></modal>
 
     <div class="navbar-brand">
@@ -109,6 +109,11 @@ export default {
 <style lang="scss" scoped>
 nav {
   border-bottom: 1px solid $primary;
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  height: $stickyNavHeight;
 }
 
 #logo {

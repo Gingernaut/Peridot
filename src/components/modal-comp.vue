@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 .modal-mask {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
@@ -75,6 +75,7 @@ export default {
   background-color: $white;
   border-radius: 5px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.2);
+  margin-top: $stickyNavHeight;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -89,7 +90,7 @@ export default {
   width: 100%;
   height: 100%;
   display: block;
-  margin-top: 50px;
+  margin-top: $stickyNavHeight;
 }
 
 .close-button {

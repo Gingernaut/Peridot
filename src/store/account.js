@@ -10,7 +10,7 @@ const state = {
   phoneNumber: null,
   userRole: null,
   UUID: null,
-  isValidated: null,
+  isVerified: null,
   createdTime: null,
   modifiedTime: null,
 }

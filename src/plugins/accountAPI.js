@@ -38,8 +38,8 @@ function updateStoreData(accInfo) {
   if (accInfo.phoneNumber) {
     store.set("account/phoneNumber", accInfo.phoneNumber)
   }
-  if (accInfo.isValidated) {
-    store.set("account/isValidated", accInfo.isValidated)
+  if (accInfo.isVerified) {
+    store.set("account/isVerified", accInfo.isVerified)
   }
   if (accInfo.userRole) {
     store.set("account/userRole", accInfo.userRole)
@@ -57,7 +57,7 @@ function emptyStore() {
   store.set("account/modifiedTime", null)
   store.set("account/UUID", null)
   store.set("account/phoneNumber", null)
-  store.set("account/isValidated", null)
+  store.set("account/isVerified", null)
   store.set("account/userRole", null)
 }
 
@@ -144,8 +144,12 @@ const accFunctions = {
       cleanedData.emailAddress = payload.emailAddress.toLowerCase()
     }
 
-    if (payload.isValidated) {
-      cleanedData.isValidated = payload.isValidated
+    if (payload.isVerified) {
+      cleanedData.isVerified = payload.isVerified
+    }
+
+    if (payload.phoneNumber) {
+      cleanedData.phoneNumber = payload.phoneNumber
     }
 
     if (payload.userRole) {

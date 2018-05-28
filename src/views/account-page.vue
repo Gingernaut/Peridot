@@ -130,23 +130,23 @@ export default {
       let fields = {}
 
       if (this.$store.state.account.firstName !== this.localFName) {
-        fields["firstName"] = this.localFName
+        fields.firstName = this.localFName
       }
 
       if (this.$store.state.account.lastName !== this.localLName) {
-        fields["lastName"] = this.localLName
+        fields.lastName = this.localLName
       }
 
       if (this.$store.state.account.emailAddress !== this.localEmail) {
-        fields["emailAddress"] = this.localEmail
+        fields.emailAddress = this.localEmail
       }
 
       if (this.$store.state.account.phoneNum !== this.localPhoneNum) {
-        fields["phoneNumber"] = this.localPhoneNumber
+        fields.phoneNumber = this.localPhoneNumber
       }
 
       if (this.localPass1) {
-        fields["password"] = this.localPass1
+        fields.password = this.localPass1
       }
 
       return fields

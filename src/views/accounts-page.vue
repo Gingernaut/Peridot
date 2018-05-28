@@ -32,19 +32,19 @@
             {{ props.row.emailAddress }}
           </b-table-column>
 
-          <b-table-column field="isValidated" label="Role" sortable>
+          <b-table-column field="isVerified" label="Role" sortable>
             {{ props.row.userRole }}
           </b-table-column>
 
           <b-table-column field="modifiedTime" label="Modified Date" sortable centered>
             <span class="tag is-info">
-              {{ new Date(props.row.modifiedTime).toLocaleDateString() }}
+              {{ props.row.modifiedTime | localDate }}
             </span>
           </b-table-column>
 
           <b-table-column field="createdTime" label="Created Date" sortable centered>
             <span class="tag is-info">
-              {{ new Date(props.row.createdTime).toLocaleDateString() }}
+              {{ props.row.createdTime | localDate }}
             </span>
           </b-table-column>
 
@@ -126,6 +126,11 @@ export default {
             type: "is-warning",
           })
         })
+    },
+  },
+  filters: {
+    localDate: function(date) {
+      return new Date(date).toLocaleDateString()
     },
   },
   beforeUpdate() {},

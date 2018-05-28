@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Hello</h1>
-        <h2 class="subtitle">
-          Welcome to your new Vue.js application!
-        </h2>
-      </div>
-    </section>
-  </div>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Hello</h1>
+      <h2 class="subtitle">
+        Welcome to your new Vue.js application!
+      </h2>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -35,4 +33,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  height: 150vh;
+  background-color: goldenrod;
+}
+
+.section {
+  background-color: red;
+}
 </style>
