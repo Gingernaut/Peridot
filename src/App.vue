@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <GlobalNavbar/>
-    <router-view id="appContent"/>
+    <transition name="fadePage" mode="out-in">
+      <router-view id="appContent" :key="$route.fullPath"/>
+    </transition>
     <GlobalFooter/>
   </div>
 </template>
@@ -63,6 +65,18 @@ body {
   overflow-x: hidden;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
 #app {
   margin: 0;
   padding: 0;
@@ -79,15 +93,17 @@ body {
   flex-grow: 1;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+.fadePage-enter-active,
+.fadePage-leave-active {
+  transition: opacity 0.1s;
+}
+.fadePage-enter,
+.fadePage-leave-to {
+  opacity: 0;
 }
 
-a,
-a:visited,
-a:hover {
-  text-decoration: none;
+// current route link
+.router-link-active {
+  color: $blue;
 }
 </style>

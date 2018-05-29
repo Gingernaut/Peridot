@@ -12,6 +12,7 @@ const HTTP = () => {
 
 function updateStoreData(accInfo) {
   if (accInfo.jwt) {
+    store.set("account/isAuthenticated", true)
     store.set("account/token", accInfo.jwt)
   }
   if (accInfo.id) {
@@ -129,7 +130,7 @@ const accFunctions = {
   initReset: function(emailAddress) {
     return HTTP().post(`/reset-password/${emailAddress}`)
   },
-  confirmResets: function(token) {
+  confirmReset: function(token) {
     return HTTP()
       .post(`/confirm-reset/${token}`)
       .then((res) => {

@@ -30,7 +30,7 @@
           Signup
         </button>
       </p>
-      <router-link to="/login">Have an account? Login here</router-link>
+      <router-link to="/login">Login here</router-link>
     </form>
   </div>
 </template>

@@ -72,7 +72,7 @@ const routes = [
     beforeEnter: isAuthenticated,
   },
   {
-    path: "/confirm/:token",
+    path: "/confirm-account/:token",
     name: "confirm",
     component: confirm,
   },
@@ -86,6 +86,7 @@ const routes = [
     path: "/reset/:token",
     name: "resetToken",
     component: reset,
+    beforeEnter: notAuthenticated,
   },
   {
     path: "*",

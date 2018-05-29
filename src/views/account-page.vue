@@ -4,34 +4,34 @@
     <form id="updateAccForm" @submit.prevent="updateAcc">
 
       <b-field label="First Name">
-        <b-input v-model="localFName"></b-input>
+        <b-input v-model="firstName"></b-input>
       </b-field>
 
       <b-field label="Last Name">
-        <b-input v-model="localLName"></b-input>
+        <b-input v-model="lastName"></b-input>
       </b-field>
 
       <b-field label="Email">
-        <b-input type="email" v-model="localEmail">
+        <b-input type="email" v-model="emailAddress">
         </b-input>
       </b-field>
 
       <b-field label="Phone">
-        <b-input v-model="localPhoneNumber"></b-input>
+        <b-input v-model="phoneNumber"></b-input>
       </b-field>
 
       <b-field label="Change Password">
-        <b-input type="password" v-model="localPass1">
+        <b-input type="password" v-model="password1">
         </b-input>
 
       </b-field>
 
-      <b-field v-if="localPass1" label="Confirm Password">
-        <b-input type="password" v-model="localPass2">
+      <b-field v-if="password1" label="Confirm Password">
+        <b-input type="password" v-model="password2">
         </b-input>
       </b-field>
 
-      <p id="passMatchErr" v-if="!passesMatch && localPass1.length >= 1">Both passwords must match</p>
+      <p id="passMatchErr" v-if="!passesMatch && password1.length >= 1">Both passwords must match</p>
 
       <p class="control">
         <button class="button is-primary">
@@ -55,12 +55,12 @@ export default {
   mixins: [],
   data() {
     return {
-      localFName: null,
-      localLName: null,
-      localEmail: null,
-      localPhoneNumber: null,
-      localPass1: null,
-      localPass2: null,
+      firstName: null,
+      lastName: null,
+      emailAddress: null,
+      phoneNumber: null,
+      password1: null,
+      password2: null,
       errors: [],
     }
   },
@@ -81,18 +81,18 @@ export default {
   },
   computed: {
     passesMatch: function() {
-      return this.localPass1 === this.localPass2
+      return this.password1 === this.password2
     },
   },
   methods: {
     setLocalData: function() {
-      this.localFName = this.$store.get("account/firstName")
-      this.localLName = this.$store.get("account/lastName")
-      this.localEmail = this.$store.get("account/emailAddress")
-      this.localPhoneNumber = this.$store.get("account/phoneNumber")
+      this.firstName = this.$store.get("account/firstName")
+      this.lastName = this.$store.get("account/lastName")
+      this.emailAddress = this.$store.get("account/emailAddress")
+      this.phoneNumber = this.$store.get("account/phoneNumber")
     },
     updateAcc: function() {
-      if (this.localPass1 !== this.localPass2) {
+      if (this.password1 !== this.password2) {
         this.errors = ["passwords must match."]
         return
       }
@@ -128,24 +128,24 @@ export default {
     changedFields: function() {
       let fields = {}
 
-      if (this.$store.state.account.firstName !== this.localFName) {
-        fields.firstName = this.localFName
+      if (this.$store.get("firstName") !== this.firstName) {
+        fields.firstName = this.firstName
       }
 
-      if (this.$store.state.account.lastName !== this.localLName) {
-        fields.lastName = this.localLName
+      if (this.$store.get("lastName") !== this.lastName) {
+        fields.lastName = this.lastName
       }
 
-      if (this.$store.state.account.emailAddress !== this.localEmail) {
-        fields.emailAddress = this.localEmail
+      if (this.$store.get("emailAddress") !== this.emailAddress) {
+        fields.emailAddress = this.emailAddress
       }
 
-      if (this.$store.state.account.phoneNum !== this.localPhoneNum) {
-        fields.phoneNumber = this.localPhoneNumber
+      if (this.$store.get("phoneNum") !== this.phoneNumber) {
+        fields.phoneNumber = this.phoneNumber
       }
 
-      if (this.localPass1) {
-        fields.password = this.localPass1
+      if (this.password1 && this.password1 === this.password2) {
+        fields.password = this.password1
       }
 
       return fields
@@ -166,12 +166,12 @@ export default {
       })
     },
     clearLocal: function() {
-      this.localFName = null
-      this.localLName = null
-      this.localEmail = null
-      this.localPhoneNum = null
-      this.localPass1 = null
-      this.localPass2 = null
+      this.firstName = null
+      this.lastName = null
+      this.emailAddress = null
+      this.phoneNumber = null
+      this.password1 = null
+      this.password2 = null
       this.errors = []
     },
     logout: function() {
