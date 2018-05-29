@@ -20,7 +20,7 @@ export default {
   created() {},
   beforeMount() {
     const token = this.$route.params.token
-    this.$accountAPI.confirmToken(token).then(() => {
+    this.$accountAPI.validateAccount(token).then(() => {
       this.isLoading = false
       this.$toast.open({
         duration: 2000,

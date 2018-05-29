@@ -5,15 +5,15 @@
       <!-- updating password -->
       <form v-if="hasToken" id="resetPassForm" @submit.prevent="saveNewPass">
         <b-field label="New Password">
-          <b-input type="password" min="6" v-model="localPass1">
+          <b-input type="password" min="6 " v-model="password1">
           </b-input>
         </b-field>
 
         <b-field label="Confirm New Password">
-          <b-input type="password" min="6 " v-model="localPass2">
+          <b-input type="password" min="6 " v-model="password2">
           </b-input>
         </b-field>
-        <p id="passMatchErr" v-if="!passesMatch && localPass1.length >= 1">Both passwords must match</p>
+        <p class="has-text-danger" v-if="!passesMatch && password1.length >= 1">Both passwords must match</p>
 
         <p class="control">
           <button class="button is-primary">
@@ -60,8 +60,8 @@ export default {
   data() {
     return {
       hasToken: false,
-      localPass1: null,
-      localPass2: null,
+      password1: null,
+      password2: null,
       emailAddress: null,
       errors: [],
     }
@@ -71,13 +71,25 @@ export default {
   beforeMount() {},
   mounted() {
     if (this.$route.params.token) {
+      console.log("has token")
       this.hasToken = true
-      this.$accountAPI.confirmReset(this.$route.params.token)
+      this.$accountAPI
+        .confirmReset(this.$route.params.token)
+        .then((res) => {
+          console.log("confirmed reset")
+          console.log(res)
+        })
+        .catch((err) => {
+          this.errors.push(err)
+          console.log(err)
+          this.hasToken = false
+          this.$router.push("/reset")
+        })
     }
   },
   computed: {
     passesMatch: function() {
-      return this.localPass1 === this.localPass2
+      return this.password1 === this.password2
     },
   },
   methods: {
@@ -101,9 +113,9 @@ export default {
       this.$router.push("/")
     },
     saveNewPass: function() {
-      if (this.localPass1 === this.localPass2 && this.localPass1.length >= 6) {
+      if (this.password1 === this.password2 && this.password1.length >= 6) {
         this.$account
-          .updateAcc({ password: this.localPass1 })
+          .updateAcc({ password: this.password1 })
           .then(() => {
             this.$router.push("/account")
             this.$toast.open({
@@ -114,6 +126,8 @@ export default {
             })
           })
           .catch((err) => {
+            console.log("errors")
+            console.log(err)
             this.errors = [err]
           })
       } else {

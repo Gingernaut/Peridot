@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <GlobalNavbar/>
-    <router-view id="appContent"/>
+    <transition name="fadePage" mode="out-in">
+      <router-view id="appContent" :key="$route.fullPath"/>
+    </transition>
     <GlobalFooter/>
   </div>
 </template>
@@ -77,6 +79,15 @@ body {
 #appContent {
   margin-top: $stickyNavHeight + 1px;
   flex-grow: 1;
+}
+
+.fadePage-enter-active,
+.fadePage-leave-active {
+  transition: opacity 0.1s;
+}
+.fadePage-enter,
+.fadePage-leave-to {
+  opacity: 0;
 }
 
 *,

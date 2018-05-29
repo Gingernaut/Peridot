@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .modal-mask {
   position: fixed;
   z-index: 30; // over navbar, under delete dialog

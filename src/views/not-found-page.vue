@@ -1,6 +1,10 @@
 <template>
-  <div>
-    404
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        404 Not Found
+      </h1>
+    </div>
   </div>
 </template>
 
@@ -14,7 +18,9 @@ export default {
     return {}
   },
   beforeCreate() {},
-  created() {},
+  created() {
+    this.$router.push("/404")
+  },
   beforeMount() {},
   mounted() {},
   computed: {},
