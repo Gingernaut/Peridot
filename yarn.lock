@@ -791,9 +791,9 @@
     eslint-loader "^2.0.0"
     eslint-plugin-vue "^4.5.0"
 
-"@vue/cli-plugin-pwa@^3.0.0-beta.14":
-  version "3.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-pwa/-/cli-plugin-pwa-3.0.0-beta.14.tgz#33722711a801e742ebf605222141d30642c127b0"
+"@vue/cli-plugin-pwa@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-pwa/-/cli-plugin-pwa-3.0.0-beta.15.tgz#efd9394c275597baf512dc138c6b7480d008b6fd"
   dependencies:
     workbox-webpack-plugin "^3.2.0"
 
