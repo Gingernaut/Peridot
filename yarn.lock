@@ -797,9 +797,9 @@
   dependencies:
     workbox-webpack-plugin "^3.2.0"
 
-"@vue/cli-plugin-unit-jest@^3.0.0-beta.11":
-  version "3.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.0-beta.11.tgz#fc9d705ce13e69b67c463de11e93ea60178e600d"
+"@vue/cli-plugin-unit-jest@^3.0.0-beta.14":
+  version "3.0.0-beta.14"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.0-beta.14.tgz#0f85d29adafd14643aba3d2712de901c5fd5c10b"
   dependencies:
     execa "^0.10.0"
     jest "^22.4.3"
