@@ -1,9 +1,11 @@
 <template>
-  <div class="hero-body">
-    <div class="container">
-      <b-loading :active.sync="isLoading"></b-loading>
+  <section class="section">
+    <div class="hero-body">
+      <div class="container">
+        <b-loading :active.sync="isLoading"></b-loading>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

@@ -798,11 +798,11 @@
   dependencies:
     workbox-webpack-plugin "^3.2.0"
 
-"@vue/cli-plugin-unit-jest@^3.0.0-beta.14":
-  version "3.0.0-beta.14"
-  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.0-beta.14.tgz#0f85d29adafd14643aba3d2712de901c5fd5c10b"
+"@vue/cli-plugin-unit-jest@^3.0.0-beta.15":
+  version "3.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/cli-plugin-unit-jest/-/cli-plugin-unit-jest-3.0.0-beta.15.tgz#acf342cfe119ea3d737a112fb3e8208c73e1e950"
   dependencies:
-    execa "^0.10.0"
+    "@vue/cli-shared-utils" "^3.0.0-beta.15"
     jest "^22.4.3"
     jest-serializer-vue "^1.0.0"
     jest-transform-stub "^1.0.0"
@@ -860,21 +860,6 @@
     webpack-dev-server "^3.1.4"
     webpack-merge "^4.1.2"
     yorkie "^1.0.3"
-
-"@vue/cli-shared-utils@^3.0.0-beta.15":
-  version "3.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/@vue/cli-shared-utils/-/cli-shared-utils-3.0.0-beta.15.tgz#13916eb464b140a018b52479f559d09723db667c"
-  dependencies:
-    chalk "^2.3.0"
-    cmd-shim "^2.0.2"
-    execa "^0.10.0"
-    joi "^12.0.0"
-    node-ipc "^9.1.1"
-    opn "^5.2.0"
-    ora "^1.3.0"
-    request "^2.83.0"
-    request-promise-native "^1.0.5"
-    string.prototype.padstart "^3.0.0"
 
 "@vue/cli-shared-utils@^3.0.0-beta.15":
   version "3.0.0-beta.15"
