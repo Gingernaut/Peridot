@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title has-text-centered">Sign Up</h1>
-    <form @submit.prevent="signup" id="signupform">
+    <form id="signupform" @submit.prevent="signup">
 
       <!-- <b-field label="First Name">
               <b-input type="text" v-model="firstName"></b-input>
@@ -13,12 +13,11 @@
 
       <b-field label="Email">
 
-        <b-input type="email" v-model="emailAddress">
-        </b-input>
+        <b-input v-model="emailAddress" type="email"/>
       </b-field>
 
       <b-field label="Password">
-        <b-input type="password" v-model="password"></b-input>
+        <b-input v-model="password" type="password"/>
       </b-field>
 
       <p v-for="err in errors" v-bind:key="err" class="error">
@@ -26,7 +25,7 @@
       </p>
 
       <p class="control">
-        <button class="button is-primary" id="submitbutton">
+        <button id="submitbutton" class="button is-primary">
           Signup
         </button>
       </p>

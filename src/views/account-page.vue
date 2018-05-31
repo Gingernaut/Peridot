@@ -4,34 +4,31 @@
     <form id="updateAccForm" @submit.prevent="updateAcc">
 
       <b-field label="First Name">
-        <b-input v-model="firstName"></b-input>
+        <b-input v-model="firstName"/>
       </b-field>
 
       <b-field label="Last Name">
-        <b-input v-model="lastName"></b-input>
+        <b-input v-model="lastName"/>
       </b-field>
 
       <b-field label="Email">
-        <b-input type="email" v-model="emailAddress">
-        </b-input>
+        <b-input v-model="emailAddress" type="email"/>
       </b-field>
 
       <b-field label="Phone">
-        <b-input v-model="phoneNumber"></b-input>
+        <b-input v-model="phoneNumber"/>
       </b-field>
 
       <b-field label="Change Password">
-        <b-input type="password" v-model="password1">
-        </b-input>
+        <b-input v-model="password1" type="password"/>
 
       </b-field>
 
       <b-field v-if="password1" label="Confirm Password">
-        <b-input type="password" v-model="password2">
-        </b-input>
+        <b-input v-model="password2" type="password"/>
       </b-field>
 
-      <p id="passMatchErr" v-if="!passesMatch && password1.length >= 1">Both passwords must match</p>
+      <p v-if="!passesMatch && password1.length >= 1" id="passMatchErr">Both passwords must match</p>
 
       <p class="control">
         <button class="button is-primary">

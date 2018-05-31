@@ -1,11 +1,11 @@
 module.exports = {
-  root: true,
-  parserOptions: {
+  "root": true,
+  "parserOptions": {
     parser: "babel-eslint",
     sourceType: "module",
     ecmaVersion: 2017
   },
-  env: {
+  "env": {
     node: true
   },
   "extends": [
@@ -13,27 +13,32 @@ module.exports = {
     "eslint:recommended",
     "@vue/prettier"
   ],
-  rules: {
-    // allow paren-less arrow functions
+  "rules": {
     "arrow-parens": 0,
-    // allow async-await
     "generator-star-spacing": 0,
-    // allow debugger
-    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 1,
-      // console log statements
-    "no-console": process.env.NODE_ENV === "production" ? 1 : 0,
-    // indentation
-    "indent": [2, 2],
-    // triple equality
+    "no-debugger": 1,
+    "no-console": 0,
+    "indent": [
+      2,
+      2
+    ],
     "eqeqeq": 1,
-    // var instead of let
     "no-var": 2,
-    // string quotes
-    "quotes": ["error", "double", {
-      "allowTemplateLiterals": true
-    }]
+    "quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "vue/html-indent": [
+      "error",
+      2
+    ],
+    "vue/html-self-closing": "error",
+    "vue/attributes-order": "error"
   },
-  parserOptions: {
-    parser: "babel-eslint"
+  "parserOptions": {
+    "parser": "babel-eslint"
   }
 }

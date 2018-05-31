@@ -1,14 +1,13 @@
 <template>
   <div>
     <h1 class="title has-text-centered">Login</h1>
-    <form @submit.prevent="login" id="loginform">
+    <form id="loginform" @submit.prevent="login">
       <b-field label="Email">
-        <b-input type="email" v-model="emailAddress">
-        </b-input>
+        <b-input v-model="emailAddress" type="email"/>
       </b-field>
 
       <b-field label="Password">
-        <b-input type="password" v-model="password"></b-input>
+        <b-input v-model="password" type="password"/>
       </b-field>
 
       <p v-for="err in errors" v-bind:key="err" class="error">
@@ -16,13 +15,13 @@
       </p>
 
       <p class="control">
-        <button class="button is-primary" id="submitbutton">
+        <button id="submitbutton" class="button is-primary">
           Login
         </button>
       </p>
     </form>
     <router-link to="/signup" @click.native="closeModal()">Create new account</router-link>
-    <br/>
+    <br>
     <router-link to="/reset" @click.native="closeModal()">Forget your password?</router-link>
   </div>
 </template>

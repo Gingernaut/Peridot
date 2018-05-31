@@ -3,17 +3,15 @@
     <div class="container">
       <form @submit.prevent="submitForm">
         <b-field label="Email Address">
-          <b-input type="email" v-model="emailAddress">
-          </b-input>
+          <b-input v-model="emailAddress" type="email"/>
         </b-field>
 
         <b-field label="Subject">
-          <b-input type="text" v-model="subject">
-          </b-input>
+          <b-input v-model="subject" type="text"/>
         </b-field>
 
         <b-field label="Message">
-          <b-input maxlength="200" type="textarea" v-model="body"></b-input>
+          <b-input v-model="body" maxlength="200" type="textarea"/>
         </b-field>
 
         <div class="field is-grouped">

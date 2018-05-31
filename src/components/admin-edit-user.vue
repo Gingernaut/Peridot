@@ -1,63 +1,58 @@
 <template>
   <div>
-      <div v-if="isAdmin">
-        <form @submit.prevent="saveAccountChanges()" id="editAccForm">
+    <div v-if="isAdmin">
+      <form id="editAccForm" @submit.prevent="saveAccountChanges()">
 
-            <h1 class="title has-text-centered">
-                Editing user: id {{ id }}
-            </h1>
+        <h1 class="title has-text-centered">
+          Editing user: id {{ id }}
+        </h1>
 
-            <p>
-                <strong>Created:</strong> {{ createdTime | fullDate }}
-            </p>
-            <p>
-                <strong>Modified:</strong> {{ modifiedTime | fullDate }}
-            </p>
+        <p>
+          <strong>Created:</strong> {{ createdTime | fullDate }}
+        </p>
+        <p>
+          <strong>Modified:</strong> {{ modifiedTime | fullDate }}
+        </p>
 
-            <b-field label="First Name">
-                <b-input type="text" v-model="firstName">
-                </b-input>
-            </b-field>
+        <b-field label="First Name">
+          <b-input v-model="firstName" type="text"/>
+        </b-field>
             
-            <b-field label="Last Name">
-                <b-input type="text" v-model="lastName">
-                </b-input>
-            </b-field>
+        <b-field label="Last Name">
+          <b-input v-model="lastName" type="text"/>
+        </b-field>
 
-            <b-field label="Email">
-                <b-input type="text" v-model="emailAddress">
-                </b-input>
-            </b-field>
+        <b-field label="Email">
+          <b-input v-model="emailAddress" type="text"/>
+        </b-field>
 
-            <b-field label="Phone">
-                <b-input type="text" v-model="phoneNumber">
-                </b-input>
-            </b-field>
+        <b-field label="Phone">
+          <b-input v-model="phoneNumber" type="text"/>
+        </b-field>
 
-            <b-field label="Role">
-                <b-input type="text" v-model="userRole">
-                </b-input>
-            </b-field>
+        <b-field label="Role">
+          <b-input v-model="userRole" type="text"/>
+        </b-field>
 
-            <b-field label="Verified">
-                <div class="block">
-                    <b-radio v-model="isVerified" native-value="true">
-                        True
-                    </b-radio>
-                    <b-radio v-model="isVerified" native-value="false">
-                        False
-                    </b-radio>
-                </div>
-            </b-field>
-            <div id="controlButtons">
-                <button class="button is-primary">Save Changes</button>
-                <button @click.prevent="closeModal()" class="button is-danger is-outlined">Discard Changes</button>
-                <button @click.prevent="deleteAccount()" class="button is-danger is-pulled-right">Delete Account</button>
-            </div>
-        </form>
-      </div>
+        <b-field label="Verified">
+          <div class="block">
+            <b-radio v-model="isVerified" native-value="true">
+              True
+            </b-radio>
+            <b-radio v-model="isVerified" native-value="false">
+              False
+            </b-radio>
+          </div>
+        </b-field>
+        <div id="controlButtons">
+          <button class="button is-primary">Save Changes</button>
+          <button class="button is-danger is-outlined" @click.prevent="closeModal()">Discard Changes</button>
+          <button class="button is-danger is-pulled-right" @click.prevent="deleteAccount()">Delete Account</button>
+        </div>
+      </form>
+    </div>
     <div v-else>
-        <h1>Not Authorized</h1>
+      <h1>Not Authorized</h1>
     </div>
   </div>
 </template>

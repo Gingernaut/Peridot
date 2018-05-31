@@ -1,12 +1,12 @@
 <!-- borrowed from Nuxt! -->
 
 <template>
-  <div class="progress" :style="{
+  <div :style="{
     'width': percent+'%',
     'height': height,
     'background-color': canSuccess? color : failedColor,
     'opacity': show ? 1 : 0
-  }"></div>
+  }" class="progress"/>
 </template>
 
 <script>

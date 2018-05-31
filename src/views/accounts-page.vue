@@ -1,6 +1,6 @@
 <template>
   <div class="hero-body">
-    <modal :component="modalComp" :payload="selectedUser" @exitModal="closeModal"></modal>
+    <modal :component="modalComp" :payload="selectedUser" @exitModal="closeModal"/>
 
     <div class="container">
       <p> Number of accounts: {{ this.accounts.length }}</p>
@@ -50,8 +50,8 @@
 
           <b-table-column>
             <button 
-            @click="openEditModal(props.row)" 
-            class="button is-small is-info is-outlined">Edit</button>
+              class="button is-small is-info is-outlined" 
+              @click="openEditModal(props.row)">Edit</button>
           </b-table-column>
         </template>
 

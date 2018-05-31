@@ -5,15 +5,13 @@
       <!-- updating password -->
       <form v-if="hasToken" id="resetPassForm" @submit.prevent="saveNewPass">
         <b-field label="New Password">
-          <b-input type="password" min="6 " v-model="password1">
-          </b-input>
+          <b-input v-model="password1" type="password" min="6 "/>
         </b-field>
 
         <b-field label="Confirm New Password">
-          <b-input type="password" min="6 " v-model="password2">
-          </b-input>
+          <b-input v-model="password2" type="password" min="6 "/>
         </b-field>
-        <p class="has-text-danger" v-if="!passesMatch && password1.length >= 1">Both passwords must match</p>
+        <p v-if="!passesMatch && password1.length >= 1" class="has-text-danger">Both passwords must match</p>
 
         <p class="control">
           <button class="button is-primary">
@@ -31,8 +29,7 @@
 
         <br>
         <b-field label="Email Address">
-          <b-input type="email" v-model="emailAddress">
-          </b-input>
+          <b-input v-model="emailAddress" type="email"/>
         </b-field>
 
         <p class="control">

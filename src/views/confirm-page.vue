@@ -2,7 +2,7 @@
   <section class="section">
     <div class="hero-body">
       <div class="container">
-        <b-loading :active.sync="isLoading"></b-loading>
+        <b-loading :active.sync="isLoading"/>
       </div>
     </div>
   </section>
