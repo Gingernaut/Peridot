@@ -23,7 +23,7 @@
     "helmet": "^3.9.0",
     "lru-cache": "^4.1.1",
     "route-cache": "^0.4.4",
-    "serve-favicon": "^2.4.5",
+    "serve-favicon": "^2.5.0",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "vue": "^2.5.13",
     "vue-meta": "^1.4.0",
