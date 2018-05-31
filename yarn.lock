@@ -902,7 +902,7 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vue/preload-webpack-plugin/-/preload-webpack-plugin-1.0.0.tgz#08f156532909824da2aad258e151742d1e8f822e"
 
-"@vue/test-utils@^1.0.0-beta.16":
+"@vue/test-utils@^1.0.0-beta.15":
   version "1.0.0-beta.16"
   resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.0.0-beta.16.tgz#dcf7a30304391422e382b5f97db6eb9508112906"
   dependencies:
