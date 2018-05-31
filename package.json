@@ -69,7 +69,7 @@
     "stylelint-config-standard": "^18.0.0",
     "stylelint-scss": "^2.2.0",
     "stylelint-webpack-plugin": "^0.10.1",
-    "sw-precache-webpack-plugin": "^0.11.4",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "vue-loader": "^13.6.2",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.13",
