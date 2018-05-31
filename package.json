@@ -26,7 +26,7 @@
     "serve-favicon": "^2.4.5",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "vue": "^2.5.13",
-    "vue-meta": "^1.4.0",
+    "vue-meta": "^1.5.0",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.13",
     "vuex": "^3.0.1",
