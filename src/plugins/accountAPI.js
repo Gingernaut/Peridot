@@ -47,7 +47,7 @@ function updateStoreData(accInfo) {
   }
 }
 
-function emptyStore() {
+function emptyAccStore() {
   store.set("account/isAuthenticated", false)
   store.set("account/token", null)
   store.set("account/id", null)
@@ -116,7 +116,7 @@ const accFunctions = {
       return HTTP()
         .delete("/account")
         .then(() => {
-          emptyStore()
+          emptyAccStore()
         })
     }
   },
@@ -145,7 +145,7 @@ const accFunctions = {
       })
   },
   logout: function() {
-    emptyStore()
+    emptyAccStore()
   },
   cleanData: function(payload) {
     let cleanedData = {

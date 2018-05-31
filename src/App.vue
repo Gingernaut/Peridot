@@ -89,6 +89,7 @@ a:hover {
 }
 
 #appContent {
+  margin-top: $stickyNavHeight + 1px;
   flex-grow: 1;
 }
 

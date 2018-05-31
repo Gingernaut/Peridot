@@ -38,7 +38,7 @@
           Save Changes
         </button>
 
-        <button class="button is-danger is-outlined" @click="deleteAcc()">
+        <button class="button is-danger is-outlined" @click.prevent="deleteAcc()">
           Delete Account
         </button>
       </p>
@@ -128,19 +128,19 @@ export default {
     changedFields: function() {
       let fields = {}
 
-      if (this.$store.get("firstName") !== this.firstName) {
+      if (this.$store.get("account/firstName") !== this.firstName) {
         fields.firstName = this.firstName
       }
 
-      if (this.$store.get("lastName") !== this.lastName) {
+      if (this.$store.get("account/lastName") !== this.lastName) {
         fields.lastName = this.lastName
       }
 
-      if (this.$store.get("emailAddress") !== this.emailAddress) {
+      if (this.$store.get("account/emailAddress") !== this.emailAddress) {
         fields.emailAddress = this.emailAddress
       }
 
-      if (this.$store.get("phoneNum") !== this.phoneNumber) {
+      if (this.$store.get("account/phoneNumber") !== this.phoneNumber) {
         fields.phoneNumber = this.phoneNumber
       }
 
@@ -159,7 +159,7 @@ export default {
         type: "is-danger",
         hasIcon: true,
         onConfirm: () => {
-          this.$accountAPI.deleteAcc()
+          this.$accountAPI.deleteAccount()
           this.logout()
           this.$toast.open("Account deleted.")
         },
