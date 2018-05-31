@@ -65,6 +65,18 @@ body {
   overflow-x: hidden;
 }
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
 #app {
   margin: 0;
   padding: 0;
@@ -89,15 +101,8 @@ body {
   opacity: 0;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-a,
-a:visited,
-a:hover {
-  text-decoration: none;
+// current route link
+.router-link-active {
+  color: $blue;
 }
 </style>
