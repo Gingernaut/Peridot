@@ -7003,9 +7003,9 @@ regexpu-core@^4.1.3, regexpu-core@^4.1.4:
     unicode-match-property-ecmascript "^1.0.3"
     unicode-match-property-value-ecmascript "^1.0.1"
 
-register-service-worker@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.3.0.tgz#02a0b7c40413b3c5ed1d801d764deb3aab1c3397"
+register-service-worker@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.4.0.tgz#342e417cc3044c97a660aa6b4ab4705f0146221e"
 
 regjsgen@^0.2.0:
   version "0.2.0"
