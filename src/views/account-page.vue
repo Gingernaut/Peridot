@@ -94,8 +94,19 @@ export default {
         return
       }
 
-      let changedFields = this.changedFields()
-      let cleanData = this.$accountAPI.cleanData(changedFields)
+      let changedData = this.changedFields()
+
+      if (Object.values(changedData).length < 1) {
+        this.$toast.open({
+          duration: 2000,
+          message: "No changes to save",
+          position: "is-top",
+          type: "is-info",
+        })
+        return
+      }
+
+      let cleanData = this.$accountAPI.cleanData(changedData)
 
       if (cleanData.errors.length >= 1) {
         this.errors = cleanData.errors

@@ -47,21 +47,6 @@ function updateStoreData(accInfo) {
   }
 }
 
-function emptyAccStore() {
-  store.set("account/isAuthenticated", false)
-  store.set("account/token", null)
-  store.set("account/id", null)
-  store.set("account/firstName", null)
-  store.set("account/lastName", null)
-  store.set("account/emailAddress", null)
-  store.set("account/createdTime", null)
-  store.set("account/modifiedTime", null)
-  store.set("account/UUID", null)
-  store.set("account/phoneNumber", null)
-  store.set("account/isVerified", null)
-  store.set("account/userRole", null)
-}
-
 const accFunctions = {
   login: function(payload) {
     return HTTP()
@@ -116,7 +101,7 @@ const accFunctions = {
       return HTTP()
         .delete("/account")
         .then(() => {
-          emptyAccStore()
+          store.commit("account/reset")
         })
     }
   },
@@ -145,7 +130,7 @@ const accFunctions = {
       })
   },
   logout: function() {
-    emptyAccStore()
+    store.commit("account/reset")
   },
   cleanData: function(payload) {
     let cleanedData = {

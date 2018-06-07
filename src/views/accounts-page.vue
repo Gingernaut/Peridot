@@ -3,7 +3,7 @@
     <modal :component="modalComp" :payload="selectedUser" @exitModal="closeModal"/>
 
     <div class="container">
-      <p> Number of accounts: {{ this.accounts.length }}</p>
+      <p v-if="!isEmpty"> Number of accounts: {{ this.accounts.length }}</p>
       <br>
       <b-table
         :data="accounts"

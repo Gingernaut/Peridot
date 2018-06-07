@@ -12,7 +12,6 @@
             </b-field> -->
 
       <b-field label="Email">
-
         <b-input v-model="emailAddress" type="email"/>
       </b-field>
 
@@ -57,8 +56,8 @@ export default {
   methods: {
     signup() {
       const cleanData = this.$accountAPI.cleanData({
-        emailAddress: this.emailAddress ? this.emailAddress : "",
-        password: this.password ? this.password : "",
+        emailAddress: this.emailAddress,
+        password: this.password,
         firstName: this.firstName,
         lastName: this.lastName,
       })

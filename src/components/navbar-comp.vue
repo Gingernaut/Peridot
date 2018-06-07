@@ -3,7 +3,7 @@
     <modal :component="modalComp" @exitModal="closeModal"/>
 
     <div class="navbar-brand">
-      <router-link class="navbar-item" to="/">
+      <router-link class="navbar-item" to="/" exact>
         <!-- <img src="/static/yourLogo.png" alt="Your Logo" width="112" height="28"> -->
         <h1 id="logo">Peridot</h1>
       </router-link>

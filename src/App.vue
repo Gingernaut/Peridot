@@ -105,5 +105,6 @@ a:hover {
 // current route link
 .router-link-active {
   color: $blue;
+  font-weight: bold;
 }
 </style>
