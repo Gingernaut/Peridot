@@ -26,29 +26,26 @@ export default {
   created() {},
   beforeMount() {},
   mounted() {
-    document.addEventListener(
-      "keydown",
-      (e) => {
-        if (e.keyCode === 27) {
-          this.close()
-        }
-      },
-      {
-        capture: true,
-        passive: true,
-      }
-    )
+    document.addEventListener("keydown", (e) => this.closeOnKeyDown(e), {
+      capture: true,
+      passive: true,
+    })
   },
   computed: {},
   methods: {
-    close() {
-      this.$emit("exitModal")
+    close(result = null) {
+      this.$emit("exitModal", result)
+    },
+    closeOnKeyDown(e) {
+      if (e.keyCode === 27) {
+        this.close()
+      }
     },
   },
   beforeUpdate() {},
   updated() {},
   beforeDestroy() {
-    document.removeEventListener("keydown", this.close())
+    document.removeEventListener("keydown", this.closeOnKeyDown())
   },
 }
 </script>

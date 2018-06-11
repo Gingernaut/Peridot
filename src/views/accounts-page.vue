@@ -100,12 +100,12 @@ export default {
       this.selectedUser = userData
       this.modalComp = () => import("@/components/admin-edit-user")
     },
-    closeModal() {
+    closeModal(madeChanges) {
       this.selectedUser = {}
       this.modalComp = null
-
-      // to save changes made in modal
-      this.updateLocalData()
+      if (madeChanges) {
+        this.updateLocalData()
+      }
     },
     updateLocalData() {
       this.$accountAPI

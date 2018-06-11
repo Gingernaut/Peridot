@@ -46,7 +46,7 @@
         </b-field>
         <div id="controlButtons">
           <button class="button is-primary">Save Changes</button>
-          <button class="button is-danger is-outlined" @click.prevent="closeModal()">Discard Changes</button>
+          <!-- <button class="button is-danger is-outlined" @click.prevent="closeModal()">Discard Changes</button> -->
           <button class="button is-danger is-pulled-right" @click.prevent="deleteAccount()">Delete Account</button>
         </div>
       </form>
@@ -123,7 +123,7 @@ export default {
             position: "is-top",
             type: "is-success",
           })
-          this.closeModal()
+          this.closeModal(true)
         })
         .catch(() => {
           this.$snackbar.open({
@@ -185,7 +185,7 @@ export default {
                 position: "is-top",
                 type: "is-info",
               })
-              this.closeModal()
+              this.closeModal(false)
             })
             .catch(() => {
               this.$snackbar.open({
@@ -198,8 +198,8 @@ export default {
         },
       })
     },
-    closeModal() {
-      this.$emit("exitModal")
+    closeModal(updateUserList) {
+      this.$emit("exitModal", updateUserList)
     },
   },
   filters: {
