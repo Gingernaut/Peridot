@@ -65,7 +65,7 @@ export default {
             position: "is-top",
             type: "is-success",
           })
-          this.$emit("exitModal")
+          this.$emit("exitModal", cleanData)
 
           if (this.$router.currentRoute.path === "/login") {
             this.$router.push("/")

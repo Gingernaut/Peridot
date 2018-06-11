@@ -41,8 +41,8 @@ export default {
   },
   computed: {},
   methods: {
-    close() {
-      this.$emit("exitModal")
+    close(result = null) {
+      this.$emit("exitModal", result)
     },
   },
   beforeUpdate() {},
