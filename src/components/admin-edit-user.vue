@@ -116,7 +116,8 @@ export default {
       let cleanData = this.$accountAPI.cleanData(changedData)
       this.$accountAPI
         .updateAccount(cleanData, this.id)
-        .then(() => {
+        .then((res) => {
+          console.log(res.data)
           this.$toast.open({
             duration: 2000,
             message: "Changes saved",
