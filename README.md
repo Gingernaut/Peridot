@@ -1,3 +1,26 @@
+# saas-boilerplate
 
+## Project setup
+```
+yarn install
+```
 
-Check out the configuration ui by running `vue ui` and going to `localhost:8000/` in your browser.
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
+
+### Compiles and minifies for production
+```
+yarn run build
+```
+
+### Run your tests
+```
+yarn run test
+```
+
+### Lints and fixes files
+```
+yarn run lint
+```

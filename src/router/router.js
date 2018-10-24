@@ -97,7 +97,7 @@ const routes = [
 
 export default new Router({
   mode: "history",
-  fallback: false,
+  base: process.env.BASE_URL,
   scrollBehavior: () => ({
     y: 0,
   }),

@@ -1,6 +1,6 @@
 {
-  "name": "new_peridot",
-  "short_name": "new_peridot",
+  "name": "saas-boilerplate",
+  "short_name": "saas-boilerplate",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

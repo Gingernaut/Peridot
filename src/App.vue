@@ -39,15 +39,42 @@ export default {
 @import "~bulma/sass/utilities/_all";
 $primary-invert: findColorInvert($primary);
 $colors: (
-  "white": ($white, $black),
-  "black": ($black, $white),
-  "light": ($light, $light-invert),
-  "dark": ($dark, $dark-invert),
-  "primary": ($primary, $primary-invert),
-  "info": ($info, $info-invert),
-  "success": ($success, $success-invert),
-  "warning": ($warning, $warning-invert),
-  "danger": ($danger, $danger-invert)
+  "white": (
+    $white,
+    $black,
+  ),
+  "black": (
+    $black,
+    $white,
+  ),
+  "light": (
+    $light,
+    $light-invert,
+  ),
+  "dark": (
+    $dark,
+    $dark-invert,
+  ),
+  "primary": (
+    $primary,
+    $primary-invert,
+  ),
+  "info": (
+    $info,
+    $info-invert,
+  ),
+  "success": (
+    $success,
+    $success-invert,
+  ),
+  "warning": (
+    $warning,
+    $warning-invert,
+  ),
+  "danger": (
+    $danger,
+    $danger-invert,
+  ),
 );
 $link: $primary;
 $link-invert: $primary-invert;
@@ -60,7 +87,6 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  transform-style: preserve-3d;
   box-sizing: border-box;
   overflow-x: hidden;
 }
@@ -80,16 +106,14 @@ a:hover {
 #app {
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   z-index: 1;
-  min-height: 100vh;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
+  min-height: calc(100vh - #{$stickyNavHeight + 2px});
 }
 
 #appContent {
-  margin-top: $stickyNavHeight + 1px;
   flex-grow: 1;
 }
 

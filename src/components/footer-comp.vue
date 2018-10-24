@@ -38,7 +38,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding-bottom: 2vh;
+  padding-bottom: 1vh;
 
   p {
     margin: 8px;

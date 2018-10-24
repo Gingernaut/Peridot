@@ -106,10 +106,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 nav {
   border-bottom: 1px solid $primary;
-  position: fixed;
   right: 0;
   left: 0;
   z-index: 9;

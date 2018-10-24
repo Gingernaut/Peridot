@@ -1,7 +1,10 @@
-# General
 .DS_Store
 node_modules
 /dist
+
+# local env files
+.env.local
+.env.*.local
 
 # Log files
 *.log*
@@ -14,6 +17,3 @@ node_modules
 *.njsproj
 *.sln
 *.sw*
-
-# Keys and protected info
-.env

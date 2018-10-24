@@ -1,27 +1,25 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <form @submit.prevent="submitForm">
-        <b-field label="Email Address">
-          <b-input v-model="emailAddress" type="email"/>
-        </b-field>
+  <div class="container">
+    <form @submit.prevent="submitForm">
+      <b-field label="Email Address">
+        <b-input v-model="emailAddress" type="email"/>
+      </b-field>
 
-        <b-field label="Subject">
-          <b-input v-model="subject" type="text"/>
-        </b-field>
+      <b-field label="Subject">
+        <b-input v-model="subject" type="text"/>
+      </b-field>
 
-        <b-field label="Message">
-          <b-input v-model="body" maxlength="200" type="textarea"/>
-        </b-field>
+      <b-field label="Message">
+        <b-input v-model="body" maxlength="200" type="textarea"/>
+      </b-field>
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-primary">Submit</button>
-          </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary">Submit</button>
         </div>
-      </form>
-    </div>
-  </section>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>

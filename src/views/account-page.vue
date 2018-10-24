@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">Account Page</h1>
+    <h1 class="title">My Account</h1>
     <form id="updateAccForm" @submit.prevent="updateAcc">
 
       <b-field label="First Name">

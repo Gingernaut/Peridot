@@ -1,13 +1,31 @@
-FROM node:9.2.0-alpine
-
+# ---- Base Node ----
+FROM node:10.12.0-alpine AS BASE
 WORKDIR /app
-COPY . /app
 
-RUN yarn global add pm2
-RUN yarn install --frozen-lockfile && yarn run build
+# ---- Dependencies ----
+FROM BASE AS dependencies  
+COPY package*.json ./
+COPY yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-HEALTHCHECK --interval=20s --timeout=3s --retries=3 \
-    CMD curl -f http://localhost:8080 || exit 1
+# ---- Copy Files/Build ----
+FROM dependencies AS build  
+WORKDIR /app
+COPY ./ /app
+RUN yarn run build
 
-EXPOSE 8080
-CMD ["pm2-docker", "process.yml", "--web", "--json"]
+# --- Release ----
+FROM BASE AS release  
+
+COPY --from=dependencies /app/yarn.lock ./
+COPY --from=build /app/server/ ./
+COPY --from=build /app/dist ./
+
+RUN yarn install --production --frozen-lockfile && \
+    yarn global add pm2 && \
+    yarn add express serve-favicon compression
+
+# RUN addgroup -S nodejs && adduser -S -G nodejs nodejs
+# USER nodejs
+
+CMD ["pm2-docker", "/app/process.yml", "--web", "--json"]
