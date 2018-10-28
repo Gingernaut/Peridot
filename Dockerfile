@@ -21,7 +21,7 @@ COPY --from=build /app/server ./
 COPY --from=build /app/dist ./
 
 RUN yarn global add pm2 && \
-    yarn add express compression connect-history-api-fallback
+    yarn add express compression connect-history-api-fallback helmet
 
 RUN addgroup -S nodejs && adduser -S -G nodejs nodejs
 USER nodejs

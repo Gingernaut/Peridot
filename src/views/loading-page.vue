@@ -1,17 +1,17 @@
 <template>
   <section class="section">
-    <div class="container">
-      <h1 class="title">Hello</h1>
-      <h2 class="subtitle">
-        Welcome to your new Vue.js application!
-      </h2>
+    <div class="hero-body">
+      <div class="container">
+        <b-loading :active.sync="isLoading"/>
+      </div>
     </div>
   </section>
 </template>
 
+
 <script>
 export default {
-  name: "index",
+  name: "loading-page",
   components: {},
   mixins: [],
   data() {

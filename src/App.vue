@@ -110,6 +110,7 @@ a:hover {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  min-height: 94vh;
   min-height: calc(100vh - #{$stickyNavHeight + 2px});
 }
 
