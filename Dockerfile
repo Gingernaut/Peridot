@@ -17,15 +17,13 @@ RUN yarn run build
 # --- Release ----
 FROM BASE AS release  
 
-COPY --from=dependencies /app/yarn.lock ./
-COPY --from=build /app/server/ ./
+COPY --from=build /app/server ./
 COPY --from=build /app/dist ./
 
-RUN yarn install --production --frozen-lockfile && \
-    yarn global add pm2 && \
-    yarn add express serve-favicon compression
+RUN yarn global add pm2 && \
+    yarn add express compression connect-history-api-fallback
 
-# RUN addgroup -S nodejs && adduser -S -G nodejs nodejs
-# USER nodejs
+RUN addgroup -S nodejs && adduser -S -G nodejs nodejs
+USER nodejs
 
 CMD ["pm2-docker", "/app/process.yml", "--web", "--json"]

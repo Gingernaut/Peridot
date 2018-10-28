@@ -45,7 +45,7 @@ export default {
   beforeUpdate() {},
   updated() {},
   beforeDestroy() {
-    document.removeEventListener("keydown", this.closeOnKeyDown())
+    document.removeEventListener("keydown", (e) => this.closeOnKeyDown(e))
   },
 }
 </script>
