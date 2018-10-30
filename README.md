@@ -30,6 +30,10 @@ docker run -p 8080:8080 peridot:latest
 yarn run lint
 ```
 
+## Backend
+
+Want a ready-to-go backend for this web app for user authentication and management, email verification and more? Check out [microAuth](https://github.com/gingernaut/microAuth), a Python Sanic boilerplate that works out of the box with this project.
+
 ## Contributing
 
 Pull requests are welcome and appreciated!

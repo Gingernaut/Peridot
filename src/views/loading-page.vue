@@ -15,7 +15,9 @@ export default {
   components: {},
   mixins: [],
   data() {
-    return {}
+    return {
+      isLoading: true,
+    }
   },
   beforeCreate() {},
   created() {},
