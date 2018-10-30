@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "loading-page",
+  name: "LoadingPage",
   components: {},
   mixins: [],
   data() {

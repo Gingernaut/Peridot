@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "template",
+  name: "Template",
   components: {},
   mixins: [],
   data() {

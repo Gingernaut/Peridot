@@ -1,7 +1,11 @@
 <template>
   <footer v-if="showFooter">
-    <router-link to="/about" class="navbar-item">About</router-link>
-    <router-link to="/contact" class="navbar-item">Contact</router-link>
+    <router-link 
+      to="/about" 
+      class="navbar-item">About</router-link>
+    <router-link 
+      to="/contact" 
+      class="navbar-item">Contact</router-link>
     <p> &copy; {{ year }}</p>
   </footer>
 </template>
@@ -10,7 +14,7 @@
 import { get } from "vuex-pathify"
 
 export default {
-  name: "global-footer",
+  name: "GlobalFooter",
   components: {},
   mixins: [],
   data() {

@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <GlobalNavbar/>
-    <transition name="fadePage" mode="out-in">
-      <router-view id="appContent" :key="$route.fullPath"/>
+    <transition 
+      name="fadePage" 
+      mode="out-in">
+      <router-view 
+        id="appContent" 
+        :key="$route.fullPath"/>
     </transition>
     <GlobalFooter/>
   </div>
@@ -12,7 +16,7 @@
 import GlobalNavbar from "@/components/navbar-comp"
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     GlobalNavbar,
     GlobalFooter: () => import("@/components/footer-comp"),

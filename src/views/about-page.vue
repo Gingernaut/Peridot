@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "about",
+  name: "About",
   components: {},
   mixins: [],
   data() {

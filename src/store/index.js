@@ -24,6 +24,6 @@ const storePlugins = persistData
 
 export default new Vuex.Store({
   plugins: storePlugins,
-  strict: true,
+  strict: process.env.NODE_ENV === "development",
   ...store,
 })

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "signuppage",
+  name: "Signuppage",
   components: {
     SignupForm: () => import("@/components/signup-form"),
   },

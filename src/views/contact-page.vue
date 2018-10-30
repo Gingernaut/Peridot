@@ -2,15 +2,22 @@
   <div class="container">
     <form @submit.prevent="submitForm">
       <b-field label="Email Address">
-        <b-input v-model="emailAddress" type="email"/>
+        <b-input 
+          v-model="emailAddress" 
+          type="email"/>
       </b-field>
 
       <b-field label="Subject">
-        <b-input v-model="subject" type="text"/>
+        <b-input 
+          v-model="subject" 
+          type="text"/>
       </b-field>
 
       <b-field label="Message">
-        <b-input v-model="body" maxlength="200" type="textarea"/>
+        <b-input 
+          v-model="body" 
+          maxlength="200" 
+          type="textarea"/>
       </b-field>
 
       <div class="field is-grouped">
@@ -24,7 +31,7 @@
 
 <script>
 export default {
-  name: "contact",
+  name: "Contact",
   components: {},
   mixins: [],
   data() {

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "timeout-page",
+  name: "TimeoutPage",
   components: {},
   mixins: [],
   data() {

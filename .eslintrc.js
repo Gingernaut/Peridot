@@ -8,7 +8,6 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ["plugin:vue/essential", "eslint:recommended", "@vue/prettier"],
   rules: {
     "arrow-parens": 0,
     "generator-star-spacing": 0,
@@ -28,4 +27,9 @@ module.exports = {
     "vue/html-self-closing": "error",
     "vue/attributes-order": "error",
   },
+  extends: [
+    "plugin:vue/strongly-recommended",
+    "eslint:recommended",
+    "@vue/prettier",
+  ],
 }

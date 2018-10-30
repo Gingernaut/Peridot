@@ -8,7 +8,7 @@
 // add form to enter old pass, then new pass 2x. On submit, send login request with new pass, then if 200 update pass with new.
 
 export default {
-  name: "change-password-form",
+  name: "ChangePasswordForm",
   components: {},
   mixins: [],
   data() {

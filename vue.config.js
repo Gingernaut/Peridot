@@ -4,7 +4,7 @@ const glob = require("glob-all")
 const path = require("path")
 
 module.exports = {
-  lintOnSave: true,
+  lintOnSave: undefined,
   configureWebpack: {
     // Merged into the final Webpack config
     plugins: [

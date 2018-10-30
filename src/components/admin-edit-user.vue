@@ -1,7 +1,9 @@
 <template>
   <div>
     <div v-if="isAdmin">
-      <form id="editAccForm" @submit.prevent="saveAccountChanges()">
+      <form 
+        id="editAccForm" 
+        @submit.prevent="saveAccountChanges()">
 
         <h1 class="title has-text-centered">
           Editing user: id {{ id }}
@@ -15,31 +17,45 @@
         </p>
 
         <b-field label="First Name">
-          <b-input v-model="firstName" type="text"/>
+          <b-input 
+            v-model="firstName" 
+            type="text"/>
         </b-field>
             
         <b-field label="Last Name">
-          <b-input v-model="lastName" type="text"/>
+          <b-input 
+            v-model="lastName" 
+            type="text"/>
         </b-field>
 
         <b-field label="Email">
-          <b-input v-model="emailAddress" type="text"/>
+          <b-input 
+            v-model="emailAddress" 
+            type="text"/>
         </b-field>
 
         <b-field label="Phone">
-          <b-input v-model="phoneNumber" type="text"/>
+          <b-input 
+            v-model="phoneNumber" 
+            type="text"/>
         </b-field>
 
         <b-field label="Role">
-          <b-input v-model="userRole" type="text"/>
+          <b-input 
+            v-model="userRole" 
+            type="text"/>
         </b-field>
 
         <b-field label="Verified">
           <div class="block">
-            <b-radio v-model="isVerified" native-value="true">
+            <b-radio 
+              v-model="isVerified" 
+              native-value="true">
               True
             </b-radio>
-            <b-radio v-model="isVerified" native-value="false">
+            <b-radio 
+              v-model="isVerified" 
+              native-value="false">
               False
             </b-radio>
           </div>
@@ -47,7 +63,9 @@
         <div id="controlButtons">
           <button class="button is-primary">Save Changes</button>
           <!-- <button class="button is-danger is-outlined" @click.prevent="closeModal()">Discard Changes</button> -->
-          <button class="button is-danger is-pulled-right" @click.prevent="deleteAccount()">Delete Account</button>
+          <button 
+            class="button is-danger is-pulled-right" 
+            @click.prevent="deleteAccount()">Delete Account</button>
         </div>
       </form>
     </div>
@@ -61,9 +79,14 @@
 import { get } from "vuex-pathify"
 
 export default {
-  name: "Admin-Edit-User",
+  name: "AdminEditUser",
   components: {},
-  props: ["payload"],
+  props: {
+    payload: {
+      type: Object,
+      default: null,
+    },
+  },
   mixins: [],
   data() {
     return {

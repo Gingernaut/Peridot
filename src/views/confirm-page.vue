@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "confirm",
+  name: "Confirm",
   components: {},
   mixins: [],
   data() {
