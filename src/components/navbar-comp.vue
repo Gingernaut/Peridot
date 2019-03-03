@@ -1,72 +1,56 @@
 <template>
-  <nav 
-    v-if="showNavbar" 
-    class="navbar is-fixed-top" 
-    role="navigation">
-    <modal 
-      :component="modalComp" 
-      @exitModal="closeModal"/>
+  <nav v-if="showNavbar" class="navbar is-fixed-top" role="navigation">
+    <modal :component="modalComp" @exitModal="closeModal" />
 
     <div class="navbar-brand">
-      <router-link 
-        class="navbar-item" 
-        to="/" 
-        exact>
+      <router-link class="navbar-item" to="/" exact>
         <!-- <img src="/static/yourLogo.png" alt="Your Logo" width="112" height="28"> -->
         <h1 id="logo">Peridot</h1>
       </router-link>
 
-      <div 
-        :class="{ 'is-active': showMobileNav }" 
-        class="navbar-burger burger" 
-        @click="toggleMobileNav">
-        <span/>
-        <span/>
-        <span/>
+      <div
+        :class="{ 'is-active': showMobileNav }"
+        class="navbar-burger burger"
+        @click="toggleMobileNav"
+      >
+        <span />
+        <span />
+        <span />
       </div>
     </div>
 
-    <div 
-      id="navMenu" 
-      :class="{ 'is-active': showMobileNav }" 
-      class="navbar-menu">
-
+    <div
+      id="navMenu"
+      :class="{ 'is-active': showMobileNav }"
+      class="navbar-menu"
+    >
       <div class="navbar-start">
-        <router-link 
-          v-if="isAdmin" 
-          to="/accounts" 
-          class="navbar-item">Accounts</router-link>
+        <router-link v-if="isAdmin" to="/accounts" class="navbar-item"
+        >Accounts</router-link
+        >
       </div>
 
       <div class="navbar-end">
-        <span 
-          v-if="!isLoggedIn" 
-          class="navbar-item">
-          <a 
-            class="navbar-item button accNav is-info" 
-            @click="openSignup()"> Sign Up</a>
-          <a 
-            class="navbar-item button accNav" 
-            @click="openLogin()">Log In</a>
+        <span v-if="!isLoggedIn" class="navbar-item">
+          <a class="navbar-item button accNav is-info" @click="openSignup()">
+            Sign Up</a
+            >
+          <a class="navbar-item button accNav" @click="openLogin()">Log In</a>
         </span>
 
-        <div 
-          v-if="isLoggedIn" 
-          class="navbar-item has-dropdown is-hoverable">
+        <div v-if="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-active">
             Account
           </a>
           <div class="navbar-dropdown ">
-            <router-link 
-              to="/account" 
-              class="navbar-item">
+            <router-link to="/account" class="navbar-item">
               Overview
             </router-link>
-            <hr class="navbar-divider">
+            <hr class="navbar-divider" >
             <div class="navbar-item">
               <div>
                 <small>
-                  <a @click="logout()">Sign Out</a>
+                  <a data-no-instant @click="logout()">Sign Out</a>
                 </small>
               </div>
             </div>
@@ -74,7 +58,6 @@
         </div>
       </div>
     </div>
-
   </nav>
 </template>
 
