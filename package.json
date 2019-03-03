@@ -12,7 +12,7 @@
     "buefy": "^0.7.0",
     "glob-all": "^3.1.0",
     "path": "^0.12.7",
-    "purgecss-webpack-plugin": "^1.3.1",
+    "purgecss-webpack-plugin": "^1.4.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
