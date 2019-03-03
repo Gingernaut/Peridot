@@ -3,7 +3,7 @@
     <h1 class="title">My Account</h1>
     <form 
       id="updateAccForm" 
-      @submit.prevent="updateAcc">
+      @submit.prevent="updateAcc()">
 
       <b-field label="First Name">
         <b-input v-model="firstName"/>
@@ -43,7 +43,9 @@
         id="passMatchErr">Both passwords must match</p>
 
       <p class="control">
-        <button class="button is-primary">
+        <button 
+          class="button is-primary"
+        >
           Save Changes
         </button>
 
@@ -103,13 +105,12 @@ export default {
       this.phoneNumber = this.$store.get("account/phoneNumber")
     },
     updateAcc: function() {
-      if (this.password1 !== this.password2) {
+      if (this.password1 && this.password1 !== this.password2) {
         this.errors = ["passwords must match."]
         return
       }
 
       let changedData = this.changedFields()
-
       if (Object.values(changedData).length < 1) {
         this.$toast.open({
           duration: 2000,
@@ -126,7 +127,6 @@ export default {
         this.errors = cleanData.errors
         return
       }
-
       this.$accountAPI
         .updateAccount(cleanData)
         .then(() => {
