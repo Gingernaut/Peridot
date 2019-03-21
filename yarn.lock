@@ -8830,10 +8830,10 @@ vue@^2.6.8:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
   integrity sha512-+vp9lEC2Kt3yom673pzg1J7T1NVGuGzO9j8Wxno+rQN2WYVBX2pyo/RGQ3fXCLh2Pk76Skw/laAPCuBuEQ4diw==
 
-vuex-pathify@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.1.3.tgz#233c96356e27d1e3d1c23e1ee444c926e4d74505"
-  integrity sha512-IiCn3KLnhRaet3K+XfWHGatLukG1yUhEGkrBXeRLUDLIHhPM89RyTdk4ARZhY/wd5TMuJtISHqoDINp9H0D7YA==
+vuex-pathify@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.2.1.tgz#29bea80fab121c6311ab7051df7e5c4a117890ce"
+  integrity sha512-46hnsKPgtatt0h1UzzMh/Ce7nTHmXVxooruVeBdDcyPcOYtwKtkqriiMApIUTW9dsNbCUulFbIxGhuLpHZLgQg==
   dependencies:
     lodash.clonedeep "^4.5.0"
 
