@@ -8771,6 +8771,11 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-class-component@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.0.2.tgz#c5f35a91c0e9341532392b84d606a84911fb13bc"
+  integrity sha512-8xw/wkZI2tgHcwvkSRC1ax7GeP1CG27wKhedvOAdjdASm05VU4RijGsCYti6s6CzBioBL5BQUmntQQTCsp1wnQ==
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -8830,12 +8835,13 @@ vue@^2.6.8:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
   integrity sha512-+vp9lEC2Kt3yom673pzg1J7T1NVGuGzO9j8Wxno+rQN2WYVBX2pyo/RGQ3fXCLh2Pk76Skw/laAPCuBuEQ4diw==
 
-vuex-pathify@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.1.3.tgz#233c96356e27d1e3d1c23e1ee444c926e4d74505"
-  integrity sha512-IiCn3KLnhRaet3K+XfWHGatLukG1yUhEGkrBXeRLUDLIHhPM89RyTdk4ARZhY/wd5TMuJtISHqoDINp9H0D7YA==
+vuex-pathify@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.2.2.tgz#98903abeccd971be5a0719218ead44af17a0a86d"
+  integrity sha512-JaVidHP1TuGeIlKCTNw97j7DJpFnpIuQSgzlBKi7vi4OAmHKnPB0e1hfaQZVdZrROASZOCYFjVq54QJjCUREtg==
   dependencies:
     lodash.clonedeep "^4.5.0"
+    vue-class-component "^7.0.2"
 
 vuex-persistedstate@^2.5.4:
   version "2.5.4"
