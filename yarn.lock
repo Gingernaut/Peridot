@@ -1821,10 +1821,10 @@ browserslist@^4.3.4, browserslist@^4.4.2:
     electron-to-chromium "^1.3.113"
     node-releases "^1.1.8"
 
-buefy@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.7.3.tgz#3008a20e624416e9d800d8775563afdb766e27d7"
-  integrity sha512-6PHKyDzU9BeExv9w5qcZJkjl9v73RWHeevWDRIZWD5TS4+dbmbzQ6z2EQc0sgbNHYesAgbX2Qd+xu5/KqDMFng==
+buefy@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.7.5.tgz#d25fcbb69beeb898849b47b52be78dfd2849452f"
+  integrity sha512-p6yz4XKbfXZd4f9d5rLHXCZWl9Y+8bN7gTaFQ4VdLXh7bdo4WYkPYyFyUFE+fIXhx/VEzSh2TeCEYqn/e8xY8w==
   dependencies:
     bulma "0.7.4"
 
