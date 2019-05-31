@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "buefy": "^0.7.3",
     "glob-all": "^3.1.0",
     "path": "^0.12.7",
