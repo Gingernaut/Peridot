@@ -5233,7 +5233,7 @@ lodash.assign@^4.2.0:
   resolved "https://registry.yarnpkg.com/lodash.assign/-/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
   integrity sha1-DZnzzNem0mHRm9rrkkUAXShYCOc=
 
-lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
+lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
@@ -8795,6 +8795,11 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
+vue-class-component@^7.0.2:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.1.0.tgz#b33efcb10e17236d684f70b1e96f1946ec793e87"
+  integrity sha512-G9152NzUkz0i0xTfhk0Afc8vzdXxDR1pfN4dTwE72cskkgJtdXfrKBkMfGvDuxUh35U500g5Ve4xL8PEGdWeHg==
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -8854,12 +8859,12 @@ vue@^2.6.8:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.8.tgz#f21cbc536bfc14f7d1d792a137bb12f69e60ea91"
   integrity sha512-+vp9lEC2Kt3yom673pzg1J7T1NVGuGzO9j8Wxno+rQN2WYVBX2pyo/RGQ3fXCLh2Pk76Skw/laAPCuBuEQ4diw==
 
-vuex-pathify@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.1.3.tgz#233c96356e27d1e3d1c23e1ee444c926e4d74505"
-  integrity sha512-IiCn3KLnhRaet3K+XfWHGatLukG1yUhEGkrBXeRLUDLIHhPM89RyTdk4ARZhY/wd5TMuJtISHqoDINp9H0D7YA==
+vuex-pathify@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.2.4.tgz#4b080f8159b177e84bd54d87dadaff631dccba65"
+  integrity sha512-yhN+iTbLMpa8WJpY8ZM5KfnP3V2Wvj+I6mJ2tu4CXURwdBt+3+YD9qXMp6Sb+vvO1nzGzbw+OMsIRZ0jMkk4AA==
   dependencies:
-    lodash.clonedeep "^4.5.0"
+    vue-class-component "^7.0.2"
 
 vuex-persistedstate@^2.5.4:
   version "2.5.4"
