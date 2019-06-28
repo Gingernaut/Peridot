@@ -1,6 +1,6 @@
 
 # Peridot
-A fully featured Vue 3 PWA boilerplate
+A fully featured Vue 2.6 PWA boilerplate
 ![Screenshot](./docs/readme_resources/homepage.png)
 
 ## Features:
