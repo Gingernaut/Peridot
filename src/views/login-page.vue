@@ -2,7 +2,7 @@
   <div>
     <section class="section">
       <div class="container">
-        <LoginForm/>
+        <LoginForm />
       </div>
     </section>
   </div>
@@ -30,5 +30,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

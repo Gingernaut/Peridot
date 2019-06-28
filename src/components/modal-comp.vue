@@ -1,21 +1,11 @@
 <template>
   <transition name="fade">
-    <div 
-      v-if="component" 
-      class="modal-mask" 
-      @click="close()">
-      <div 
-        class="modal-container" 
-        @click.stop>
-        <span 
-          class="close-button" 
-          @click="close()"/>
+    <div v-if="component" class="modal-mask" @click="close()">
+      <div class="modal-container" @click.stop>
+        <span class="close-button" @click="close()" />
         <div class="modalbody">
           <transition name="fade">
-            <component 
-              :is="component" 
-              :payload="payload" 
-              @exitModal="close"/>
+            <component :is="component" :payload="payload" @exitModal="close" />
           </transition>
         </div>
       </div>

@@ -1,13 +1,14 @@
 <template>
   <div class="hero-body">
-    <modal 
-      :component="modalComp" 
-      :payload="selectedUser" 
-      @exitModal="closeModal"/>
+    <modal
+      :component="modalComp"
+      :payload="selectedUser"
+      @exitModal="closeModal"
+    />
 
     <div class="container">
-      <p v-if="!isEmpty"> Number of accounts: {{ this.accounts.length }}</p>
-      <br>
+      <p v-if="!isEmpty">Number of accounts: {{ this.accounts.length }}</p>
+      <br >
       <b-table
         :data="accounts"
         :bordered="isBordered"
@@ -20,73 +21,61 @@
         :per-page="perPage"
         :pagination-simple="isPaginationSimple"
         :detailed="isDetailed"
-        :checked-rows.sync="checkedRows">
-
+        :checked-rows.sync="checkedRows"
+      >
         <template slot-scope="props">
-          <b-table-column 
-            field="id" 
-            label="ID" 
-            width="40" 
-            sortable 
-            numeric>
+          <b-table-column field="id" label="ID" width="40" sortable numeric>
             {{ props.row.id }}
           </b-table-column>
 
-          <b-table-column 
-            field="firstName" 
-            label="First Name" 
-            sortable>
+          <b-table-column field="firstName" label="First Name" sortable>
             {{ props.row.firstName }}
           </b-table-column>
 
-          <b-table-column 
-            field="emailAddress" 
-            label="Email Address" 
-            sortable>
+          <b-table-column field="emailAddress" label="Email Address" sortable>
             {{ props.row.emailAddress }}
           </b-table-column>
 
-          <b-table-column 
-            field="isVerified" 
-            label="Role" 
-            sortable>
+          <b-table-column field="isVerified" label="Role" sortable>
             {{ props.row.userRole }}
           </b-table-column>
 
-          <b-table-column 
-            field="modifiedTime" 
-            label="Modified Date" 
-            sortable 
-            centered>
+          <b-table-column
+            field="modifiedTime"
+            label="Modified Date"
+            sortable
+            centered
+          >
             <span class="tag is-info">
               {{ props.row.modifiedTime | localDate }}
             </span>
           </b-table-column>
 
-          <b-table-column 
-            field="createdTime" 
-            label="Created Date" 
-            sortable 
-            centered>
+          <b-table-column
+            field="createdTime"
+            label="Created Date"
+            sortable
+            centered
+          >
             <span class="tag is-info">
               {{ props.row.createdTime | localDate }}
             </span>
           </b-table-column>
 
           <b-table-column>
-            <button 
-              class="button is-small is-info is-outlined" 
-              @click="openEditModal(props.row)">Edit</button>
+            <button
+              class="button is-small is-info is-outlined"
+              @click="openEditModal(props.row)"
+            >
+              Edit
+            </button>
           </b-table-column>
         </template>
 
-        <div 
-          slot="empty" 
-          class="has-text-centered">
+        <div slot="empty" class="has-text-centered">
           Loading Accounts
         </div>
       </b-table>
-
     </div>
   </div>
 </template>

@@ -1,12 +1,8 @@
 <template>
   <footer v-if="showFooter">
-    <router-link 
-      to="/about" 
-      class="navbar-item">About</router-link>
-    <router-link 
-      to="/contact" 
-      class="navbar-item">Contact</router-link>
-    <p> &copy; {{ year }}</p>
+    <router-link to="/about" class="navbar-item">About</router-link>
+    <router-link to="/contact" class="navbar-item">Contact</router-link>
+    <p>&copy; {{ year }}</p>
   </footer>
 </template>
 

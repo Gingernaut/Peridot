@@ -7,7 +7,6 @@
   </section>
 </template>
 
-
 <script>
 export default {
   name: "TimeoutPage",
@@ -29,5 +28,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

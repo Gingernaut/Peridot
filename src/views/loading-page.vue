@@ -2,12 +2,11 @@
   <section class="section">
     <div class="hero-body">
       <div class="container">
-        <b-loading :active.sync="isLoading"/>
+        <b-loading :active.sync="isLoading" />
       </div>
     </div>
   </section>
 </template>
-
 
 <script>
 export default {
@@ -32,5 +31,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

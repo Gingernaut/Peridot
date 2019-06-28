@@ -1,43 +1,32 @@
 <template>
   <div>
     <h1 class="title has-text-centered">Login</h1>
-    <form 
-      id="loginform" 
-      @submit.prevent="login">
+    <form id="loginform" @submit.prevent="login">
       <b-field label="Email">
-        <b-input 
-          v-model="emailAddress" 
-          type="email"/>
+        <b-input v-model="emailAddress" type="email" />
       </b-field>
 
       <b-field label="Password">
-        <b-input 
-          v-model="password" 
-          type="password"/>
+        <b-input v-model="password" type="password" />
       </b-field>
 
-      <p 
-        v-for="err in errors" 
-        :key="err" 
-        class="error">
+      <p v-for="err in errors" :key="err" class="error">
         {{ err }}
       </p>
 
       <p class="control">
-        <button 
-          id="submitbutton" 
-          class="button is-primary">
+        <button id="submitbutton" class="button is-primary">
           Login
         </button>
       </p>
     </form>
-    <router-link 
-      to="/signup" 
-      @click.native="closeModal()">Create new account</router-link>
-    <br>
-    <router-link 
-      to="/reset" 
-      @click.native="closeModal()">Forget your password?</router-link>
+    <router-link to="/signup" @click.native="closeModal()"
+    >Create new account</router-link
+    >
+    <br >
+    <router-link to="/reset" @click.native="closeModal()"
+    >Forget your password?</router-link
+    >
   </div>
 </template>
 

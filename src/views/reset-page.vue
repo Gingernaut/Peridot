@@ -1,28 +1,18 @@
 <template>
   <div class="hero-body">
     <div class="container">
-
       <!-- updating password -->
-      <form 
-        v-if="hasToken" 
-        id="resetPassForm" 
-        @submit.prevent="saveNewPass">
+      <form v-if="hasToken" id="resetPassForm" @submit.prevent="saveNewPass">
         <b-field label="New Password">
-          <b-input 
-            v-model="password1" 
-            type="password" 
-            min="6 "/>
+          <b-input v-model="password1" type="password" min="6 " />
         </b-field>
 
         <b-field label="Confirm New Password">
-          <b-input 
-            v-model="password2" 
-            type="password" 
-            min="6 "/>
+          <b-input v-model="password2" type="password" min="6 " />
         </b-field>
-        <p 
-          v-if="!passesMatch && password1.length >= 1" 
-          class="has-text-danger">Both passwords must match</p>
+        <p v-if="!passesMatch && password1.length >= 1" class="has-text-danger">
+          Both passwords must match
+        </p>
 
         <p class="control">
           <button class="button is-primary">
@@ -32,20 +22,17 @@
       </form>
 
       <!-- Creating new reset -->
-      <form 
-        v-if="!hasToken" 
-        id="initResetForm" 
-        @submit.prevent="initReset">
-
+      <form v-if="!hasToken" id="initResetForm" @submit.prevent="initReset">
         <h1 class="title">Reset your password</h1>
-          
-        <p>If there is an account with your email, you will get a link to reset your password.</p>
 
-        <br>
+        <p>
+          If there is an account with your email, you will get a link to reset
+          your password.
+        </p>
+
+        <br >
         <b-field label="Email Address">
-          <b-input 
-            v-model="emailAddress" 
-            type="email"/>
+          <b-input v-model="emailAddress" type="email" />
         </b-field>
 
         <p class="control">
@@ -55,17 +42,12 @@
         </p>
       </form>
 
-      <p 
-        v-for="err in errors" 
-        :key="err" 
-        class="error">
+      <p v-for="err in errors" :key="err" class="error">
         {{ err }}
       </p>
-
     </div>
   </div>
 </template>
-
 
 <script>
 export default {

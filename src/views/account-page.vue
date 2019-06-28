@@ -1,65 +1,50 @@
 <template>
   <div>
     <h1 class="title">My Account</h1>
-    <form 
-      id="updateAccForm" 
-      @submit.prevent="updateAcc()">
-
+    <form id="updateAccForm" @submit.prevent="updateAcc()">
       <b-field label="First Name">
-        <b-input v-model="firstName"/>
+        <b-input v-model="firstName" />
       </b-field>
 
       <b-field label="Last Name">
-        <b-input v-model="lastName"/>
+        <b-input v-model="lastName" />
       </b-field>
 
       <b-field label="Email">
-        <b-input 
-          v-model="emailAddress" 
-          type="email"/>
+        <b-input v-model="emailAddress" type="email" />
       </b-field>
 
       <b-field label="Phone">
-        <b-input v-model="phoneNumber"/>
+        <b-input v-model="phoneNumber" />
       </b-field>
 
       <b-field label="Change Password">
-        <b-input 
-          v-model="password1" 
-          type="password"/>
-
+        <b-input v-model="password1" type="password" />
       </b-field>
 
-      <b-field 
-        v-if="password1" 
-        label="Confirm Password">
-        <b-input 
-          v-model="password2" 
-          type="password"/>
+      <b-field v-if="password1" label="Confirm Password">
+        <b-input v-model="password2" type="password" />
       </b-field>
 
-      <p 
-        v-if="!passesMatch && password1.length >= 1" 
-        id="passMatchErr">Both passwords must match</p>
+      <p v-if="!passesMatch && password1.length >= 1" id="passMatchErr">
+        Both passwords must match
+      </p>
 
       <p class="control">
-        <button 
-          class="button is-primary"
-        >
+        <button class="button is-primary">
           Save Changes
         </button>
 
-        <button 
-          class="button is-danger is-outlined" 
-          @click.prevent="deleteAcc()">
+        <button
+          class="button is-danger is-outlined"
+          @click.prevent="deleteAcc()"
+        >
           Delete Account
         </button>
       </p>
-
     </form>
   </div>
 </template>
-
 
 <script>
 export default {

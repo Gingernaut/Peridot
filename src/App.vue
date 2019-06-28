@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-    <GlobalNavbar/>
-    <transition 
-      name="fadePage" 
-      mode="out-in">
-      <router-view 
-        id="appContent" 
-        :key="$route.fullPath"/>
+    <GlobalNavbar />
+    <transition name="fadePage" mode="out-in">
+      <router-view id="appContent" :key="$route.fullPath" />
     </transition>
-    <GlobalFooter/>
+    <GlobalFooter />
   </div>
 </template>
 

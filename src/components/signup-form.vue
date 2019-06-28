@@ -1,10 +1,7 @@
 <template>
   <div>
     <h1 class="title has-text-centered">Sign Up</h1>
-    <form 
-      id="signupform" 
-      @submit.prevent="signup">
-
+    <form id="signupform" @submit.prevent="signup">
       <!-- <b-field label="First Name">
               <b-input type="text" v-model="firstName"></b-input>
             </b-field>
@@ -14,28 +11,19 @@
             </b-field> -->
 
       <b-field label="Email">
-        <b-input 
-          v-model="emailAddress" 
-          type="email"/>
+        <b-input v-model="emailAddress" type="email" />
       </b-field>
 
       <b-field label="Password">
-        <b-input 
-          v-model="password" 
-          type="password"/>
+        <b-input v-model="password" type="password" />
       </b-field>
 
-      <p 
-        v-for="err in errors" 
-        :key="err" 
-        class="error">
+      <p v-for="err in errors" :key="err" class="error">
         {{ err }}
       </p>
 
       <p class="control">
-        <button 
-          id="submitbutton" 
-          class="button is-primary">
+        <button id="submitbutton" class="button is-primary">
           Signup
         </button>
       </p>
@@ -43,7 +31,6 @@
     </form>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -110,7 +97,6 @@ export default {
   },
 }
 </script>
-
 
 <style lang="scss" scoped>
 #signupform {
