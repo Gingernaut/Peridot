@@ -26,7 +26,7 @@
     "@vue/cli-plugin-pwa": "^3.8.0",
     "@vue/cli-service": "^3.8.4",
     "@vue/eslint-config-prettier": "^4.0.1",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.0.2",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "^2.6.10"
