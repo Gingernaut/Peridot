@@ -61,14 +61,14 @@ const routes = [
       redirectIfAuthenticated: true,
     },
   },
-  //   {
-  //     path: "/reset/:token",
-  //     name: "resetToken",
-  //     component: () => lazyLoadView(import("@/views/reset-page")),
-  //     meta: {
-  //       redirectIfAuthenticated: true,
-  //     },
-  //   },
+  {
+    path: "/reset/:token",
+    name: "resetToken",
+    component: () => lazyLoadView(import("@/views/reset-page")),
+    meta: {
+      redirectIfAuthenticated: true,
+    },
+  },
   {
     path: "/404",
     name: "pageNotFound",

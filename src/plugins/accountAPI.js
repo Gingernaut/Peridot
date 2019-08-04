@@ -3,9 +3,9 @@ import store from "@/store/index"
 
 const HTTP = () => {
   return axios.create({
-    baseURL: "http://0.0.0.0:5000",
+    baseURL: "http://0.0.0.0:8000",
     headers: {
-      Authorization: store.get("account/token"),
+      Authorization: `Bearer ${store.get("account/token")}`,
     },
   })
 }
@@ -109,11 +109,11 @@ const accFunctions = {
     return HTTP()
       .get("/accounts")
       .then((res) => {
-        return res.data.users
+        return res.data
       })
   },
   initReset: function(emailAddress) {
-    return HTTP().post(`/reset-password/${emailAddress}`)
+    return HTTP().post(`/initiate-reset/${emailAddress}`)
   },
   confirmReset: function(token) {
     return HTTP()
@@ -124,7 +124,7 @@ const accFunctions = {
   },
   validateAccount: function(token) {
     return HTTP()
-      .post(`/validate-account/${token}`)
+      .post(`/confirm-account/${token}`)
       .then((res) => {
         updateStoreData(res.data)
       })
