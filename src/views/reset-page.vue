@@ -2,13 +2,13 @@
   <div class="hero-body">
     <div class="container">
       <!-- updating password -->
-      <form v-if="hasToken" id="resetPassForm" @submit.prevent="saveNewPass">
+      <form id="resetPassForm" @submit.prevent="saveNewPass">
         <b-field label="New Password">
-          <b-input v-model="password1" type="password" min="6 " />
+          <b-input v-model="password1" type="password" min="6" />
         </b-field>
 
         <b-field label="Confirm New Password">
-          <b-input v-model="password2" type="password" min="6 " />
+          <b-input v-model="password2" type="password" min="6" />
         </b-field>
         <p v-if="!passesMatch && password1.length >= 1" class="has-text-danger">
           Both passwords must match
@@ -17,27 +17,6 @@
         <p class="control">
           <button class="button is-primary">
             Save Password
-          </button>
-        </p>
-      </form>
-
-      <!-- Creating new reset -->
-      <form v-if="!hasToken" id="initResetForm" @submit.prevent="initReset">
-        <h1 class="title">Reset your password</h1>
-
-        <p>
-          If there is an account with your email, you will get a link to reset
-          your password.
-        </p>
-
-        <br >
-        <b-field label="Email Address">
-          <b-input v-model="emailAddress" type="email" />
-        </b-field>
-
-        <p class="control">
-          <button class="button is-primary">
-            Send Reset Email
           </button>
         </p>
       </form>
@@ -60,7 +39,6 @@ export default {
       hasToken: false,
       password1: null,
       password2: null,
-      emailAddress: null,
       errors: [],
     }
   },
@@ -83,6 +61,8 @@ export default {
           this.hasToken = false
           this.$router.push("/reset")
         })
+    } else {
+      this.$router.push("/reset")
     }
   },
   computed: {
@@ -91,29 +71,10 @@ export default {
     },
   },
   methods: {
-    initReset: function() {
-      let cleanData = this.$accountAPI.cleanData({
-        emailAddress: this.emailAddress,
-      })
-
-      if (!cleanData.errors.length > 1) {
-        this.errors = cleanData.errors
-        return
-      }
-
-      this.$accountAPI.initReset(this.emailAddress)
-      this.$buefy.snackbar.open({
-        message: "Email Address Submitted",
-        type: "is-info",
-        position: "is-top",
-        actionText: "Ok",
-      })
-      this.$router.push("/")
-    },
     saveNewPass: function() {
       if (this.password1 === this.password2 && this.password1.length >= 6) {
-        this.$account
-          .updateAcc({ password: this.password1 })
+        this.$accountAPI
+          .updateAccount({ password: this.password1 })
           .then(() => {
             this.$router.push("/account")
             this.$buefy.toast.open({

@@ -55,7 +55,7 @@ const routes = [
   {
     path: "/reset",
     name: "reset",
-    component: () => lazyLoadView(import("@/views/reset-page")),
+    component: () => lazyLoadView(import("@/views/init-reset-page")),
     props: true,
     meta: {
       redirectIfAuthenticated: true,

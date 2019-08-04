@@ -119,8 +119,7 @@ export default {
       let cleanData = this.$accountAPI.cleanData(changedData)
       this.$accountAPI
         .updateAccount(cleanData, this.id)
-        .then((res) => {
-          console.log(res.data)
+        .then(() => {
           this.$buefy.toast.open({
             duration: 2000,
             message: "Changes saved",
@@ -189,7 +188,7 @@ export default {
                 position: "is-top",
                 type: "is-info",
               })
-              this.closeModal(false)
+              this.closeModal(true)
             })
             .catch(() => {
               this.$buefy.snackbar.open({
