@@ -97,7 +97,7 @@ export default {
 
       let changedData = this.changedFields()
       if (Object.values(changedData).length < 1) {
-        this.$toast.open({
+        this.$buefy.toast.open({
           duration: 2000,
           message: "No changes to save",
           position: "is-top",
@@ -116,7 +116,7 @@ export default {
         .updateAccount(cleanData)
         .then(() => {
           this.setLocalData()
-          this.$toast.open({
+          this.$buefy.toast.open({
             duration: 2000,
             message: "Changes Saved",
             position: "is-top",
@@ -124,7 +124,7 @@ export default {
           })
         })
         .catch(() => {
-          this.$toast.open({
+          this.$buefy.toast.open({
             duration: 2000,
             message: "An error occured, changes not saved",
             position: "is-top",
@@ -158,7 +158,7 @@ export default {
       return fields
     },
     deleteAcc: function() {
-      this.$dialog.confirm({
+      this.$buefy.dialog.confirm({
         title: "Deleting account",
         message:
           "Are you sure you want to <strong>delete</strong> your account? This cannot be undone.",
@@ -168,7 +168,7 @@ export default {
         onConfirm: () => {
           this.$accountAPI.deleteAccount()
           this.logout()
-          this.$toast.open("Account deleted.")
+          this.$buefy.toast.open("Account deleted.")
         },
       })
     },

@@ -98,7 +98,7 @@ export default {
     },
     logout() {
       this.$accountAPI.logout()
-      this.$toast.open({
+      this.$buefy.toast.open({
         duration: 1000,
         message: "Signed Out",
         position: "is-top",

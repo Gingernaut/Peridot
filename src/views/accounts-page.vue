@@ -134,7 +134,7 @@ export default {
         })
         .catch(() => {
           this.isLoading = false
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             duration: 2000,
             message: "An error occured. Please try again",
             position: "is-top",

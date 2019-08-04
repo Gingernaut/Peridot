@@ -24,7 +24,7 @@ export default {
     const token = this.$route.params.token
     this.$accountAPI.validateAccount(token).then(() => {
       this.isLoading = false
-      this.$toast.open({
+      this.$buefy.toast.open({
         duration: 2000,
         message: "Account Confirmed",
         position: "is-top",

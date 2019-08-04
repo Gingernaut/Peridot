@@ -102,7 +102,7 @@ export default {
       }
 
       this.$accountAPI.initReset(this.emailAddress)
-      this.$snackbar.open({
+      this.$buefy.snackbar.open({
         message: "Email Address Submitted",
         type: "is-info",
         position: "is-top",
@@ -116,7 +116,7 @@ export default {
           .updateAcc({ password: this.password1 })
           .then(() => {
             this.$router.push("/account")
-            this.$toast.open({
+            this.$buefy.toast.open({
               duration: 2000,
               message: "Changes Saved",
               position: "is-top",

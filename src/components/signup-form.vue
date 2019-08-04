@@ -70,7 +70,7 @@ export default {
       this.$accountAPI
         .signup(cleanData)
         .then(() => {
-          this.$toast.open({
+          this.$buefy.toast.open({
             duration: 2000,
             message: "Signup Successful",
             position: "is-top",

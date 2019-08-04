@@ -107,7 +107,7 @@ export default {
       let changedData = this.changedFields()
 
       if (Object.values(changedData).length < 1) {
-        this.$toast.open({
+        this.$buefy.toast.open({
           duration: 2000,
           message: "No changes to save",
           position: "is-top",
@@ -121,7 +121,7 @@ export default {
         .updateAccount(cleanData, this.id)
         .then((res) => {
           console.log(res.data)
-          this.$toast.open({
+          this.$buefy.toast.open({
             duration: 2000,
             message: "Changes saved",
             position: "is-top",
@@ -130,7 +130,7 @@ export default {
           this.closeModal(true)
         })
         .catch(() => {
-          this.$snackbar.open({
+          this.$buefy.snackbar.open({
             duration: 2000,
             message: "An error occured. Please try again",
             position: "is-top",
@@ -168,7 +168,7 @@ export default {
       return fields
     },
     deleteAccount: function() {
-      this.$dialog.confirm({
+      this.$buefy.dialog.confirm({
         title: "Deleting account",
         message:
           "Are you sure you want to <strong>delete</strong> this account? This cannot be undone.",
@@ -183,7 +183,7 @@ export default {
                 this.$accountAPI.logout()
                 this.$router.push("/")
               }
-              this.$toast.open({
+              this.$buefy.toast.open({
                 duration: 2000,
                 message: "Account deleted",
                 position: "is-top",
@@ -192,7 +192,7 @@ export default {
               this.closeModal(false)
             })
             .catch(() => {
-              this.$snackbar.open({
+              this.$buefy.snackbar.open({
                 duration: 2000,
                 message: "An error occured. Please try again",
                 position: "is-top",

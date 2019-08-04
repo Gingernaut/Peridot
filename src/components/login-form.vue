@@ -63,7 +63,7 @@ export default {
       this.$accountAPI
         .login(cleanData)
         .then(() => {
-          this.$toast.open({
+          this.$buefy.toast.open({
             duration: 2000,
             message: "Login Successful",
             position: "is-top",
