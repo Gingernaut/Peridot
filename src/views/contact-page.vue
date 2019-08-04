@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <form @submit.prevent="submitForm">
+  <div class="container is-fluid">
+    <form class="is-centered" @submit.prevent="submitForm">
       <b-field label="Email Address">
         <b-input v-model="emailAddress" type="email" />
       </b-field>
@@ -51,12 +51,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 text-area {
   width: 100%;
 }
 
 form {
-  max-width: 700px;
+  width: 40%;
+  min-width: 400px;
   margin-top: 30px;
 }
 </style>
