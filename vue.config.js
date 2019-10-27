@@ -39,7 +39,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data: fs.readFileSync("./src/styles/_variables.scss", "utf-8"),
+        prependData: fs.readFileSync("./src/styles/_variables.scss", "utf-8"),
       },
     },
   },
