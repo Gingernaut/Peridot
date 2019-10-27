@@ -122,6 +122,9 @@ const accFunctions = {
         updateStoreData(res.data)
       })
   },
+  sendEmailToSiteAdmin: function(payload) {
+    return HTTP().post("/contact-form", payload)
+  },
   validateAccount: function(token) {
     return HTTP()
       .post(`/confirm-account/${token}`)

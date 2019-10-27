@@ -13,10 +13,6 @@ A fully featured Vue 2.6 PWA boilerplate
 * Linting and formatting with [eslint](https://github.com/eslint/eslint) and [prettier](https://github.com/prettier/prettier)
 * Uses [Buefy](https://buefy.github.io/#/) for styling
 
-
-#### Coming Soon
-* Email contact form with Sendgrid.
-
 ## Running
 ```bash
 # Run in development
@@ -32,7 +28,7 @@ yarn run lint
 
 ## Backend
 
-Want a ready-to-go backend for this web app for user authentication and management, email verification and more? Check out [microAuth](https://github.com/gingernaut/microAuth), a Python Sanic boilerplate that works out of the box with this project.
+Want a ready-to-go backend for this web app for user authentication and management, email verification and more? Check out [microAuth](https://github.com/gingernaut/microAuth), a FastAPI Python boilerplate that works out of the box with this project.
 
 ## Contributing
 
