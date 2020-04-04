@@ -1,0 +1,29 @@
+version: v1.0
+name: Node JS
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: "Yarn Build"
+    task:
+      jobs:
+        - name: yarn install
+          commands:
+            - sem-version node 8
+            - checkout
+            - yarn install
+            - yarn build
+
+  - name: "Build Image"
+    task:
+      agent:
+        machine:
+          type: e1-standard-2
+          os_image: ubuntu1804
+      jobs:
+        - name: "Build Docker Image"
+          commands:
+            - checkout
+            - docker build -t peridot .
+            - docker images
