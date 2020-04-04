@@ -9772,10 +9772,10 @@ vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
-vuex-pathify@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.4.0.tgz#b4d888661bc6281e73561968aa191aecda749ee5"
-  integrity sha512-Wia0Z7Nyjevr5DqTJUr2ng3ZxnGAP56N7rTLR2Cc63fh3czcjN8o8gnodW6Bo+WwMWTOkB6ryJGWkqExCdD6Tw==
+vuex-pathify@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/vuex-pathify/-/vuex-pathify-1.4.1.tgz#ae0bbe2eac548f5027f67494f73e273b061085b1"
+  integrity sha512-i4CsRrOW9r67su8YiVrthTvNfjACUMTjVne6Gxsa+tAxyNhGdKLOXhlDyi3e536gDrgHFU7Uon1TfaKoErfAuA==
   dependencies:
     vue-class-component "^7.1.0"
 
