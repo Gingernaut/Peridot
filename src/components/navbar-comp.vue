@@ -42,7 +42,7 @@
           <a class="navbar-link is-active">
             Account
           </a>
-          <div class="navbar-dropdown ">
+          <div class="navbar-dropdown">
             <router-link to="/account" class="navbar-item">
               Overview
             </router-link>
@@ -82,7 +82,7 @@ export default {
     showNavbar: get("ui/showNavbar"),
     isLoggedIn: get("account/isAuthenticated"),
     userRole: get("account/userRole"),
-    isAdmin: function() {
+    isAdmin: function () {
       return this.userRole === "ADMIN"
     },
   },
