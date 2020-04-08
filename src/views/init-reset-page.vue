@@ -71,7 +71,7 @@ export default {
   },
   computed: {},
   methods: {
-    initReset: function() {
+    initReset: function () {
       let cleanData = this.$accountAPI.cleanData({
         emailAddress: this.emailAddress,
       })

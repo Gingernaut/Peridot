@@ -113,18 +113,18 @@ export default {
       })
   },
   computed: {
-    passesMatch: function() {
+    passesMatch: function () {
       return this.password1 === this.password2
     },
   },
   methods: {
-    setLocalData: function() {
+    setLocalData: function () {
       this.firstName = this.$store.get("account/firstName")
       this.lastName = this.$store.get("account/lastName")
       this.emailAddress = this.$store.get("account/emailAddress")
       this.phoneNumber = this.$store.get("account/phoneNumber")
     },
-    updateAcc: function() {
+    updateAcc: function () {
       if (this.password1 && this.password1 !== this.password2) {
         this.errors = ["passwords must match."]
         return
@@ -167,7 +167,7 @@ export default {
           })
         })
     },
-    changedFields: function() {
+    changedFields: function () {
       let fields = {}
 
       if (this.$store.get("account/firstName") !== this.firstName) {
@@ -192,7 +192,7 @@ export default {
 
       return fields
     },
-    deleteAcc: function() {
+    deleteAcc: function () {
       this.$buefy.dialog.confirm({
         title: "Deleting account",
         message:
@@ -207,7 +207,7 @@ export default {
         },
       })
     },
-    clearLocal: function() {
+    clearLocal: function () {
       this.firstName = null
       this.lastName = null
       this.emailAddress = null
@@ -216,7 +216,7 @@ export default {
       this.password2 = null
       this.errors = []
     },
-    logout: function() {
+    logout: function () {
       this.$accountAPI.logout()
       this.clearLocal()
       this.$router.push("/")
