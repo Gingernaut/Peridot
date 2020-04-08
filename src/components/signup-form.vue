@@ -3,29 +3,48 @@
     <h1 class="title has-text-centered">Sign Up</h1>
     <form id="signupform" @submit.prevent="signup">
       <!-- <b-field label="First Name">
-              <b-input type="text" v-model="firstName"></b-input>
+              <FormulateInput
+                type="text"
+                name="firstName"
+                placeholder="Johnny"
+                v-model="firstName"
+              />
             </b-field>
       
             <b-field label="Last Name">
-              <b-input type="text" v-model="lastName"></b-input>
-            </b-field> -->
+              <FormulateInput
+          type="text"
+          name="lastName"
+          placeholder="Appleseed"
+          v-model="lastName"
+        />
+      </b-field>-->
 
       <b-field label="Email">
-        <b-input v-model="emailAddress" type="email" />
+        <FormulateInput
+          v-model="emailAddress"
+          type="email"
+          name="email"
+          validation="required|email"
+          placeholder="first_last@example.com"
+        />
       </b-field>
 
       <b-field label="Password">
-        <b-input v-model="password" type="password" />
+        <FormulateInput
+          v-model="password"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="required|min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
-      <p v-for="err in errors" :key="err" class="error">
-        {{ err }}
-      </p>
+      <p v-for="err in errors" :key="err" class="error">{{ err }}</p>
 
       <p class="control">
-        <button id="submitbutton" class="button is-primary">
-          Signup
-        </button>
+        <button id="submitbutton" class="button is-primary">Signup</button>
       </p>
       <router-link to="/login">Login here</router-link>
     </form>

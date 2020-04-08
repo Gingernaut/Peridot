@@ -1,6 +1,6 @@
 import { make } from "vuex-pathify"
 
-const state = function() {
+const state = function () {
   return {
     isAuthenticated: false,
     id: null,

@@ -12,7 +12,13 @@
 
         <br >
         <b-field label="Email Address">
-          <b-input v-model="emailAddress" type="email" />
+          <FormulateInput
+            v-model="emailAddress"
+            type="email"
+            name="email"
+            validation="required|email"
+            placeholder="first_last@example.com"
+          />
         </b-field>
 
         <p class="control">
@@ -65,7 +71,7 @@ export default {
   },
   computed: {},
   methods: {
-    initReset: function() {
+    initReset: function () {
       let cleanData = this.$accountAPI.cleanData({
         emailAddress: this.emailAddress,
       })

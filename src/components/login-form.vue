@@ -3,21 +3,30 @@
     <h1 class="title has-text-centered">Login</h1>
     <form id="loginform" @submit.prevent="login">
       <b-field label="Email">
-        <b-input v-model="emailAddress" type="email" />
+        <FormulateInput
+          v-model="emailAddress"
+          type="email"
+          name="email"
+          validation="required|email"
+          placeholder="first_last@example.com"
+        />
       </b-field>
 
       <b-field label="Password">
-        <b-input v-model="password" type="password" />
+        <FormulateInput
+          v-model="password"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="required|min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
-      <p v-for="err in errors" :key="err" class="error">
-        {{ err }}
-      </p>
+      <p v-for="err in errors" :key="err" class="error">{{ err }}</p>
 
       <p class="control">
-        <button id="submitbutton" class="button is-primary">
-          Login
-        </button>
+        <button id="submitbutton" class="button is-primary">Login</button>
       </p>
     </form>
     <router-link to="/signup" @click.native="closeModal()"

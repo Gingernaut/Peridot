@@ -5,16 +5,6 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: "Yarn Build"
-    task:
-      jobs:
-        - name: yarn install
-          commands:
-            - sem-version node 8
-            - checkout
-            - yarn install
-            - yarn build
-
   - name: "Build Image"
     task:
       agent:
