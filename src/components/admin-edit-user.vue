@@ -4,37 +4,60 @@
       <form id="editAccForm" @submit.prevent="saveAccountChanges()">
         <h1 class="title has-text-centered">Editing user: id {{ id }}</h1>
 
-        <p><strong>Created:</strong> {{ createdTime | fullDate }}</p>
-        <p><strong>Modified:</strong> {{ modifiedTime | fullDate }}</p>
+        <p>
+          <strong>Created:</strong>
+          {{ createdTime | fullDate }}
+        </p>
+        <p>
+          <strong>Modified:</strong>
+          {{ modifiedTime | fullDate }}
+        </p>
 
         <b-field label="First Name">
-          <b-input v-model="firstName" type="text" />
+          <FormulateInput
+            v-model="firstName"
+            type="text"
+            name="firstName"
+            placeholder="Joe"
+          />
         </b-field>
 
         <b-field label="Last Name">
-          <b-input v-model="lastName" type="text" />
+          <FormulateInput
+            v-model="lastName"
+            type="text"
+            name="lastName"
+            placeholder="Bandito"
+          />
         </b-field>
 
         <b-field label="Email">
-          <b-input v-model="emailAddress" type="text" />
+          <FormulateInput
+            v-model="emailAddress"
+            type="email"
+            name="email"
+            validation="email"
+            placeholder="first_last@example.com"
+          />
         </b-field>
 
         <b-field label="Phone">
-          <b-input v-model="phoneNumber" type="text" />
+          <FormulateInput
+            v-model="phoneNumber"
+            type="tel"
+            name="phone"
+            validation="email"
+          />
         </b-field>
 
         <b-field label="Role">
-          <b-input v-model="userRole" type="text" />
+          <FormulateInput v-model="userRole" type="text" name="userRole" />
         </b-field>
 
         <b-field label="Verified">
           <div class="block">
-            <b-radio v-model="isVerified" native-value="true">
-              True
-            </b-radio>
-            <b-radio v-model="isVerified" native-value="false">
-              False
-            </b-radio>
+            <b-radio v-model="isVerified" native-value="true">True</b-radio>
+            <b-radio v-model="isVerified" native-value="false">False</b-radio>
           </div>
         </b-field>
         <div id="controlButtons">
