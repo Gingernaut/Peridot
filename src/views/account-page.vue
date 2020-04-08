@@ -3,27 +3,62 @@
     <h1 class="title">My Account</h1>
     <form id="updateAccForm" @submit.prevent="updateAcc()">
       <b-field label="First Name">
-        <b-input v-model="firstName" />
+        <FormulateInput
+          v-model="firstName"
+          type="text"
+          name="firstName"
+          placeholder="Joe"
+        />
       </b-field>
 
       <b-field label="Last Name">
-        <b-input v-model="lastName" />
+        <FormulateInput
+          v-model="lastName"
+          type="text"
+          name="lastName"
+          placeholder="Bandito"
+        />
       </b-field>
 
       <b-field label="Email">
-        <b-input v-model="emailAddress" type="email" />
+        <FormulateInput
+          v-model="emailAddress"
+          type="email"
+          name="email"
+          validation="email"
+          placeholder="first_last@example.com"
+        />
       </b-field>
 
       <b-field label="Phone">
-        <b-input v-model="phoneNumber" />
+        <FormulateInput
+          v-model="phoneNumber"
+          type="tel"
+          name="phone"
+          validation="email"
+        />
       </b-field>
 
       <b-field label="Change Password">
-        <b-input v-model="password1" type="password" />
+        <FormulateInput
+          v-model="password1"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
       <b-field v-if="password1" label="Confirm Password">
-        <b-input v-model="password2" type="password" />
+        <FormulateInput
+          v-model="password2"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
       <p v-if="!passesMatch && password1.length >= 1" id="passMatchErr">
@@ -78,18 +113,18 @@ export default {
       })
   },
   computed: {
-    passesMatch: function() {
+    passesMatch: function () {
       return this.password1 === this.password2
     },
   },
   methods: {
-    setLocalData: function() {
+    setLocalData: function () {
       this.firstName = this.$store.get("account/firstName")
       this.lastName = this.$store.get("account/lastName")
       this.emailAddress = this.$store.get("account/emailAddress")
       this.phoneNumber = this.$store.get("account/phoneNumber")
     },
-    updateAcc: function() {
+    updateAcc: function () {
       if (this.password1 && this.password1 !== this.password2) {
         this.errors = ["passwords must match."]
         return
@@ -132,7 +167,7 @@ export default {
           })
         })
     },
-    changedFields: function() {
+    changedFields: function () {
       let fields = {}
 
       if (this.$store.get("account/firstName") !== this.firstName) {
@@ -157,7 +192,7 @@ export default {
 
       return fields
     },
-    deleteAcc: function() {
+    deleteAcc: function () {
       this.$buefy.dialog.confirm({
         title: "Deleting account",
         message:
@@ -172,7 +207,7 @@ export default {
         },
       })
     },
-    clearLocal: function() {
+    clearLocal: function () {
       this.firstName = null
       this.lastName = null
       this.emailAddress = null
@@ -181,7 +216,7 @@ export default {
       this.password2 = null
       this.errors = []
     },
-    logout: function() {
+    logout: function () {
       this.$accountAPI.logout()
       this.clearLocal()
       this.$router.push("/")

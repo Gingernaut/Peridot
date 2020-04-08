@@ -7,7 +7,13 @@
       <br >
       <br >
       <b-field label="Email Address">
-        <b-input v-model="fromEmail" type="email" />
+        <FormulateInput
+          v-model="fromEmail"
+          type="email"
+          name="email"
+          validation="required|email"
+          placeholder="first_last@example.com"
+        />
       </b-field>
 
       <b-field label="Subject">
@@ -53,7 +59,7 @@ export default {
   mounted() {},
   computed: {},
   methods: {
-    submitForm: function() {
+    submitForm: function () {
       this.$accountAPI
         .sendEmailToSiteAdmin({
           fromEmail: this.fromEmail,
