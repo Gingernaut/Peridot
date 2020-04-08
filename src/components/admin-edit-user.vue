@@ -42,12 +42,7 @@
         </b-field>
 
         <b-field label="Phone">
-          <FormulateInput
-            v-model="phoneNumber"
-            type="tel"
-            name="phone"
-            validation="email"
-          />
+          <FormulateInput v-model="phoneNumber" type="tel" name="phone" />
         </b-field>
 
         <b-field label="Role">
