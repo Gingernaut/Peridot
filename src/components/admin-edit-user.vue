@@ -98,7 +98,7 @@ export default {
   mounted() {},
   computed: {
     loggedInUserRole: get("account/userRole"),
-    isAdmin: function () {
+    isAdmin: function() {
       return this.loggedInUserRole === "ADMIN"
     },
   },
@@ -137,7 +137,7 @@ export default {
           })
         })
     },
-    changedFields: function () {
+    changedFields: function() {
       let fields = {}
 
       if (this.payload.firstName !== this.firstName) {
@@ -166,7 +166,7 @@ export default {
 
       return fields
     },
-    deleteAccount: function () {
+    deleteAccount: function() {
       this.$buefy.dialog.confirm({
         title: "Deleting account",
         message:
@@ -206,7 +206,7 @@ export default {
     },
   },
   filters: {
-    fullDate: function (date) {
+    fullDate: function(date) {
       const options = {
         weekday: "long",
         year: "numeric",

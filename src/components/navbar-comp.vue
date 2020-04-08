@@ -82,7 +82,7 @@ export default {
     showNavbar: get("ui/showNavbar"),
     isLoggedIn: get("account/isAuthenticated"),
     userRole: get("account/userRole"),
-    isAdmin: function () {
+    isAdmin: function() {
       return this.userRole === "ADMIN"
     },
   },

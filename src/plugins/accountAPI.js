@@ -48,7 +48,7 @@ function updateStoreData(accInfo) {
 }
 
 const accFunctions = {
-  login: function (payload) {
+  login: function(payload) {
     return HTTP()
       .post("/login", {
         emailAddress: payload.emailAddress,
@@ -59,7 +59,7 @@ const accFunctions = {
         updateStoreData(res.data)
       })
   },
-  signup: function (payload) {
+  signup: function(payload) {
     return HTTP()
       .post("/signup", {
         emailAddress: payload.emailAddress,
@@ -72,7 +72,7 @@ const accFunctions = {
         updateStoreData(res.data)
       })
   },
-  getAccount: function (id = null) {
+  getAccount: function(id = null) {
     if (id) {
       return HTTP().get(`/accounts/${id}`)
     } else {
@@ -83,7 +83,7 @@ const accFunctions = {
         })
     }
   },
-  updateAccount: function (payload, id = null) {
+  updateAccount: function(payload, id = null) {
     if (id) {
       return HTTP().put(`/accounts/${id}`, payload)
     } else {
@@ -94,7 +94,7 @@ const accFunctions = {
         })
     }
   },
-  deleteAccount: function (id = null) {
+  deleteAccount: function(id = null) {
     if (id) {
       return HTTP().delete(`/accounts/${id}`)
     } else {
@@ -105,37 +105,37 @@ const accFunctions = {
         })
     }
   },
-  getAccounts: function () {
+  getAccounts: function() {
     return HTTP()
       .get("/accounts")
       .then((res) => {
         return res.data
       })
   },
-  initReset: function (emailAddress) {
+  initReset: function(emailAddress) {
     return HTTP().post(`/initiate-reset/${emailAddress}`)
   },
-  confirmReset: function (token) {
+  confirmReset: function(token) {
     return HTTP()
       .post(`/confirm-reset/${token}`)
       .then((res) => {
         updateStoreData(res.data)
       })
   },
-  sendEmailToSiteAdmin: function (payload) {
+  sendEmailToSiteAdmin: function(payload) {
     return HTTP().post("/contact-form", payload)
   },
-  validateAccount: function (token) {
+  validateAccount: function(token) {
     return HTTP()
       .post(`/confirm-account/${token}`)
       .then((res) => {
         updateStoreData(res.data)
       })
   },
-  logout: function () {
+  logout: function() {
     store.commit("account/reset")
   },
-  cleanData: function (payload) {
+  cleanData: function(payload) {
     let cleanedData = {
       errors: [],
     }
@@ -175,7 +175,7 @@ const accFunctions = {
 }
 
 export default {
-  install: function (Vue) {
+  install: function(Vue) {
     Object.defineProperty(Vue.prototype, "$accountAPI", {
       value: accFunctions,
     })
