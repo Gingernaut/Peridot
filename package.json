@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@braid/vue-formulate": "^2.2.7",
     "axios": "^0.19.2",
     "buefy": "^0.8.15",
     "glob-all": "^3.2.1",
@@ -32,6 +33,7 @@
     "eslint-plugin-vue": "^6.2.2",
     "lint-staged": "^10.1.2",
     "node-sass": "^4.13.1",
+    "prettier": "^2.0.4",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },

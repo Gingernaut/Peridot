@@ -132,4 +132,17 @@ a:hover {
   color: $blue;
   font-weight: bold;
 }
+
+.formulate-input {
+  input {
+    font-size: 1em;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .formulate-input-errors {
+    margin-top: 5px;
+    color: red;
+  }
+}
 </style>
