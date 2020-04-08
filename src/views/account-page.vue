@@ -3,27 +3,62 @@
     <h1 class="title">My Account</h1>
     <form id="updateAccForm" @submit.prevent="updateAcc()">
       <b-field label="First Name">
-        <b-input v-model="firstName" />
+        <FormulateInput
+          v-model="firstName"
+          type="text"
+          name="firstName"
+          placeholder="Joe"
+        />
       </b-field>
 
       <b-field label="Last Name">
-        <b-input v-model="lastName" />
+        <FormulateInput
+          v-model="lastName"
+          type="text"
+          name="lastName"
+          placeholder="Bandito"
+        />
       </b-field>
 
       <b-field label="Email">
-        <b-input v-model="emailAddress" type="email" />
+        <FormulateInput
+          v-model="emailAddress"
+          type="email"
+          name="email"
+          validation="email"
+          placeholder="first_last@example.com"
+        />
       </b-field>
 
       <b-field label="Phone">
-        <b-input v-model="phoneNumber" />
+        <FormulateInput
+          v-model="phoneNumber"
+          type="tel"
+          name="phone"
+          validation="email"
+        />
       </b-field>
 
       <b-field label="Change Password">
-        <b-input v-model="password1" type="password" />
+        <FormulateInput
+          v-model="password1"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
       <b-field v-if="password1" label="Confirm Password">
-        <b-input v-model="password2" type="password" />
+        <FormulateInput
+          v-model="password2"
+          type="password"
+          name="password"
+          placeholder="••••••••••"
+          validation="min:6,length"
+          validation-name="Password"
+        />
       </b-field>
 
       <p v-if="!passesMatch && password1.length >= 1" id="passMatchErr">
