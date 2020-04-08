@@ -53,7 +53,7 @@ export default {
   mounted() {},
   computed: {},
   methods: {
-    submitForm: function () {
+    submitForm: function() {
       this.$accountAPI
         .sendEmailToSiteAdmin({
           fromEmail: this.fromEmail,

@@ -144,7 +144,7 @@ export default {
     },
   },
   filters: {
-    localDate: function (date) {
+    localDate: function(date) {
       return new Date(date).toLocaleDateString()
     },
   },

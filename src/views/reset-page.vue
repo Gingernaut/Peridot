@@ -66,12 +66,12 @@ export default {
     }
   },
   computed: {
-    passesMatch: function () {
+    passesMatch: function() {
       return this.password1 === this.password2
     },
   },
   methods: {
-    saveNewPass: function () {
+    saveNewPass: function() {
       if (this.password1 === this.password2 && this.password1.length >= 6) {
         this.$accountAPI
           .updateAccount({ password: this.password1 })
