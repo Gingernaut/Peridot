@@ -801,10 +801,10 @@
   resolved "https://registry.yarnpkg.com/@braid/vue-formulate-i18n/-/vue-formulate-i18n-1.4.0.tgz#e83a21646afaad859939f41117269a7e70480d46"
   integrity sha512-US/CguORgMlT+fE+m/Cln8s/EkZB43IvTwOh077I7Tk7vLoZhs7G8+ATMd/Hf4ksLhCUIyxtdEpElbUgTTnjzg==
 
-"@braid/vue-formulate@^2.2.7":
-  version "2.2.7"
-  resolved "https://registry.yarnpkg.com/@braid/vue-formulate/-/vue-formulate-2.2.7.tgz#2245fcbcc8010ab2fb233dab31fc144ff34355fb"
-  integrity sha512-IJZoewhtK2Qfni9GPGXT6DyW2rHCcFKRxADZhwq2d2FhIUfYFtPtoMYeaKYfn5Iiona/Yxk7WVA6Wq836WE93Q==
+"@braid/vue-formulate@^2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@braid/vue-formulate/-/vue-formulate-2.2.8.tgz#5f296927f2eeed1c05bc4fb77e0e6b9fa3e9693e"
+  integrity sha512-v8y5dAtO25/DxJMc5LjIHyX70H4ogKnVUeAurX0N3vYbit4xSY+Ptz30xM9CYFDBJOBuK97DLsfDteuydd/U1g==
   dependencies:
     "@braid/vue-formulate-i18n" "^1.4.0"
     is-plain-object "^3.0.0"
