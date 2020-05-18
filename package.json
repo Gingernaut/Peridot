@@ -10,7 +10,7 @@
   "dependencies": {
     "@braid/vue-formulate": "^2.2.8",
     "axios": "^0.19.2",
-    "buefy": "^0.8.15",
+    "buefy": "^0.8.19",
     "glob-all": "^3.2.1",
     "path": "^0.12.7",
     "purgecss-webpack-plugin": "^2.1.0",
