@@ -15,7 +15,7 @@
     "path": "^0.12.7",
     "purgecss-webpack-plugin": "^2.1.0",
     "register-service-worker": "^1.7.1",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-router": "^3.1.6",
     "vuex": "^3.4.0",
     "vuex-pathify": "^1.4.1",
@@ -35,7 +35,7 @@
     "node-sass": "^4.13.1",
     "prettier": "^2.0.4",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
