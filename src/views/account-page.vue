@@ -66,9 +66,7 @@
       </p>
 
       <p class="control">
-        <button class="button is-primary">
-          Save Changes
-        </button>
+        <button class="button is-primary">Save Changes</button>
 
         <button
           class="button is-danger is-outlined"

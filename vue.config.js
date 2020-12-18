@@ -1,4 +1,3 @@
-const fs = require("fs")
 // const PurgecssPlugin = require("purgecss-webpack-plugin")
 // const glob = require("glob-all")
 const path = require("path")
@@ -43,8 +42,10 @@ module.exports = {
   },
   css: {
     loaderOptions: {
-      sass: {
-        prependData: fs.readFileSync("./src/styles/_variables.scss", "utf-8"),
+      scss: {
+        additionalData: `
+          @import "@/styles/_variables.scss";
+        `,
       },
     },
   },

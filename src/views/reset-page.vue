@@ -15,9 +15,7 @@
         </p>
 
         <p class="control">
-          <button class="button is-primary">
-            Save Password
-          </button>
+          <button class="button is-primary">Save Password</button>
         </p>
       </form>
 

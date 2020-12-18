@@ -72,9 +72,7 @@
           </b-table-column>
         </template>
 
-        <div slot="empty" class="has-text-centered">
-          Loading Accounts
-        </div>
+        <div slot="empty" class="has-text-centered">Loading Accounts</div>
       </b-table>
     </div>
   </div>

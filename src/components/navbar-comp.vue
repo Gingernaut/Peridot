@@ -34,14 +34,12 @@
         <span v-if="!isLoggedIn" class="navbar-item">
           <a class="navbar-item button accNav is-info" @click="openSignup()">
             Sign Up</a
-            >
+          >
           <a class="navbar-item button accNav" @click="openLogin()">Log In</a>
         </span>
 
         <div v-if="isLoggedIn" class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link is-active">
-            Account
-          </a>
+          <a class="navbar-link is-active"> Account </a>
           <div class="navbar-dropdown">
             <router-link to="/account" class="navbar-item">
               Overview

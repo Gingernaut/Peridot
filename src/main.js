@@ -11,7 +11,7 @@ import VueFormulate from "@braid/vue-formulate"
 Vue.use(VueFormulate)
 Vue.use(Buefy)
 Vue.use(accountAPI)
-Vue.component("modal", modal)
+Vue.component("Modal", modal)
 
 Vue.config.productionTip = false
 Vue.config.debug = true

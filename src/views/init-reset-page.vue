@@ -22,9 +22,7 @@
         </b-field>
 
         <p class="control">
-          <button class="button is-primary">
-            Send Reset Email
-          </button>
+          <button class="button is-primary">Send Reset Email</button>
         </p>
       </form>
 
