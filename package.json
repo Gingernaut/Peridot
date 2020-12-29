@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@braid/vue-formulate": "^2.4.5",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "buefy": "^0.9.4",
     "glob-all": "^3.2.1",
     "path": "^0.12.7",
