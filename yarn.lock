@@ -1047,17 +1047,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@braid/vue-formulate-i18n@^1.13.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@braid/vue-formulate-i18n/-/vue-formulate-i18n-1.13.0.tgz#20e5389c66621c2a599508b5d049aa96f7f7b049"
-  integrity sha512-cZ4OeRlTb/KWxwMbndc82s8S9wTXHNAcJnw7o682KJ5aMD8laulVTia/lqJbn7UK8/fRKC/toxcfj6ktVl7OiQ==
+"@braid/vue-formulate-i18n@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@braid/vue-formulate-i18n/-/vue-formulate-i18n-1.16.0.tgz#71c9121c909c7bbdfd4dfcf6a57d554f5bb1ec75"
+  integrity sha512-CuX1kN7bWg4ukynnTS3LGsmPKrUvS2Wh75zKatIe+nHQQy0gSvfmggQsCz4QZey7Ois+pGYmOIgrE1SvX+zQTw==
 
-"@braid/vue-formulate@^2.4.5":
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/@braid/vue-formulate/-/vue-formulate-2.4.5.tgz#e52ab8b2eef8b6ae2fb246f23f8bcb68d0c17ec4"
-  integrity sha512-BsgUmhie98xk6VvEejIPrG90iyjx3YGRlp2Tr+8qPOQ6kaUGvAdQBJ5bIf68hYDV6WREBLIx3suTKVk8nkwodg==
+"@braid/vue-formulate@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@braid/vue-formulate/-/vue-formulate-2.5.2.tgz#32076d6a513760763a3a89dd69e8911c1bad1fcb"
+  integrity sha512-0LWKp3Rjq2a+WwA4y49VaXqQOVClJGy6mmdivxJJyRvNB0aUcTOKOINLumeU/XHf7/c0HNhtbZih2vs6hMDyvQ==
   dependencies:
-    "@braid/vue-formulate-i18n" "^1.13.0"
+    "@braid/vue-formulate-i18n" "^1.16.0"
     is-plain-object "^3.0.1"
     is-url "^1.2.4"
     nanoid "^2.1.11"
