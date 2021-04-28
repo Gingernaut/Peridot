@@ -1,5 +1,5 @@
 # ---- Base Node ----
-FROM node:15.14.0-alpine AS BASE
+FROM node:16.0.0-alpine AS BASE
 WORKDIR /app
 
 # ---- Dependencies ----
